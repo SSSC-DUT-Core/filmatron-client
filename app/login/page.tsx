@@ -9,7 +9,7 @@ import TwitterLoginImage from '../../public/assets/auth/login-twitter.svg';
 import logo from '../../public/assets/logo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const socialLoginOptions = [
 	{
@@ -48,6 +48,7 @@ const socialLoginOptions = [
 ];
 
 const LoginPage = () => {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const authorizationCode = searchParams.get('authorization-code');
 
@@ -58,11 +59,6 @@ useEffect(() => {
 
 		fetch(url, {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-			},
-			mode: 'cors',
 			body: body,
 		})
 			.then((response) => {
@@ -72,11 +68,10 @@ useEffect(() => {
 				return response.json();
 			})
 			.then((data) => {
-        console.log('data: ', data);
-        sessionStorage.setItem('token', data);
+        sessionStorage.setItem('access_token', 'Bearer ' + data);
+        router.push('/');
 			})
 			.catch((error) => {
-				// Handle errors here
 				console.error('Fetch error:', error);
 			});
 	}
