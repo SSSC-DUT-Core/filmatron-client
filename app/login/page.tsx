@@ -72,8 +72,8 @@ useEffect(() => {
 				return response.json();
 			})
 			.then((data) => {
-				// Handle the response data here
-				console.log(data);
+        console.log('data: ', data);
+        sessionStorage.setItem('token', data);
 			})
 			.catch((error) => {
 				// Handle errors here
