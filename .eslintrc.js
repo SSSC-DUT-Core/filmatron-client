@@ -92,6 +92,7 @@ module.exports = {
         "guard-for-in": "off",
         radix: "off",
         "jsx-a11y/heading-has-content": "off",
+        "prettier/prettier": "off",
         // "prettier/prettier": ["error", prettierOptions],
     },
 };
