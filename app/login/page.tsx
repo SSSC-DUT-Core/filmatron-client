@@ -23,7 +23,7 @@ const socialLoginOptions = [
         translateLoginText: "dappLogin.continue",
         verifier: "Google",
         loginUrl:
-            "https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=http://localhost:3000/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature",
+            "https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=https://filmatron-client.vercel.app/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature",
     },
     {
         imageClass: "w-6 login-button-images",
@@ -31,7 +31,7 @@ const socialLoginOptions = [
         imageSrc: FacebookLoginImage,
         imgAltText: "Login with Facebook",
         loginUrl:
-            "https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=http://localhost:3000/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature",
+            "https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=https://filmatron-client.vercel.app/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature",
     },
     {
         loginType: "twitter",
@@ -39,7 +39,7 @@ const socialLoginOptions = [
         imageSrc: TwitterLoginImage,
         imgAltText: "Login with Twitter",
         loginUrl:
-            "https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=http://localhost:3000/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature",
+            "https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=https://filmatron-client.vercel.app/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature",
     },
     {
         imageClass: "w-6 login-button-images",
@@ -47,7 +47,7 @@ const socialLoginOptions = [
         imageSrc: DiscordLoginImage,
         imgAltText: "Login with Discord",
         loginUrl:
-            "https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=http://localhost:3000/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature",
+            "https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=https://filmatron-client.vercel.app/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature",
     },
 ];
 
