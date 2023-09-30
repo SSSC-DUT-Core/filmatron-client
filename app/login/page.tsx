@@ -75,7 +75,7 @@ useEffect(() => {
 				console.error('Fetch error:', error);
 			});
 	}
-}, [authorizationCode]);
+}, [authorizationCode,router]);
 
 	return (
 		<div className="bg-background-layout bg-cover bg-right w-screen h-screen py-20 px-32">

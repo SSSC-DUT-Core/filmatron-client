@@ -1,8 +1,6 @@
 'use client'
-import { useState } from 'react';
 import React from 'react';
 
-import {films,  FilmData, FilmCardInColProps, sectionFilmCol} from '../../../homepage/data';
 import './NFTCard.css'
 
 const NFTCard = () => {

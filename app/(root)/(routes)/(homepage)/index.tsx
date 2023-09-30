@@ -1,4 +1,3 @@
-import ClientOnly from '#/components/ClientOnly';
 
 import { FilmDetails } from './FilmDetail/index.jsx';
 import { FilmRow } from './FilmRow';
@@ -11,12 +10,12 @@ import {LiveFilms, films,  FilmData, FilmCardInRowProps, sectionFilmRow, listOfS
 
 export const HomePage = ()=> {
     return (
-      <ClientOnly>
+      <>
         <FilmDetails/>
         {
           SectionFilmRowsPopularOfWeek.map((sectionFilmRow: sectionFilmRow) => (
             <FilmRow
-              // key={sectionFilmRow.title}
+              key={`filmrow+${sectionFilmRow.filmRow}`}
               filmRowTitle={sectionFilmRow.filmRowTitle}
               filmRow={sectionFilmRow.filmRow}
             />
@@ -30,7 +29,7 @@ export const HomePage = ()=> {
         {
           listOfSectionFilmRows.map((sectionFilmRow: sectionFilmRow) => (
             <FilmRow
-              // key={sectionFilmRow.title}
+              key={`listOfSectionFilmRows+${sectionFilmRow.filmRow}`}
               filmRowTitle={sectionFilmRow.filmRowTitle}
               filmRow={sectionFilmRow.filmRow}
             />
@@ -40,6 +39,6 @@ export const HomePage = ()=> {
         {/* <FilmRow 
         /> */}
         {/* <MediaRow/> */}
-      </ClientOnly>
+      </>
     )
 }

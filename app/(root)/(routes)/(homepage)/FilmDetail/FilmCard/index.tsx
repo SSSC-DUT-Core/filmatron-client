@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
-
+import Image from 'next/image';
 
 //sẽ tách thành từng component sau
 interface FilmData {
@@ -71,7 +71,7 @@ export const FilmCard: React.FC<FilmCardProps> = ({ posterSrc, title, rating, du
   return (
     <div>
       <div>
-        <img src={posterSrc} alt="" />
+        <Image src={posterSrc} width={"240"} height={"240"}  alt="filmcard"/>
       </div>
       <div>
         <p>{title}</p>

@@ -15,7 +15,7 @@ const Home = ()=> {
       {
         SectionFilmRowsPopularOfWeek.map((sectionFilmRow: sectionFilmRow) => (
           <FilmRow
-            key={"title"+sectionFilmRow.title}
+            key={"title"+sectionFilmRow.filmRowTitle}
             filmRowTitle={sectionFilmRow.filmRowTitle}
             filmRow={sectionFilmRow.filmRow}
           />
@@ -29,7 +29,7 @@ const Home = ()=> {
       {
         listOfSectionFilmRows.map((sectionFilmRow: sectionFilmRow) => (
           <FilmRow
-            key={"title"+sectionFilmRow.title}
+            key={"title"+sectionFilmRow.filmRowTitle}
             filmRowTitle={sectionFilmRow.filmRowTitle}
             filmRow={sectionFilmRow.filmRow}
           />
