@@ -1,0 +1,28 @@
+.filmCard-BG {
+    width: 240px;
+    height: 96px;
+    padding: 1px;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.filmCard-BG:hover {
+    cursor: pointer; 
+    transform: scale(1.04);
+    box-shadow: 0px 0px 80px -25px rgba(0, 0, 0, 0.8);
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+  
+.selectedFilmCard-BG {
+    background-image: linear-gradient(to right, rgba(243, 200, 121, 0.7), rgba(169, 102, 255, 0.7));
+}
+
+.filmCard {
+    width: 100%;
+    height: 100%;   
+    border-radius: inherit;
+    padding: 0 8px;
+    transition: transform 0.4s, box-shadow 0.4s;
+    /* background-color: #191a28; */
+}
