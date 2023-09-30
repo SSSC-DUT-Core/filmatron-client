@@ -72,6 +72,6 @@ module.exports = {
         "import/prefer-default-export": "off",
         "no-underscore-dangle": "warn",
         "no-unused-vars": "warn",
-        // "prettier/prettier": ["error", prettierOptions],
+        "prettier/prettier": ["error", prettierOptions],
     },
 };
