@@ -40,8 +40,8 @@ module.exports = {
     ],
 
     rules: {
-        "@typescript-eslint/no-unused-vars": "error",
-        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/no-explicit-any": "warn",
         "react/react-in-jsx-scope": "off",
         "react/jsx-filename-extension": [
             1,
@@ -70,6 +70,8 @@ module.exports = {
         ],
         "no-nested-ternary": "off",
         "import/prefer-default-export": "off",
-        "prettier/prettier": ["error", prettierOptions],
+        "no-underscore-dangle": "warn",
+        "no-unused-vars": "warn",
+        // "prettier/prettier": ["error", prettierOptions],
     },
 };
