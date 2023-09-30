@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const Footer = () => {
@@ -20,7 +21,7 @@ const Footer = () => {
               // gap: '24px',
             }}
           >
-            <img
+            <Image
                 src="/assets/images/logoSoul.png"
                 alt="Logo"
                 className="w-30 h-8 mr-2"
