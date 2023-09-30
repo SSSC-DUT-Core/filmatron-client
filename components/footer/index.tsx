@@ -21,9 +21,10 @@ const Footer = () => {
                         }}
                     >
                         <Image
-                            src="/assets/images/logoSoul.png"
+                            src="/assets/images/logo.png"
                             alt="Logo"
-                            className="w-30 h-8 mr-2"
+                            width={48}
+                            height={32}
                         />
                     </div>
 
