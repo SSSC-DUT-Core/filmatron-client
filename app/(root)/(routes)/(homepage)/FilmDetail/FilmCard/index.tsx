@@ -2,7 +2,6 @@ import { useState } from 'react';
 import React from 'react';
 import Image from 'next/image';
 
-//sẽ tách thành từng component sau
 interface FilmData {
   posterSrc: string;
   title: string;
