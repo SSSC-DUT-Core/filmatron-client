@@ -3,24 +3,24 @@
     border-radius: 16px;
     background-color: rgba(255, 255, 255, 0.45);
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-  
+
     /* backdrop-filter: blur(15px); */
     background-color: #505267;
-  }
-  
-  .card p {
+}
+
+.card p {
     margin: 0;
-  }
-  
-  .card p:not(:last-child) {
+}
+
+.card p:not(:last-child) {
     margin-bottom: 1.5em;
-  }
-  
-  .card-footer {
+}
+
+.card-footer {
     font-size: 0.65em;
     color: #446;
-  }
+}
 
-  /* .NFT {
+/* .NFT {
     background-image: ; 
   } */

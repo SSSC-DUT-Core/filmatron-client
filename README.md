@@ -20,7 +20,6 @@ npm i
 
 ### Setup .env file
 
-
 ```js
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=""
 STRIPE_API_KEY=
@@ -38,6 +37,6 @@ npm run dev
 
 Running commands with npm `npm run [command]`
 
-| command         | description                              |
-| :-------------- | :--------------------------------------- |
-| `dev`           | Starts a development instance of the app. |
+| command | description                               |
+| :------ | :---------------------------------------- |
+| `dev`   | Starts a development instance of the app. |
