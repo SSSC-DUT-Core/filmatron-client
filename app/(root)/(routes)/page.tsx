@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { gql, useMutation } from "@apollo/client";
 import { FilmDetails } from "./(homepage)/FilmDetail/index";
 import { FilmRow } from "./(homepage)/FilmRow/index";
 import { LiveFilmSection } from "./(homepage)/LiveFilmSection/index";
@@ -10,38 +11,35 @@ import {
     sectionFilmRow,
 } from "./(homepage)/data";
 
+const mutation = gql`
+    mutation SignIn($input: SignInDto!) {
+        signIn(input: $input) {
+            accessToken
+            refreshToken
+            person {
+                id
+                name
+                email
+            }
+        }
+    }
+`;
+
 const Home = () => {
+    const [loginWithToken, { data, loading, error }] = useMutation(mutation);
+
     useEffect(() => {
         if (sessionStorage.getItem("access_token")) {
-            const url = "https://filmatron-jwks.kylan.so/api/user";
-            const body = JSON.stringify({});
-            fetch(url, {
-                method: "GET",
-                // body,
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    Authorization: sessionStorage.getItem("access_token") ?? "",
+            loginWithToken({
+                variables: {
+                    input: { publicKey: "your_public_key_here" },
                 },
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const dataFake = {
-                        _id: "6514fc9e8ee40a22defddc33",
-                        name: "Kiem Tran",
-                        email: "kiemtran.dev@gmail.com",
-                        image: "https://lh3.googleusercontent.com/a/ACg8ocLTT45XT8F4WTzFDECLti2RTGWq4GAxihao79QUMxBre8o=s96-c",
-                        emailVerified: null,
-                    };
-                    console.log("data: ", data);
-                })
-                .catch(error => {
-                    console.error("Fetch error:", error);
-                });
+                context: {
+                    headers: {
+                        Authorization: sessionStorage.getItem("access_token"),
+                    },
+                },
+            });
         }
     }, []);
 
