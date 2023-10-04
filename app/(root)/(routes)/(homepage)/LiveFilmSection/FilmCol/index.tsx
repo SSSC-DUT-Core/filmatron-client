@@ -6,7 +6,7 @@ import './LiveFilmCol.css'
 import { FilmCardInColProps, sectionFilmCol, films } from '../../data';
 import { FilmData } from '../../FilmDetail';
 
-const FilmCardInCol = ({ posterSrc, title, rating, duration, releaseDate,isSelected, onClick }: FilmCardInColProps) => {
+export const FilmCardInCol = ({ posterSrc, title, rating, duration, releaseDate,isSelected, onClick }: FilmCardInColProps) => {
   const imageCardStyle = {
     // border: '10px solid red',
     backgroundImage: `url(${posterSrc})`,
@@ -55,7 +55,7 @@ const FilmCardInCol = ({ posterSrc, title, rating, duration, releaseDate,isSelec
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'flex-start',
-          gap: '16px',
+          gap: '12px',
         }}>
 
           {/* film title, rating and duration */}

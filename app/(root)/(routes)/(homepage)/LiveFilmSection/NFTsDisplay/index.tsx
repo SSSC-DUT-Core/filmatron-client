@@ -2,17 +2,14 @@
 import { useState } from 'react';
 import React from 'react';
 
-import {films,  FilmData, FilmCardInColProps, sectionFilmCol} from '../../../homepage/data';
+import {films,  NFT} from '../../data';
 import './NFTCard.css'
 
-const NFTCard = () => {
-    return (
-        <>
-        </>
-    )
-}
+type Props = {
+  NFTs: NFT[];
+};
 
-const NFTsDisplay = () => {
+export const NFTsDisplay = (NFTs: Props) => {
     return (
         <>
             <div className='w-full h-full'
@@ -22,41 +19,66 @@ const NFTsDisplay = () => {
             >
               <div className=""
                 style={{
-                  paddingLeft: '20px ',
+                  paddingLeft: '8px',
                   display: 'flex',
                   alignItems: 'center',
+                  // position: 'absolute',
+                  
                 }}
               >
-                <div className="card"
+                {/* list of NFT card */}
+                <div className="NFTCard-BG"
                   style={{
-                    maxWidth: '372px', /* Đặt chiều rộng tối đa là 372px */
-                    minHeight: '462px', /* Đặt chiều cao tối thiểu là 462px */
-                    padding: '16px', /* Đặt padding là 16px */
+                    width: '372px',
+                    height: '462px',
+                    zIndex: '3',
                   }}
                 >
-                  <img src="./assets/NFTs/NFT1.png" alt="NFT1" 
-                  style={{
-                    height: '100%',
-                    width: '100%',
-                    objectFit: 'cover',
-                    borderRadius: '16px',
-                  }}/>
+                  <div className='NFTCard'>
+                    <img src="./assets/NFTs/NFT2.png" alt="NFT1" 
+                    style={{
+                      height: '100%',
+                      width: '100%',
+                      objectFit: 'cover',
+                      borderRadius: '16px',
+                    }}/>
+                  </div>
                 </div>
 
-                <div className="card"
+                <div className="NFTCard-BG"
                   style={{
-                    maxWidth: '330px',
-                    minHeight: '410px',
-                    
+                    width: '330px',
+                    height: '410px',
+                    zIndex: '2',
                   }}
                 >
-                  <img src="./assets/NFTs/NFT2.png" alt="NFT1" 
+                  <div className='NFTCard'>
+                    <img src="./assets/NFTs/NFT2.png" alt="NFT1" 
+                    style={{
+                      height: '100%',
+                      width: '100%',
+                      objectFit: 'cover',
+                      borderRadius: '16px',
+                    }}/>
+                  </div>
+                </div>
+
+                <div className="NFTCard-BG"
                   style={{
-                    height: '100%',
-                    width: '100%',
-                    objectFit: 'cover',
-                    borderRadius: '16px',
-                  }}/>
+                    width: '272px',
+                    height: '332px',
+                    zIndex: '1',
+                  }}
+                >
+                  <div className='NFTCard'>
+                    <img src="./assets/NFTs/NFT2.png" alt="NFT1" 
+                    style={{
+                      height: '100%',
+                      width: '100%',
+                      objectFit: 'cover',
+                      borderRadius: '16px',
+                    }}/>
+                  </div>
                 </div>
 
               

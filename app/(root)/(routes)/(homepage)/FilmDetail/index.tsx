@@ -3,6 +3,8 @@ import { useState } from 'react';
 // import playIcon from './public/assets/icons/playIcon.svg';
 // import  PlayIcon2  from './assets/icons/playIcon2.svg';
 
+
+
 import './filmDetail.css';
 import './filmCard.css';
 // import { Box, Card, Text, Flex } from '@radix-ui/themes';
@@ -158,7 +160,7 @@ const FilmPoster = ({ posterSrc, logoSrc, title, description, rating, duration, 
       {/* poster */}
       <div className=''
         style={{
-          border: '1px solid green',
+          // border: '1px solid green',
           justifyContent: 'center',
           flexDirection: 'column',
           // padding: '10px 0 10px 0',
@@ -589,7 +591,7 @@ export const FilmDetails = () => {
             // border: '8px solid blue',
             borderRadius: '32px',
 
-            border: "1px solid red",
+            // border: "1px solid red",
 
             overflow: 'hidden',
 

@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 
-import {films,  FilmData, FilmCardInRowProps, sectionFilmRow, listOfSectionFilmRows} from '../../homepage/data';
+import {films,  FilmData, FilmCardInRowProps, sectionFilmRow, listOfSectionFilmRows} from '../data';
 import './filmRow.css'
 
 

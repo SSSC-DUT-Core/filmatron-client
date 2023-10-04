@@ -15,18 +15,20 @@ export function MainNav({
     { href: '/movies', text: 'Movies' },
     { href: '/watchlist', text: 'Watchlist' },
     { href: '/filmmaker', text: 'Filmmaker' },
-  ];
-
-  
+  ];  
 
   return (
     <div 
-      className={cn('hidden sm:flex w-full h-28 relative items-center justify-between px-24', className)}
+      className={cn('hidden sm:flex w-full relative items-center justify-between px-24', className)}
+      style={{
+        height: '80px',
+        backgroundColor: 'rgba(65, 65, 77, 0)',
+      }}
       {...props}
     >
       {/* Logo */}
       <div className="mr-5">
-        <Image src="/assets/images/logo.png" width={48} height={48} alt="Logo" className="h-8" />
+        <Image src="/assets/images/logo-header.png" width={135} height={28} alt="Logo" className="h-8" />
       </div>
 
       {/* Navigation Items */}

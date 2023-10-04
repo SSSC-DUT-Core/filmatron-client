@@ -67,29 +67,6 @@ export type FilmCardInRowProps = {
 // export type FilmNFT
 
 
-export type NFT = {
-  name: string;
-  description: string;
-  imageUrl: string;
-  collectionName: string;
-   filmName: string;
-  attributes: string[];
-  // Các trường khác của NFT có thể được thêm vào ở đây
-};
-
-export type Collection = {
-  name: string;
-  nfts: NFT[];
-  // Các trường khác của Collection có thể được thêm vào ở đây
-};
-
-export type CollectionsOfFilm = {
-  filmName: string;
-
-  // 1 film có thể có nhiều collection
-  collections: Collection[];
-  // Các trường khác của NFTOfFilm có thể được thêm vào ở đây
-};
 
 // export type LiveFilmSection = {
 //   LiveFilms: FilmData[];
@@ -176,9 +153,27 @@ export const films: FilmData[] = [
     },
     // Add more films here
     // Define the film data
-  ];
+];
 
-// Dữ liệu cho NFTs
+
+
+export type NFT = {
+  name: string;
+  description: string;
+  imageUrl: string;
+  collectionName: string;
+   filmName: string;
+  attributes: string[];
+  // Các trường khác của NFT có thể được thêm vào ở đây
+};
+
+export type Collection = {
+  name: string;
+  nfts: NFT[];
+  // Các trường khác của Collection có thể được thêm vào ở đây
+};
+
+
 export const NFTs: NFT[] = [
   {
     name: 'NFT 1',
@@ -206,6 +201,25 @@ export const NFTs: NFT[] = [
   },
   // Thêm các NFT khác tại đây
 ];
+
+// export const ListNFTsOfFilm = [
+//   filmName: 'Wednesday',
+//   ListNFTs: 
+// ]
+
+const filmWednesdayDetail = {
+  posterSrc: '/assets/images/film1.png',
+  title: 'Wednesday',
+  logoSrc: '/assets/images/Logo-Wednesday.png',
+  description: "Wednesday Addams, a teenager who possesses psychic powers.Wednesday's cold, emotionless personality and her defiant nature make it difficult for her to connect with her schoolmates and cause her to run afoul of the school's principal Larissa Weems. However, she discovers she has inherited her mother's psychic abilities which allow her to solve a local murder mystery.",
+  rating: 8.2,
+  duration: 130,
+  releaseDate: 'Sep 23 2023',
+  genres: ['Drama', 'Adventure'], 
+
+  stars: 'Lewis Tan, Jessica McNamee, Josh Lawson',
+  director: 'Simon McQuoid',
+}
 
 
 export const LiveFilms: FilmData[] = [
@@ -290,6 +304,77 @@ export const LiveFilms: FilmData[] = [
   // Define the film data
 ];
 
+export const DisplayNFTCardProps = {
+  
+};
+
+// export const listNFTsOfAFilm: NFTsOfFilm[] = [
+//   {
+//     filmName: 'Wednesday',
+//     ListNFTs: [
+//       { 
+//         name: 'NFT 1',
+//         description: 'This is NFT 1',
+//         imageUrl: '/assets/images/nft1.png',
+//         collectionName: 'Collection 1',
+//         filmName: 'Wednesday',
+//         attributes: ['Attribute 1', 'Attribute 2'],
+//       },
+//       {
+//         name: 'NFT 2',
+//         description: 'This is NFT 2',
+//         imageUrl: '/assets/images/nft2.png',
+//         collectionName: 'Collection 1',
+//         filmName: 'Wednesday',
+//         attributes: ['Attribute 3', 'Attribute 4'],
+//       },
+//     ],
+//   }, 
+
+//   {
+//     filmName: 'Wednesday',
+//     ListNFTs: [
+//       {
+//         name: 'NFT 1',
+//         description: 'This is NFT 1',
+//         imageUrl: '/assets/images/nft1.png',
+//         collectionName: 'Collection 1',
+//         filmName: 'Wednesday',
+//         attributes: ['Attribute 1', 'Attribute 2'],
+//       },
+//       {
+//         name: 'NFT 2',
+//         description: 'This is NFT 2',
+//         imageUrl: '/assets/images/nft2.png',
+//         collectionName: 'Collection 1',
+//         filmName: 'Wednesday',
+//         attributes: ['Attribute 3', 'Attribute 4'],
+//       },
+//     ],
+//   }, 
+
+//    {
+//     filmName: 'Wednesday',
+//     ListNFTs: [
+//       {
+//         name: 'NFT 1',
+//         description: 'This is NFT 1',
+//         imageUrl: '/assets/images/nft1.png',
+//         collectionName: 'Collection 1',
+//         filmName: 'Wednesday',
+//         attributes: ['Attribute 1', 'Attribute 2'],
+//       },
+//       {
+//         name: 'NFT 2',
+//         description: 'This is NFT 2',
+//         imageUrl: '/assets/images/nft2.png',
+//         collectionName: 'Collection 1',
+//         filmName: 'Wednesday',
+//         attributes: ['Attribute 3', 'Attribute 4'],
+//       },
+//     ],
+//   }, 
+// ]
 
 export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] = 
   [
@@ -375,9 +460,8 @@ export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] =
         },
         // Add more films here
         // Define the film data
-      ]
+      ],
     },
-
 ]
       
 
