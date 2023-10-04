@@ -1,10 +1,25 @@
 import React from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import "./styles.css";
-
-const DropdownMenuDemoParams = ["Profile", "Setting", "Logout"];
+import { useRouter } from "next/navigation";
 
 const DropdownMenuDemo = () => {
+    const router = useRouter();
+
+    const DropdownMenuDemoParams = [
+        {
+            label: "Profile",
+            onClick: () => router.push("/profile"),
+        },
+        {
+            label: "Setting",
+            onClick: () => router.push("/setting"),
+        },
+        {
+            label: "Logout",
+            onClick: () => router.push("/logout"),
+        },
+    ];
     return (
         <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
@@ -115,13 +130,16 @@ const DropdownMenuDemo = () => {
                     className="DropdownMenuContent"
                     sideOffset={5}
                 >
-                    {DropdownMenuDemoParams.map((param, index) => (
+                    {DropdownMenuDemoParams.map(({ label, onClick }) => (
                         <DropdownMenu.Item
-                            key={index}
-                            className="DropdownMenuItem"
+                            key={label}
+                            className="DropdownMenuItem cursor-pointer"
                         >
-                            <DropdownMenu.Item className="DropdownMenuItem">
-                                {param}
+                            <DropdownMenu.Item
+                                className="DropdownMenuItem"
+                                onClick={onClick}
+                            >
+                                {label}
                             </DropdownMenu.Item>
                         </DropdownMenu.Item>
                     ))}
