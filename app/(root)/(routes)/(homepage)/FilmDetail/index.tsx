@@ -3,8 +3,6 @@ import { useState } from 'react';
 // import playIcon from './public/assets/icons/playIcon.svg';
 // import  PlayIcon2  from './assets/icons/playIcon2.svg';
 
-
-
 import './filmDetail.css';
 import './filmCard.css';
 // import { Box, Card, Text, Flex } from '@radix-ui/themes';
