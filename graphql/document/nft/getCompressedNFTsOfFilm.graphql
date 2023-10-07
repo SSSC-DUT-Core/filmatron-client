@@ -1,0 +1,32 @@
+query getCompressedNFTsOfFilm(
+  $filmId: ID!
+  $first: Int
+  $after: String
+  $last: Int
+  $before: String
+) {
+  getCompressedNFTsOfFilm(
+    filmId: $filmId
+    first: $first
+    after: $after
+    last: $last
+    before: $before
+  ) {
+    edges {
+      cursor
+      node {
+        id
+        name
+        symbol
+        uri
+        filmId
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
