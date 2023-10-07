@@ -8,7 +8,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 
 import "./globals.css";
 import { ApolloProvider } from "@apollo/client";
-import client from "@/graphql/apollo-client";
+import { ApolloWrapper } from "@/config/apollo-wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +21,7 @@ export default async function RootLayout({
         <>
             <html lang="en">
                 <body className={inter.className}>
-                    <ApolloProvider client={client}>
+                    <ApolloWrapper>
                         <ThemeProvider
                             attribute="class"
                             defaultTheme="system"
@@ -31,7 +31,7 @@ export default async function RootLayout({
                             <ModalProvider />
                             {children}
                         </ThemeProvider>
-                    </ApolloProvider>
+                    </ApolloWrapper>
                 </body>
             </html>
         </>
