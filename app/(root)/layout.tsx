@@ -19,7 +19,7 @@ export default async function SetupLayout({
                 minHeight: "100vh", // Ensure the container covers the full viewport height
             }}
         >
-            <MainNav className="bg-secondary-foreground" />
+            <MainNav />
             {children}
             <Footer />
         </div>
