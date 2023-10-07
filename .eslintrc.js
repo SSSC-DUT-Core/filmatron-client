@@ -93,6 +93,8 @@ module.exports = {
         radix: "off",
         "jsx-a11y/heading-has-content": "off",
         "prettier/prettier": "off",
+        "no-use-before-define": "off",
+        "import/no-duplicates": "off",
         // "prettier/prettier": ["error", prettierOptions],
     },
 };

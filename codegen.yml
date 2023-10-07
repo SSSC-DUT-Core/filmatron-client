@@ -1,0 +1,17 @@
+overwrite: true
+schema: http://api.truongnguyen.tech/graphql
+documents: "graphql/**/*.graphql"
+generates:
+  graphql/generated/index.tsx:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      fetcher: graphql-request
+      withHOC: false
+      withHooks: true
+      withComponent: false
+      useIndexSignature: true
+      apolloReactHooksImportFrom: "@apollo/client"
+
