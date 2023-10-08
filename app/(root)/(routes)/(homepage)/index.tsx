@@ -12,7 +12,12 @@ import {
     listOfSectionFilmRows,
     SectionFilmRowsPopularOfWeek,
 } from "./data";
-import { FilmPosterDetail } from "./filmPosterDetail/index.jsx";
+
+import { FilmPosterDetail } from './filmPosterDetail';
+
+import { PrizeTicketHomePage } from './PrizeTicketHomePage';
+
+
 
 
 const filmPosterDetailData = {
@@ -38,6 +43,41 @@ const filmPosterDetailData = {
 
   eventImg: './assets/filmDetail/gallery/galleryImg1.png',
 }
+
+
+const ticketIconUrl = './assets/icons/ticket-icon.svg';
+const cinemaIconUrl = './assets/icons/cinema-icon.svg';
+
+const prizeList = [
+  {
+    title: '10 free takes to the film',
+    ticketLogo: './assets/ticket/ticket-logo.png',
+    announcementDate: '2023-10-18T15:45:00',
+    typeOfPrize: 'Ticket Event',
+    prizeImg: './assets/filmDetail/gallery/galleryImg1.png',
+    walletCreatorAddress: '4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j',
+    dateCreated: '2023-10-05T15:45:00.000Z', 
+  },
+  {
+    title: '10 free takes to the film',
+    announcementDate: '2023-10-18T15:45:00',
+    ticketLogo: './assets/ticket/ticket-logo.png',
+    typeOfPrize: 'Ticket Event',
+    prizeImg: './assets/filmDetail/gallery/galleryImg1.png',
+    walletCreatorAddress: '4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j',
+    dateCreated: '2023-10-05T15:45:00.000Z', 
+  },
+  {
+    title: '10 free takes to the film',
+    announcementDate: '2023-10-18T15:45:00',
+    ticketLogo: './assets/ticket/ticket-logo.png',
+    typeOfPrize: 'Ticket Event',
+    prizeImg: './assets/filmDetail/gallery/galleryImg1.png',
+    walletCreatorAddress: '4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j',
+    dateCreated: '2023-10-05T15:45:00.000Z', 
+  },
+]
+
 
 export const HomePage = () => {
     return (
@@ -71,17 +111,89 @@ export const HomePage = () => {
 
         />
 
-            <LiveFilmSection />
+        {/* prizeticket and redBandTrailer */}
+        <div className="flex justify-between w-full border border-solid border-red-500 border-w-1 pb-16">
+            {/* prizeticketHomePage */}
+            <div className='w-1/2 border border-solid border-blue-500 border-w-1'>
+               {/* FilmRow header title */}
+              <div className='w-full flex-start flex items-center gap-4 items-center'>
+                <img
+                  src={ticketIconUrl}
+                  alt="Prize Ticket"
+                  className="w-10 h-10" // Adjust the size as needed
+                /> 
+                
+                <h3 className='text-white'
+                  style={{
+                    fontWeight: '600',
+                    fontSize: '30px',
+                    lineHeight: '36px',
+                    flex: 'start',
+                    // marginBottom: '8px',
+                  }}
+                >
+                  
+                  Win free prizes
+                </h3>
 
-            {listOfSectionFilmRows.map((sectionFilmRow: sectionFilmRow) => (
-                <FilmRow
-                    key={`listOfSectionFilmRows+${sectionFilmRow.filmRow}`}
-                    filmRowTitle={sectionFilmRow.filmRowTitle}
-                    filmRow={sectionFilmRow.filmRow}
-                />
-            ))}
+              </div>
+              
+              <div className='flex flex-row flex-wrap justify-around'>
+                {prizeList.slice(0, 2).map((prize, index) => (
+                    <PrizeTicketHomePage key={index} {...prize} />
+                ))}
+              </div>  
+            </div>
 
-            {/* <FilmRow 
+            {/* redbandTrailerHomePage */}
+            <div className='w-1/2 border border-solid border-blue-500 border-w-1'>
+               {/* FilmRow header title */}
+              <div className='w-full flex-start flex items-center gap-4 items-center'>
+                <img
+                  src={cinemaIconUrl}
+                  alt="Prize Ticket"
+                  className="w-10 h-10" // Adjust the size as needed
+                /> 
+                
+                <h3 className='text-white'
+                  style={{
+                    fontWeight: '600',
+                    fontSize: '30px',
+                    lineHeight: '36px',
+                    flex: 'start',
+                    // marginBottom: '8px',
+                  }}
+                >
+                  Red band trailer
+                </h3>
+
+              </div>
+              
+              <div className='flex flex-row flex-wrap justify-around'>
+                {/* {prizeList.slice(0, 2).map((prize, index) => (
+                    <PrizeTicketHomePage key={index} {...prize} />
+                ))} */}
+              </div>  
+            </div>
+            
+
+           
+        </div>
+
+        <LiveFilmSection/>
+
+        {/* Popular film */}
+        {
+          listOfSectionFilmRows.map((sectionFilmRow: sectionFilmRow) => (
+            <FilmRow
+              // key={sectionFilmRow.title}
+              filmRowTitle={sectionFilmRow.filmRowTitle}
+              filmRow={sectionFilmRow.filmRow}
+            />
+          ))
+        }
+        
+        {/* <FilmRow 
         /> */}
 
         

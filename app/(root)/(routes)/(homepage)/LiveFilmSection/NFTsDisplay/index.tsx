@@ -1,6 +1,6 @@
-"use client";
-
-import React from "react";
+'use client'
+import { useState } from 'react';
+import React from 'react';
 
 import {films,  NFT} from '../../data';
 import './NFTCard.css'
@@ -86,5 +86,5 @@ export const NFTsDisplay = (NFTs: Props) => {
 
             </div>
         </>
-    );
-};
+    )
+} 

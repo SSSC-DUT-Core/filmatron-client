@@ -44,7 +44,7 @@ const Home = () => {
     }, []);
 
     return (
-        <>
+        <div className="px-20">
             <FilmDetails />
             {SectionFilmRowsPopularOfWeek.map(
                 (sectionFilmRow: sectionFilmRow) => (
@@ -65,7 +65,7 @@ const Home = () => {
                     filmRow={sectionFilmRow.filmRow}
                 />
             ))}
-        </>
+        </div>
     );
 };
 export default Home;
