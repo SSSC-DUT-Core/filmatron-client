@@ -4,6 +4,7 @@ import { LuckyDraw } from "@/components/lucky-draw";
 import { WinTicket } from "@/components/win-ticket";
 import { ExclusiveDiscounts } from "@/components/exclusive-discounts";
 import { OnlyFans } from "@/components/only-fans";
+import { BehindTheScenes } from "@/components/behind-the-scenes";
 
 const PrivateAccess = () => {
     return (
@@ -41,6 +42,16 @@ const PrivateAccess = () => {
 
                 <div className="rounded-3xl">
                     <OnlyFans />
+                </div>
+            </div>
+
+            <div className="w-full h-full px-12 space-y-4 py-6">
+                <div className="text-5xl font-semibold mb-3 text-transparent bg-clip-text bg-gradient-to-r  from-[#FFD80E] via-[#2CD9FF] to-[#2CD9FF]">
+                    Behind the Scenes Photos
+                </div>
+
+                <div className="rounded-3xl">
+                    <BehindTheScenes />
                 </div>
             </div>
         </div>
