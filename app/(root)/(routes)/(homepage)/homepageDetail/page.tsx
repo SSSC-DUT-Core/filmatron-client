@@ -10,6 +10,7 @@ import { FilmCardInColProps, sectionFilmCol, films, NFT, FilmData, sectionFilmRo
 
 
 
+import {PrizeList} from './PrizeList/index';
 
 const ExclusivePhoto = ({ galleryImgUrls }: { galleryImgUrls: string[] })=> {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -289,6 +290,16 @@ export const FilmRowDetail = ({ filmRowTitle, filmRow } : sectionFilmRow) => {
 
 
 const homepageDetail = ()=> {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   const filmPosterDetail = {
     posterSrc: '/assets/images/film1.png',
     title: 'Wednesday',
@@ -596,6 +607,38 @@ const redBandTrailer: sectionFilmRow[] =
   },
 ]
 
+
+
+const prizeList = [
+  {
+    title: '10 free takes to the film',
+    ticketLogo: './assets/ticket/ticket-logo.png',
+    announcementDate: '2023-10-18T15:45:00',
+    typeOfPrize: 'Ticket Event',
+    prizeImg: './assets/filmDetail/gallery/galleryImg1.png',
+    walletCreatorAddress: '4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j',
+    dateCreated: '2023-10-05T15:45:00.000Z', 
+  },
+  {
+    title: '10 free takes to the film',
+    announcementDate: '2023-10-18T15:45:00',
+    ticketLogo: './assets/ticket/ticket-logo.png',
+    typeOfPrize: 'Ticket Event',
+    prizeImg: './assets/filmDetail/gallery/galleryImg1.png',
+    walletCreatorAddress: '4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j',
+    dateCreated: '2023-10-05T15:45:00.000Z', 
+  },
+  {
+    title: '10 free takes to the film',
+    announcementDate: '2023-10-18T15:45:00',
+    ticketLogo: './assets/ticket/ticket-logo.png',
+    typeOfPrize: 'Ticket Event',
+    prizeImg: './assets/filmDetail/gallery/galleryImg1.png',
+    walletCreatorAddress: '4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j',
+    dateCreated: '2023-10-05T15:45:00.000Z', 
+  },
+]
+
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 "
@@ -630,21 +673,32 @@ const redBandTrailer: sectionFilmRow[] =
 
         {/* exclusive photo */}
         {/* fail to close */}
-        <ExclusivePhoto
+        {/* <ExclusivePhoto
           galleryImgUrls={filmPosterDetailImage.galleryImgUrls}
+        /> */}
+
+        {/*Prizes section*/}
+        <PrizeList
+          prizeList={prizeList}
         />
 
-        {/* token gate benefit */}
+        {/* <div>
+          <button onClick={openModal}>Open Modal</button>
+          <ModalPopup isOpen={modalOpen} onClose={closeModal}>
+          
+            <h1>Hello Modal</h1>
+          </ModalPopup>
+        </div> */}
 
         {/* red band trailer */}
         {
-          redBandTrailer.map((sectionFilmRow: sectionFilmRow) => (
-            <FilmRowDetail
-              // key={sectionFilmRow.title}
-              filmRowTitle={sectionFilmRow.filmRowTitle}
-              filmRow={sectionFilmRow.filmRow}
-            />
-          ))
+          // redBandTrailer.map((sectionFilmRow: sectionFilmRow) => (
+          //   <FilmRowDetail
+          //     // key={sectionFilmRow.title}
+          //     filmRowTitle={sectionFilmRow.filmRowTitle}
+          //     filmRow={sectionFilmRow.filmRow}
+          //   />
+          // ))
         }
         {/* behind the scences */}
 

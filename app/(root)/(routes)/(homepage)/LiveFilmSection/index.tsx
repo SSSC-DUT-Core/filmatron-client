@@ -23,7 +23,7 @@ export const LiveFilmSection = () => {
         <div className="relative"
              style={{
               // border: '8px solid black',
-              width: '32%', 
+              width: '33%', 
               height: '560px',
         
               // border: "1px solid blue",
@@ -71,26 +71,10 @@ export const LiveFilmSection = () => {
               </div>
               
               {/* list of film cards */}
-              <div className="relative"
-                style={{
-                  // border: '8px solid black',
-                  width: 'full', 
-                  height: '640px',
-            
-                  // border: "1px solid blue",
-
-                  // padding: '8px',
-
-                  // overflow: 'hidden',
-
-                  // overflowY: 'auto',
-                }}
-              >
+              <div className="relative w-full h-640 overflow-y-scroll scrollbar-track-gray-300">
                 {/* Film Cards Col */}
-                {LiveFilms.map((film : FilmData, index: number) => (
-                  <div key={index} onClick={() => {
-                  
-                  }}>
+                {LiveFilms.map((film: FilmData, index: number) => (
+                  <div key={index} onClick={() => {}}>
                     <FilmCardInCol 
                       posterSrc={film.posterSrc} title={film.title} 
                       rating={film.rating} 
@@ -99,15 +83,13 @@ export const LiveFilmSection = () => {
                       isSelected={previousFilmIndex === index} 
                       onClick={() => {
                         setPreviousFilmIndex(index);
-                        
                         setSelectedFilm(film);
                       }}  
                     />              
                   </div>
                 ))}
               </div>
-
-          </div>
+            </div>
 
 
         </div>
@@ -117,7 +99,7 @@ export const LiveFilmSection = () => {
             style={{
               height: '560px',
               // width: '1010px',
-              width: '76%',
+              width: '75%',
               backgroundColor: '#131020', 
 
   
@@ -130,7 +112,7 @@ export const LiveFilmSection = () => {
               
               boxShadow: '0px 4px 50px 0px rgba(106, 45, 206, 0.65), 0px 4px 30px 0px rgba(243, 200, 121, 1)',
             
-              padding: '38px 16px ',  
+              padding: '38px 12px ',  
 
               marginLeft: '20px',
             }}
