@@ -1,4 +1,3 @@
-import { type } from "os";
 
 export type FilmData = {
     posterSrc: string;
@@ -88,9 +87,6 @@ export type CollectionsOfFilm = {
     // Các trường khác của NFTOfFilm có thể được thêm vào ở đây
 };
 
-// export type LiveFilmSection = {
-//   LiveFilms: FilmData[];
-// };
 
 export const films: FilmData[] = [
     {
@@ -171,24 +167,6 @@ export const films: FilmData[] = [
     // Add more films here
     // Define the film data
 ];
-
-
-
-export type NFT = {
-  name: string;
-  description: string;
-  imageUrl: string;
-  collectionName: string;
-   filmName: string;
-  attributes: string[];
-  // Các trường khác của NFT có thể được thêm vào ở đây
-};
-
-export type Collection = {
-  name: string;
-  nfts: NFT[];
-  // Các trường khác của Collection có thể được thêm vào ở đây
-};
 
 
 export const NFTs: NFT[] = [
@@ -323,73 +301,6 @@ export const DisplayNFTCardProps = {
   
 };
 
-// export const listNFTsOfAFilm: NFTsOfFilm[] = [
-//   {
-//     filmName: 'Wednesday',
-//     ListNFTs: [
-//       { 
-//         name: 'NFT 1',
-//         description: 'This is NFT 1',
-//         imageUrl: '/assets/images/nft1.png',
-//         collectionName: 'Collection 1',
-//         filmName: 'Wednesday',
-//         attributes: ['Attribute 1', 'Attribute 2'],
-//       },
-//       {
-//         name: 'NFT 2',
-//         description: 'This is NFT 2',
-//         imageUrl: '/assets/images/nft2.png',
-//         collectionName: 'Collection 1',
-//         filmName: 'Wednesday',
-//         attributes: ['Attribute 3', 'Attribute 4'],
-//       },
-//     ],
-//   }, 
-
-//   {
-//     filmName: 'Wednesday',
-//     ListNFTs: [
-//       {
-//         name: 'NFT 1',
-//         description: 'This is NFT 1',
-//         imageUrl: '/assets/images/nft1.png',
-//         collectionName: 'Collection 1',
-//         filmName: 'Wednesday',
-//         attributes: ['Attribute 1', 'Attribute 2'],
-//       },
-//       {
-//         name: 'NFT 2',
-//         description: 'This is NFT 2',
-//         imageUrl: '/assets/images/nft2.png',
-//         collectionName: 'Collection 1',
-//         filmName: 'Wednesday',
-//         attributes: ['Attribute 3', 'Attribute 4'],
-//       },
-//     ],
-//   }, 
-
-//    {
-//     filmName: 'Wednesday',
-//     ListNFTs: [
-//       {
-//         name: 'NFT 1',
-//         description: 'This is NFT 1',
-//         imageUrl: '/assets/images/nft1.png',
-//         collectionName: 'Collection 1',
-//         filmName: 'Wednesday',
-//         attributes: ['Attribute 1', 'Attribute 2'],
-//       },
-//       {
-//         name: 'NFT 2',
-//         description: 'This is NFT 2',
-//         imageUrl: '/assets/images/nft2.png',
-//         collectionName: 'Collection 1',
-//         filmName: 'Wednesday',
-//         attributes: ['Attribute 3', 'Attribute 4'],
-//       },
-//     ],
-//   }, 
-// ]
 
 export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] = 
   [
@@ -556,8 +467,6 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
                 stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
                 director: "Simon McQuoid",
             },
-            // Add more films here
-            // Define the film data
         ],
     },
 
@@ -639,8 +548,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
                 stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
                 director: "Simon McQuoid",
             },
-            // Add more films here
-            // Define the film data
+
         ],
     },
 ];

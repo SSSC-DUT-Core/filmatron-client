@@ -1,21 +1,17 @@
-import { FilmDetails } from "./FilmDetail/index";
 import { FilmRow } from "./FilmRow";
 
 import { LiveFilmSection } from "./LiveFilmSection";
 
 import {
-    LiveFilms,
-    films,
-    FilmData,
-    FilmCardInRowProps,
     sectionFilmRow,
     listOfSectionFilmRows,
-    SectionFilmRowsPopularOfWeek,
 } from "./data";
 
 import { FilmPosterDetail } from './filmPosterDetail';
 
 import { PrizeTicketHomePage } from './PrizeTicketHomePage';
+import { useGetFilmsQuery } from '../../../../graphql/generated/index';
+
 
 
 
@@ -80,6 +76,7 @@ const prizeList = [
 
 
 export const HomePage = () => {
+  const {data,loading,error} = useGetFilmsQuery();
     return (
       <div className=""
         style={{
@@ -112,7 +109,7 @@ export const HomePage = () => {
         />
 
         {/* prizeticket and redBandTrailer */}
-        <div className="flex justify-between w-full border border-solid border-red-500 border-w-1 pb-16">
+     <div className="flex justify-between w-full border border-solid border-red-500 border-w-1 pb-16">
             {/* prizeticketHomePage */}
             <div className='w-1/2 border border-solid border-blue-500 border-w-1'>
                {/* FilmRow header title */}
@@ -179,7 +176,6 @@ export const HomePage = () => {
 
            
         </div>
-
         <LiveFilmSection/>
 
         {/* Popular film */}

@@ -2,14 +2,8 @@
 
 import { useEffect } from "react";
 import { gql, useMutation } from "@apollo/client";
-import { FilmDetails } from "./(homepage)/FilmDetail/index";
-import { FilmRow } from "./(homepage)/FilmRow/index";
-import { LiveFilmSection } from "./(homepage)/LiveFilmSection/index";
-import {
-    SectionFilmRowsPopularOfWeek,
-    listOfSectionFilmRows,
-    sectionFilmRow,
-} from "./(homepage)/data";
+import { HomePage } from './(homepage)/index';
+
 
 const mutation = gql`
     mutation SignIn($input: SignInDto!) {
@@ -44,28 +38,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="px-20">
-            <FilmDetails />
-            {SectionFilmRowsPopularOfWeek.map(
-                (sectionFilmRow: sectionFilmRow) => (
-                    <FilmRow
-                        key={`title${sectionFilmRow.filmRowTitle}`}
-                        filmRowTitle={sectionFilmRow.filmRowTitle}
-                        filmRow={sectionFilmRow.filmRow}
-                    />
-                )
-            )}
-
-            <LiveFilmSection />
-
-            {listOfSectionFilmRows.map((sectionFilmRow: sectionFilmRow) => (
-                <FilmRow
-                    key={`title${sectionFilmRow.filmRowTitle}`}
-                    filmRowTitle={sectionFilmRow.filmRowTitle}
-                    filmRow={sectionFilmRow.filmRow}
-                />
-            ))}
-        </div>
+         <HomePage />
     );
 };
 export default Home;
