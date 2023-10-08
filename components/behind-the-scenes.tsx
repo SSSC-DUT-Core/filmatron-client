@@ -26,8 +26,7 @@ export const CustomSlider = () => {
     };
 
     return (
-        <div className="w-1000">
-            <h1>ok</h1>
+        <div className="w-full">
             <Slider {...settings} className="flex">
                 <div className="w-514 h-451">
                     <Image
