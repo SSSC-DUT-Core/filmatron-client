@@ -1,7 +1,13 @@
-import React from "react";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import "./styles.css";
-import { useRouter } from "next/navigation";
+"use client"
+
+import React from 'react';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+import './styles.css';
+import { useRouter } from 'next/navigation';
+
+const DropdownMenuDemoParams = ["Profile", "Setting", "Logout"];
+
 
 const DropdownMenuDemo = () => {
     const router = useRouter();

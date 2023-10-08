@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import "./filmDetail.css";
 import "./filmCard.css";
+import { FilmPosterDetail } from "../filmPosterDetail";
 // import { Box, Card, Text, Flex } from '@radix-ui/themes';
 
 export type FilmData = {
@@ -635,23 +636,22 @@ export const FilmDetails = () => {
         >
             {/* Film poster */}
             <div
-                className=""
+                className="w-full"
                 style={{
                     height: "640px",
                     // width: '1010px',
-                    width: "82%",
 
                     // border: '8px solid blue',
                     borderRadius: "32px",
 
-                    border: "1px solid red",
+            // border: "1px solid red",
 
                     overflow: "hidden",
                 }}
             >
                 {/* Film Poster */}
                 {selectedFilm && (
-                    <FilmPoster
+                    <FilmPosterDetail
                         posterSrc={selectedFilm.posterSrc}
                         title={selectedFilm.title}
                         logoSrc={selectedFilm.logoSrc}
@@ -666,41 +666,6 @@ export const FilmDetails = () => {
                 )}
             </div>
 
-            {/* list of film cards */}
-            <div
-                className="relative"
-                style={{
-                    // border: '8px solid black',
-                    width: "18%",
-                    height: "640px",
-
-                    // border: "1px solid blue",
-
-                    padding: "4px 18px",
-
-                    overflow: "hidden",
-
-                    overflowY: "auto",
-                }}
-            >
-                {/* Film Cards */}
-                {films.map((film, index) => (
-                    <div key={index} onClick={() => {}}>
-                        <FilmCard
-                            posterSrc={film.posterSrc}
-                            title={film.title}
-                            rating={film.rating}
-                            duration={film.duration}
-                            isSelected={previousFilmIndex === index}
-                            onClick={() => {
-                                setPreviousFilmIndex(index);
-
-                                setSelectedFilm(film);
-                            }}
-                        />
-                    </div>
-                ))}
-            </div>
         </div>
     );
 };

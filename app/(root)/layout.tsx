@@ -2,6 +2,8 @@ import Footer from "@/components/footer";
 import { MainNav } from "@/components/nav";
 const customBackgroundImage = 'url("/assets/images/BG.png")';
 
+
+
 export default async function SetupLayout({
     children,
 }: {

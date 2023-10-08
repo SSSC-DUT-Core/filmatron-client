@@ -6,24 +6,16 @@ import "./LiveFilmCol.css";
 import { FilmCardInColProps, sectionFilmCol, films } from "../../data";
 import { FilmData } from "../../FilmDetail";
 
-const FilmCardInCol = ({
-    posterSrc,
-    title,
-    rating,
-    duration,
-    releaseDate,
-    isSelected,
-    onClick,
-}: FilmCardInColProps) => {
-    const imageCardStyle = {
-        // border: '10px solid red',
-        backgroundImage: `url(${posterSrc})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-
-        width: "60px",
-        height: "80px",
+const FilmCardInCol = ({ posterSrc, title, rating, duration, releaseDate,isSelected, onClick }: FilmCardInColProps) => {
+  const imageCardStyle = {
+    // border: '10px solid red',
+    backgroundImage: `url(${posterSrc})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    
+    width: "60px",
+    height: "80px",
 
         borderRadius: "8px",
     };
@@ -44,71 +36,65 @@ const FilmCardInCol = ({
                     // padding: '8px',
                     display: "flex",
 
-                    justifyContent: "flex-start",
-                    alignItems: "center",
-                    gap: "16px",
-                    marginBottom: "16px",
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        gap: '16px',
+        marginBottom: '16px',
 
-                    backgroundColor: isSelected ? "#0f0f29" : "",
-                }}
-            >
-                {/* film image */}
-                <div style={imageCardStyle} />
+        backgroundColor: isSelected ? '#0f0f29' : '', 
+      }}>
+        
+        {/* film image */}
+        <div style={imageCardStyle} />
+        
+        {/* film info */}
+        <div style={{
+          width: '304px',
+          height: '80px',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'flex-start',
+          gap: '16px',
+        }}>
 
-                {/* film info */}
-                <div
-                    style={{
-                        width: "304px",
-                        height: "80px",
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "flex-start",
-                        gap: "16px",
-                    }}
-                >
-                    {/* film title, rating and duration */}
-                    <div
-                        className="col "
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "space-between",
-                            gap: "8px",
-                            width: "70%",
-                        }}
-                    >
-                        {/* film title */}
-                        <h4
-                            className="text-white font-thin text-16"
-                            style={{
-                                // // fontSize: '16px',
-                                // fontWeight: 'bold',
-                                lineHeight: "24px",
-                            }}
-                        >
-                            {title}
-                        </h4>
+          {/* film title, rating and duration */}
+          <div className='col '
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              gap: '8px',
+              width: '70%',
+            }}
+          
+          >
+            {/* film title */}
+            <h4 className='text-white font-thin text-16'
+              style={{
+                // // fontSize: '16px',
+                // fontWeight: 'bold',
+                lineHeight: '24px',
 
-                        {/* film rating */}
-                        <div
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "flex-start",
-                            }}
-                        >
-                            {/* rating */}
-                            <div
-                                style={{
-                                    display: "flex",
-                                    marginRight: "16px",
-                                    alignItems: "center",
-                                    flexDirection: "row",
-                                    gap: "8px",
-                                }}
-                            >
-                                {/* RatingStars component */}
-                                {/* <RatingStars rating={rating}/> */}
+              }}>
+            {title}
+            </h4>
+          
+            {/* film rating */}
+            <div style={{
+            display: 'flex',  
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+          }}>
+            {/* rating */}
+            <div style={{
+              display: 'flex',
+              marginRight: '16px',
+              alignItems: 'center',
+              flexDirection: 'row',
+              gap: '8px',
+            }}>
+              {/* RatingStars component */}
+              {/* <RatingStars rating={rating}/> */}
 
                                 {/* star icon */}
                                 <svg
