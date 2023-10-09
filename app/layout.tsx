@@ -12,7 +12,7 @@ import { ApolloWrapper } from "@/config/apollo-wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default async function RootLayout({
+export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
