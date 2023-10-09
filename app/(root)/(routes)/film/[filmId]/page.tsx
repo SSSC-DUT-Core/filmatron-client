@@ -4,15 +4,14 @@ import React, { useState, useEffect } from 'react';
 
 
 import PrivateAccess from '@/components/private-access';
-import {FilmRow } from '../FilmRow/index';
+import {FilmRow } from '../../(homepage)/FilmRow/index';
 
-import {FilmPosterDetail} from '../filmPosterDetail/index';
+import {FilmPosterDetail} from '../../(homepage)/filmPosterDetail/index';
 
-import { FilmCardInColProps, sectionFilmCol, films, NFT, FilmData, sectionFilmRow, FilmCardInRowProps } from '../data';
+import {FilmData, sectionFilmRow, FilmCardInRowProps } from '../../(homepage)/data';
 
 
 
-import {PrizeList} from './PrizeList/index';
 
 const ExclusivePhoto = ({ galleryImgUrls }: { galleryImgUrls: string[] })=> {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -270,6 +269,7 @@ export const FilmRowDetail = ({ filmRowTitle, filmRow } : sectionFilmRow) => {
               // setPreviousFilmIndex(index);
               // setSelectedFilm(film);
             }}>
+              
               <FilmCardDetailInRow
                 posterSrc={film.posterSrc}
                 title={film.title}
@@ -277,9 +277,7 @@ export const FilmRowDetail = ({ filmRowTitle, filmRow } : sectionFilmRow) => {
                 genre={film.genres[0]}
                 // isSelected={previousFilmIndex === index}
                 onClick={() => {
-                  console.log('filmRow.tsx: clicked');
-                  // setPreviousFilmIndex(index);
-                  // setSelectedFilm(film);
+                  
                 }}
               />
             </div>
@@ -439,6 +437,7 @@ const homepageDetail = ()=> {
      filmRowTitle: 'Current Film Campaign',
      filmRow: [
        {
+          id:"1",
          posterSrc: '/assets/images/film1.png',
          title: 'Wednesday',
          logoSrc: '/assets/images/Logo-Wednesday.png',
@@ -453,7 +452,8 @@ const homepageDetail = ()=> {
        },
    
        {
-         title: 'NGƯỜI VỢ CUỐI CÙNG',
+         
+          id:"1",title: 'NGƯỜI VỢ CUỐI CÙNG',
          posterSrc: '/assets/images/film1.png',
          description: "test description",
          rating: 9.0,
@@ -467,6 +467,7 @@ const homepageDetail = ()=> {
    
    
        {
+          id:"1",
          posterSrc: '/assets/images/film1.png',
          title: 'ÂM MƯU GÓT DÀY NHỌN',
          description: "test description",
@@ -480,6 +481,7 @@ const homepageDetail = ()=> {
    
    
        {
+          id:"1",
          posterSrc: '/assets/images/film1.png',
          title: 'CÔ HẦU GÁI',
          description: "test description",
@@ -493,6 +495,7 @@ const homepageDetail = ()=> {
    
    
        {
+          id:"1",
          posterSrc: '/assets/images/film1.png',
          title: 'Chị Chị Em Em',
          description: "test description",
@@ -505,6 +508,7 @@ const homepageDetail = ()=> {
        },
    
        {
+          id:"1",
          posterSrc: '/assets/images/film1.png',
          title: 'Chị Chị Em Em 2',
          description: "test description",
@@ -527,6 +531,7 @@ const redBandTrailer: sectionFilmRow[] =
     filmRowTitle: 'Red Band Trailer',
     filmRow: [
       {
+        id:"1",
         posterSrc: '/assets/images/film1.png',
         title: 'Bring Wednesday back to live',
         logoSrc: '/assets/images/Logo-Wednesday.png',
@@ -541,20 +546,20 @@ const redBandTrailer: sectionFilmRow[] =
       },
   
       {
-        title: 'NGƯỜI VỢ CUỐI CÙNG',
+        id:"1",
         posterSrc: '/assets/images/film1.png',
+        title: 'ÂM MƯU GÓT DÀY NHỌN',
         description: "test description",
         rating: 9.0,
         duration: 130,
         releaseDate: 'Sep 23 2023',
-        genres: ['Drama','Adventure'],
-        
+        genres: ['Drama', 'Adventure'],
         stars: 'Lewis Tan, Jessica McNamee, Josh Lawson',
         director: 'Simon McQuoid',
       },
   
-  
       {
+        id:"1",
         posterSrc: '/assets/images/film1.png',
         title: 'ÂM MƯU GÓT DÀY NHỌN',
         description: "test description",
@@ -568,6 +573,7 @@ const redBandTrailer: sectionFilmRow[] =
   
   
       {
+        id:"1",
         posterSrc: '/assets/images/film1.png',
         title: 'CÔ HẦU GÁI',
         description: "test description",
@@ -581,6 +587,7 @@ const redBandTrailer: sectionFilmRow[] =
   
   
       {
+        id:"1",
         posterSrc: '/assets/images/film1.png',
         title: 'Chị Chị Em Em',
         description: "test description",
@@ -593,6 +600,7 @@ const redBandTrailer: sectionFilmRow[] =
       },
   
       {
+        id:"1",
         posterSrc: '/assets/images/film1.png',
         title: 'Chị Chị Em Em 2',
         description: "test description",

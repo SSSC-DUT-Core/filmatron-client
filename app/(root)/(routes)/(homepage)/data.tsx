@@ -1,5 +1,6 @@
 
 export type FilmData = {
+    id: string;
     posterSrc: string;
     title: string;
     // filmID?: string;
@@ -308,6 +309,7 @@ export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] =
         filmRowTitle: "Popular of the week",
         filmRow: [
             {
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 title: "Wednesday",
                 logoSrc: "/assets/images/Logo-Wednesday.png",
@@ -323,6 +325,8 @@ export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] =
             },
 
             {
+                
+                id: "1",
                 title: "NGƯỜI VỢ CUỐI CÙNG",
                 posterSrc: "/assets/images/film1.png",
                 description: "test description",
@@ -336,6 +340,8 @@ export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] =
             },
 
             {
+                id: "1",
+
                 posterSrc: "/assets/images/film1.png",
                 title: "ÂM MƯU GÓT DÀY NHỌN",
                 description: "test description",
@@ -348,6 +354,8 @@ export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] =
             },
 
             {
+                id: "1",
+
                 posterSrc: "/assets/images/film1.png",
                 title: "CÔ HẦU GÁI",
                 description: "test description",
@@ -360,6 +368,8 @@ export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] =
             },
 
             {
+                id: "1",
+
                 posterSrc: "/assets/images/film1.png",
                 title: "Chị Chị Em Em",
                 description: "test description",
@@ -372,6 +382,7 @@ export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] =
             },
 
             {
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 title: "Chị Chị Em Em 2",
                 description: "test description",
@@ -393,6 +404,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
         filmRowTitle: "Comedy",
         filmRow: [
             {
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 title: "Wednesday",
                 logoSrc: "/assets/images/Logo-Wednesday.png",
@@ -409,6 +421,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
 
             {
                 title: "NGƯỜI VỢ CUỐI CÙNG",
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 description: "test description",
                 rating: 9.0,
@@ -421,6 +434,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
             },
 
             {
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 title: "ÂM MƯU GÓT DÀY NHỌN",
                 description: "test description",
@@ -433,6 +447,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
             },
 
             {
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 title: "CÔ HẦU GÁI",
                 description: "test description",
@@ -445,6 +460,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
             },
 
             {
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 title: "Chị Chị Em Em",
                 description: "test description",
@@ -457,6 +473,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
             },
 
             {
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 title: "Chị Chị Em Em 2",
                 description: "test description",
@@ -474,6 +491,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
         filmRowTitle: "Drama",
         filmRow: [
             {
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 title: "Wednesday",
                 logoSrc: "/assets/images/Logo-Wednesday.png",
@@ -490,6 +508,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
 
             {
                 title: "NGƯỜI VỢ CUỐI CÙNG",
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 description: "test description",
                 rating: 9.0,
@@ -502,6 +521,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
             },
 
             {
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 title: "ÂM MƯU GÓT DÀY NHỌN",
                 description: "test description",
@@ -514,6 +534,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
             },
 
             {
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 title: "CÔ HẦU GÁI",
                 description: "test description",
@@ -526,6 +547,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
             },
 
             {
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 title: "Chị Chị Em Em",
                 description: "test description",
@@ -538,6 +560,7 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
             },
 
             {
+                id: "1",
                 posterSrc: "/assets/images/film1.png",
                 title: "Chị Chị Em Em 2",
                 description: "test description",

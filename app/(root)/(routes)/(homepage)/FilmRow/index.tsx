@@ -5,9 +5,8 @@ import './filmRow.css'
 import React from "react";
 
 import "./filmRow.css";
-import { FilmCardInRowProps, sectionFilmRow } from "../data";
-import { FilmData } from "../FilmDetail";
-
+import Link from 'next/link';
+import { getFilmRoute } from '@/lib/utils';
 const FilmCardInRow = ({
     posterSrc,
     title,
@@ -193,6 +192,7 @@ export const FilmRow = ({ filmRowTitle, filmRow }: sectionFilmRow) => {
                                 // setSelectedFilm(film);
                             }}
                         >
+                            <Link href={`/${getFilmRoute(film.id)}`}>
                             <FilmCardInRow
                                 posterSrc={film.posterSrc}
                                 title={film.title}
@@ -200,11 +200,12 @@ export const FilmRow = ({ filmRowTitle, filmRow }: sectionFilmRow) => {
                                 genre={film.genres[0]}
                                 // isSelected={previousFilmIndex === index}
                                 onClick={() => {
-                                    console.log("filmRow.tsx: clicked");
                                     // setPreviousFilmIndex(index);
                                     // setSelectedFilm(film);
                                 }}
                             />
+                            </Link>
+                          
                         </div>
                     ))}
                 </div>
