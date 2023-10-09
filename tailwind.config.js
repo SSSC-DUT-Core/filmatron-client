@@ -39,6 +39,7 @@ module.exports = {
                     DEFAULT: "hsl(var(--secondary))",
                     background: "#A966FF",
                     foreground: "hsl(var(--secondary-foreground))",
+                    light: "#E3DAFF",
                 },
                 destructive: {
                     DEFAULT: "hsl(var(--destructive))",
@@ -96,6 +97,10 @@ module.exports = {
                     "conic-gradient(transparent, var(--tw-gradient-to))",
                 "background-layout": "url('../images/background-layout.webp')",
                 background: "url('../images/background.webp')",
+            },
+            dropShadow: {
+                primary: "0px 0px 13.67559814453125px rgba(255, 194, 0, 1)",
+                blue: "0px 0px 8.93574333190918px #7FF",
             },
         },
     },
