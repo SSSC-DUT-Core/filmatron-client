@@ -6,8 +6,12 @@ dotenv.config();
 // local
 const API_URL = "http://127.0.0.1:3000/graphql";
 
+
+// const DOMAIN = "https://filmatron-client.vercel.app"
+// local
+const DOMAIN = "http://127.0.0.1:3001"
 export const config = {
-    domain: process.env.APP_HOST ?? "localhost",
+    domain: process.env.APP_HOST ?? DOMAIN,
     port: process.env.APP_PORT ?? 3000,
     apiUrl: process.env.FILMATRON_SERVER_URL ?? API_URL,
     admin: {

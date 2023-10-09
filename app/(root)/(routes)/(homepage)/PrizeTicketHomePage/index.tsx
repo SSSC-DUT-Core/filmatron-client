@@ -46,7 +46,7 @@ export const PrizeTicketHomePage = ({ title, ticketLogo, announcementDate, typeO
         return `${prefix}...${suffix}`;
     }
 
-    //thêm "th", "st", "nd", "rd" cho ngày
+    // thêm "th", "st", "nd", "rd" cho ngày
     const getDaySuffix = (day: number) => {
         if (day >= 11 && day <= 13) {
           return 'th';
@@ -85,6 +85,7 @@ export const PrizeTicketHomePage = ({ title, ticketLogo, announcementDate, typeO
         const inputDate = new Date(dateCreated);
         const currentDate = new Date();
       
+        // eslint-disable-next-line no-restricted-globals
         if (isNaN(inputDate.getTime()) || inputDate > currentDate) {
   
           return 'Invalid date';

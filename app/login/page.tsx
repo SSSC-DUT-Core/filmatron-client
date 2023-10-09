@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { config } from "@/config";
 import DiscordLoginImage from "../../public/assets/auth/login-discord.svg";
 import FacebookLoginImage from "../../public/assets/auth/login-facebook.svg";
 import GoogleLoginImage from "../../public/assets/auth/login-google.svg";
@@ -23,7 +24,7 @@ const socialLoginOptions = [
         translateLoginText: "dappLogin.continue",
         verifier: "Google",
         loginUrl:
-            "https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=https://filmatron-client.vercel.app/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature",
+            `https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=${config.domain}/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature`,
     },
     {
         imageClass: "w-6 login-button-images",
@@ -31,7 +32,7 @@ const socialLoginOptions = [
         imageSrc: FacebookLoginImage,
         imgAltText: "Login with Facebook",
         loginUrl:
-            "https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=https://filmatron-client.vercel.app/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature",
+            `https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=${config.domain}/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature`,
     },
     {
         loginType: "twitter",
@@ -39,7 +40,7 @@ const socialLoginOptions = [
         imageSrc: TwitterLoginImage,
         imgAltText: "Login with Twitter",
         loginUrl:
-            "https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=https://filmatron-client.vercel.app/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature",
+            `https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=${config.domain}/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature`,
     },
     {
         imageClass: "w-6 login-button-images",
@@ -47,7 +48,7 @@ const socialLoginOptions = [
         imageSrc: DiscordLoginImage,
         imgAltText: "Login with Discord",
         loginUrl:
-            "https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=https://filmatron-client.vercel.app/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature",
+            `https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=${config.domain}/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature`,
     },
 ];
 
