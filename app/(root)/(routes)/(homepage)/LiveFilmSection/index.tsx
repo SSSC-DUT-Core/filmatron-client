@@ -72,7 +72,7 @@ export const LiveFilmSection = () => {
               </div>
               
               {/* list of film cards */}
-              <div className="relative w-full h-640 overflow-y-scroll scrollbar-track-gray-300">
+              <div className="relative w-full h-640 overflow-y-scroll scrollbar-track-gray-300 overflow-x-hidden">
                 {/* Film Cards Col */}
                 {LiveFilms.map((film: FilmData, index: number) => (
                   <div key={index} onClick={() => {}}>
