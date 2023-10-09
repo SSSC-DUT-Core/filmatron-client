@@ -9,7 +9,7 @@ import avatar from "../../../images/avatar.png";
 const Profile = () => {
     return (
         <div>
-            <Image src={banner} height={350} alt="banner" />
+            <Image src={banner} width={2000} alt="banner" />
 
             <div className="w-full h-full px-12 py-6">
                 <div className="rounded-3xl">

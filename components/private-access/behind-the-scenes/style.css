@@ -1,0 +1,19 @@
+.slick-slide {
+  width: 150px;
+  height: 450px;
+  margin-right: 16px;
+}
+
+.slick-current {
+  width: 450px !important;
+  height: 450px !important;
+  margin-right: 16px !important;
+}
+
+.slick-track {
+  transform: translate(10px, 10px) !important;
+}
+
+.slick-cloned {
+  display: none !important;
+}
