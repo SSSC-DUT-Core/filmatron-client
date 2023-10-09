@@ -1,7 +1,9 @@
 'use client'
+
 import React, { useState, useEffect } from 'react';
 
 
+import PrivateAccess from '@/components/private-access';
 import {FilmRow } from '../FilmRow/index';
 
 import {FilmPosterDetail} from '../filmPosterDetail/index';
@@ -434,7 +436,7 @@ const homepageDetail = ()=> {
  const similarFilms: sectionFilmRow[] = 
  [
    {
-     filmRowTitle: 'Similar Movies for you',
+     filmRowTitle: 'Current Film Campaign',
      filmRow: [
        {
          posterSrc: '/assets/images/film1.png',
@@ -668,51 +670,15 @@ const prizeList = [
           eventImg={filmPosterDetail.eventImg}
 
         />
+          <PrivateAccess/>
 
-        {/*  */}
-
-        {/* exclusive photo */}
-        {/* fail to close */}
-        {/* <ExclusivePhoto
-          galleryImgUrls={filmPosterDetailImage.galleryImgUrls}
-        /> */}
-
-        {/*Prizes section*/}
-        <PrizeList
-          prizeList={prizeList}
-        />
-
-        {/* <div>
-          <button onClick={openModal}>Open Modal</button>
-          <ModalPopup isOpen={modalOpen} onClose={closeModal}>
-          
-            <h1>Hello Modal</h1>
-          </ModalPopup>
-        </div> */}
-
-        {/* red band trailer */}
-        {
-          // redBandTrailer.map((sectionFilmRow: sectionFilmRow) => (
-          //   <FilmRowDetail
-          //     // key={sectionFilmRow.title}
-          //     filmRowTitle={sectionFilmRow.filmRowTitle}
-          //     filmRow={sectionFilmRow.filmRow}
-          //   />
-          // ))
-        }
-        {/* behind the scences */}
-
-        {/* talk to the starts */}
-        
-        {
-          similarFilms.map((sectionFilmRow: sectionFilmRow) => (
+        {  similarFilms.map((sectionFilmRow: sectionFilmRow) => (
             <FilmRow
               // key={sectionFilmRow.title}
               filmRowTitle={sectionFilmRow.filmRowTitle}
               filmRow={sectionFilmRow.filmRow}
             />
-          ))
-        }
+          ))}
 
 
       </div>
