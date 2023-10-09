@@ -1,3 +1,5 @@
+import {formatDate, mapFilmsFromGraphQLResponse} from '@/lib/index'
+import { useState } from 'react';
 import { FilmRow } from "./FilmRow";
 
 import { LiveFilmSection } from "./LiveFilmSection";
@@ -10,8 +12,7 @@ import {
 import { FilmPosterDetail } from './filmPosterDetail';
 
 import { PrizeTicketHomePage } from './PrizeTicketHomePage';
-import { useGetFilmsQuery } from '../../../../graphql/generated/index';
-
+import { GetFilmsQuery, useGetFilmsQuery, FilmEntity } from '../../../../graphql/generated/index';
 
 
 
@@ -76,7 +77,19 @@ const prizeList = [
 
 
 export const HomePage = () => {
-  const {data,loading,error} = useGetFilmsQuery();
+  const {data: film,loading,error} = useGetFilmsQuery({
+    variables: {
+      
+    },
+    fetchPolicy: 'network-only', // Force a network request
+    onCompleted: (data) => {
+      setFilmList(mapFilmsFromGraphQLResponse(data));
+    }
+
+  });
+  const [filmList,setFilmList] = useState<FilmEntity[]>([]);
+  const firstFilm = filmList?.[0];
+
     return (
       <div className=""
         style={{
@@ -85,27 +98,27 @@ export const HomePage = () => {
       >
      
 
-        <FilmPosterDetail
-          posterSrc={filmPosterDetailData.posterSrc}
-          title={filmPosterDetailData.title}
-          logoSrc={filmPosterDetailData.logoSrc}
+     {firstFilm && <FilmPosterDetail
+          posterSrc={firstFilm.background}
+          title={firstFilm?.name}
+          // logoSrc={firstFilm.name ?? "vc"}
          
          
-          duration={filmPosterDetailData.duration} 
-          releaseDate={filmPosterDetailData.releaseDate}
-          genres={filmPosterDetailData.genres}
-          stars={filmPosterDetailData.stars}
-          director={filmPosterDetailData.director}
+          duration={firstFilm.duration} 
+          releaseDate={formatDate(firstFilm.releaseDate)}
+          genres={firstFilm.genres}
+          stars={firstFilm.stars}
+          director={firstFilm.directors}
 
           NFTClaimImg={filmPosterDetailData.NFTClaimImg}
           NFTEventName={filmPosterDetailData.NFTEventName}
           expirationDate={filmPosterDetailData.expirationDate}
 
           trailerVideo={filmPosterDetailData.trailerVideo}
-          trailerImg={filmPosterDetailData.trailerImg}
+          trailerImg={firstFilm.avatar}
           eventImg={filmPosterDetailData.eventImg}
 
-        />
+        />}
 
         {/* prizeticket and redBandTrailer */}
      <div className="flex justify-between w-full pb-16">

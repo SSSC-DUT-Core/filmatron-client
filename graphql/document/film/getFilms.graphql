@@ -1,30 +1,32 @@
 query getFilms($first: Int, $after: String, $last: Int, $before: String) {
-  getFilms(first: $first, after: $after, last: $last, before: $before) {
-    edges {
-      cursor
-      node {
-        id
-        name
-        description
-        duration
-        releaseDate
-        genres
-        stars
-        directors
-        adminProcess
-        status
-        topCasts {
-          name
-          avatar
+    getFilms(first: $first, after: $after, last: $last, before: $before) {
+        edges {
+            cursor
+            node {
+                id
+                name
+                description
+                duration
+                releaseDate
+                genres
+                stars
+                directors
+                adminProcess
+                status
+                topCasts {
+                    name
+                    avatar
+                }
+                endDateSubscriber
+                avatar
+                background
+            }
         }
-        endDateSubscriber
-      }
+        pageInfo {
+            hasNextPage
+            hasPreviousPage
+            startCursor
+            endCursor
+        }
     }
-    pageInfo {
-      hasNextPage
-      hasPreviousPage
-      startCursor
-      endCursor
-    }
-  }
 }

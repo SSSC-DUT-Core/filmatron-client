@@ -310,8 +310,8 @@ const homepageDetail = ()=> {
     releaseDate: 'Sep 23 2023',
     genres: ['Drama', 'Adventure'], 
   
-    stars: 'Lewis Tan, Jessica McNamee, Josh Lawson',
-    director: 'Simon McQuoid',
+    stars: ['Lewis Tan, Jessica McNamee, Josh Lawson'],
+    director: ['Simon McQuoid'],
 
     NFTClaimImg: './assets/NFTs/NFT4.png',
     NFTEventName: 'Wednesday',

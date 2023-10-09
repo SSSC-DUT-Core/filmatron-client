@@ -16,8 +16,8 @@ export type FilmPosterDetailProps = {
     releaseDate: string;
     genres: string[];
     
-    stars: string;
-    director: string;
+    stars: string[];
+    director: string[];
   
     NFTClaimImg: string;
     NFTEventName: string;
@@ -124,7 +124,6 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     height: "16rem", 
-    width: "13rem",
     border: '1px solid #F3C879',
 
   };  
@@ -155,27 +154,23 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
           flexDirection: 'column',
           // padding: '10px 0 10px 0',
           // top: '6%',
-          // display: 'block',
-
+          display: 'flex',
+          gap: "16px",
           width: '50%',
         }}
       >
 
         {/* logo or tile of film */}
-        <div className='flex items-center justify-start'
+        <div className='flex items-center text-center w-1/3'
           style={{
-            // border: '1px solid red',
           }}
         >
           {logoSrc ? (
              <img className="" src={logoSrc} alt="" />
              ) : (
-               <h1 className='text-white font-bold'
-                style={{
-                  fontSize: '32px',
-                  lineHeight: '48px',
-                }}
-               >{title}</h1>
+              <h1 className="text-white font-bold font-inter text-4xl font-extrabold leading-8 tracking-tight text-center">
+              {title}
+            </h1>
              )}
         </div>
         
@@ -196,6 +191,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
         <div className='flex items-start justify-start flex-row gap-4'>
           {/* img trailer */}
           <div
+          className="w-1/3"
             style={trailerImgStyle}
            />
          
@@ -283,7 +279,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                   opacity: '0.9',
                 }}
               >
-                {stars}
+                {stars?.join(", ")}
               </p>
             </div>
           
@@ -305,7 +301,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                     opacity: '0.9',
                   }}
                 >
-                  {director}
+                  {director?.join(", ")}
                 </p>
             </div>
 

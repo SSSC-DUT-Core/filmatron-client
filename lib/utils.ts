@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-
+import {GetFilmsQuery, FilmEntity} from "@/graphql/generated";
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
@@ -11,4 +11,11 @@ export const formatter = new Intl.NumberFormat("en-US", {
 });
 export const getFilmRoute = (id: string) => {
     return `film/${id}`
+}
+export function mapFilmsFromGraphQLResponse(data: GetFilmsQuery): FilmEntity[] {
+    if (!data || !data.getFilms || !data.getFilms.edges) {
+      return [];
+    }
+  
+    return data.getFilms.edges.map((filmEdge) => filmEdge.node);
 }

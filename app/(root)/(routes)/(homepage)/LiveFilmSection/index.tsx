@@ -3,13 +3,24 @@
 import { useState } from 'react';
 import React from 'react';
 
-import { title } from 'process';
-import {FilmCol} from './FilmCol';
+import { useGetFilmsQuery, FilmEntity } from '@/graphql/generated';
+import { mapFilmsFromGraphQLResponse } from '@/lib';
 import { LiveFilms, FilmData, NFTs } from '../data';
 import { FilmCardInCol } from './FilmCol';
 import { NFTsDisplay } from './NFTsDisplay';
 
 export const LiveFilmSection = () => {
+  const {data: film,loading,error} = useGetFilmsQuery({
+    variables: {
+      
+    },
+    fetchPolicy: 'network-only', // Force a network request
+    onCompleted: (data) => {
+      setFilmList(mapFilmsFromGraphQLResponse(data));
+    }
+
+  });
+  const [filmList,setFilmList] = useState<FilmEntity[]>([]);
     const [selectedFilm, setSelectedFilm] = useState<FilmData | null>(LiveFilms[0]);
     const [previousFilmIndex, setPreviousFilmIndex] = useState<number>(0);
   
@@ -67,7 +78,7 @@ export const LiveFilmSection = () => {
                   }}
                 >
                   {/* Icon live status */}
-                  Live
+                  Most popular collectibles
                 </h3>
               </div>
               

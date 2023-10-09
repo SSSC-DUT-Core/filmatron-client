@@ -1,6 +1,6 @@
 mutation createCollection($input: CreateCollectionNFTDto!) {
-  createCollection(input: $input) {
-    success
-    message
-  }
+    createCollection(input: $input) {
+        success
+        message
+    }
 }
