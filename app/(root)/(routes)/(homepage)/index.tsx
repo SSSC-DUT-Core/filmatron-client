@@ -81,7 +81,6 @@ export const HomePage = () => {
       <div className=""
         style={{
           padding: '0px 80px',
-          // border: '2px solid black',
         }}
       >
      
@@ -109,9 +108,9 @@ export const HomePage = () => {
         />
 
         {/* prizeticket and redBandTrailer */}
-     <div className="flex justify-between w-full border border-solid border-red-500 border-w-1 pb-16">
+     <div className="flex justify-between w-full pb-16">
             {/* prizeticketHomePage */}
-            <div className='w-1/2 border border-solid border-blue-500 border-w-1'>
+            <div className='w-1/2'>
                {/* FilmRow header title */}
               <div className='w-full flex-start flex items-center gap-4 items-center'>
                 <img
@@ -135,7 +134,7 @@ export const HomePage = () => {
 
               </div>
               
-              <div className='flex flex-row flex-wrap justify-around'>
+              <div className='flex flex-row lt-md:flex-wrap justify-around'>
                 {prizeList.slice(0, 2).map((prize, index) => (
                     <PrizeTicketHomePage key={index} {...prize} />
                 ))}
@@ -143,7 +142,7 @@ export const HomePage = () => {
             </div>
 
             {/* redbandTrailerHomePage */}
-            <div className='w-1/2 border border-solid border-blue-500 border-w-1'>
+            <div className='w-1/2'>
                {/* FilmRow header title */}
               <div className='w-full flex-start flex items-center gap-4 items-center'>
                 <img
