@@ -1,12 +1,12 @@
 import { formatDate, mapFilmsFromGraphQLResponse } from "@/src/lib/index";
 import { useState } from "react";
-import { FilmPosterDetail } from "@/components/Film/filmPosterDetail";
+import { FilmPosterDetail } from "@/src/components/Film/filmPosterDetail";
 import {
     useGetFilmsQuery,
     FilmEntity,
 } from "@/graphql/generated/index";
-import { PrizeTicketHomePage } from "@/components/PrizeTicketHomePage";
-import { FilmRow } from "@/components/Film/FilmRow";
+import { PrizeTicketHomePage } from "@/src/components/PrizeTicketHomePage";
+import { FilmRow } from "@/src/components/Film/FilmRow";
 
 import { LiveFilmSection } from "./component/LiveFilmSection";
 

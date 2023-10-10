@@ -2,8 +2,8 @@
 
 import filmImage from "@/public/assets/images/film-image.jpeg";
 import Image from "next/image";
-import avatar from "../../images/avatar.png";
-import authorAvatar from "../../public/assets/images/Avatar-client.png";
+import avatar from "@/images/avatar.png";
+import authorAvatar from "@/public/assets/images/Avatar-client.png";
 
 export interface INftCardProps {}
 

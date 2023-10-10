@@ -5,7 +5,7 @@ import React,{ useState } from 'react';
 import './LiveFilmCol.css'
 import { FilmEntity } from '@/graphql/generated';
 import { formatDateToMMMDD } from '@/src/lib';
-import { FilmCardInColProps, sectionFilmCol } from '../../../src/types/types';
+import { FilmCardInColProps, sectionFilmCol } from '../../../types/types';
 
 export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSelected, onClick, releaseDate }: FilmCardInColProps) => {
   const imageCardStyle = {

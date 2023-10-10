@@ -3,11 +3,11 @@
 import React, { useState } from 'react';
 
 
-import PrivateAccess from '@/components/private-access';
+import PrivateAccess from '@/src/components/private-access';
 import { FilmEntity, useGetFilmByIdQuery, useGetFilmsQuery } from '@/graphql/generated';
 import { formatDate, mapFilmsFromGraphQLResponse } from '@/src/lib';
-import {FilmPosterDetail} from '@/components/Film/filmPosterDetail/index';
-import {FilmRow } from '@/components/Film/FilmRow/index';
+import {FilmPosterDetail} from '@/src/components/Film/filmPosterDetail/index';
+import {FilmRow } from '@/src/components/Film/FilmRow/index';
 
 
 

@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 
 import { FilmEntity } from '@/graphql/generated';
-import { FilmCardInCol } from '@/../../components/Film/FilmCol';
-import { NFTs } from '../../../../../../src/types/types';
+import { FilmCardInCol } from '@/src/components/Film/FilmCol';
+import { NFTs } from '@/src/types/types';
 import { NFTsDisplay } from '../NFTsDisplay';
 
 interface LiveFilmSectionProps  {

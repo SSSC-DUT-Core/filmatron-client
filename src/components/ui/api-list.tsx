@@ -1,6 +1,6 @@
 "use client";
 
-import { ApiAlert } from "@/components/ui/api-alert";
+import { ApiAlert } from "@/src/components/ui/api-alert";
 import { useParams } from "next/navigation";
 
 interface ApiListProps {

@@ -1,5 +1,5 @@
-import Footer from "@/components/footer";
-import { MainNav } from "@/components/nav";
+import Footer from "@/src/components/footer";
+import { MainNav } from "@/src/components/nav";
 const customBackgroundImage = 'url("/assets/images/BG.png")';
 
 

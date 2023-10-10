@@ -1,6 +1,6 @@
 "use client";
 
-import { FilmCardInRowProps, sectionFilmRow} from '../../../src/types/types';
+import { FilmCardInRowProps, sectionFilmRow} from '../../../types/types';
 import './filmRow.css'
 import React from "react";
 

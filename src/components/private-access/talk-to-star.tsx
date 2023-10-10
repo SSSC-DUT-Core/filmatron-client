@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { BsClock } from "react-icons/bs";
-import TalkToStarImg from "../../images/talk-to-stars.png";
-import Director from "../../images/director.png";
+import TalkToStarImg from "@/images/talk-to-stars.png";
+import Director from "@/images/director.png";
 import { Button } from "../ui/button";
 
 export const TalkToStar = () => {

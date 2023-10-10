@@ -8,8 +8,8 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { Modal } from "@/components/ui/modal";
-import { Input } from "@/components/ui/input";
+import { Modal } from "@/src/components/ui/modal";
+import { Input } from "@/src/components/ui/input";
 import {
     Form,
     FormControl,
@@ -18,8 +18,8 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
+} from "@/src/components/ui/form";
+import { Button } from "@/src/components/ui/button";
 
 const formSchema = z.object({
     name: z.string().min(1),

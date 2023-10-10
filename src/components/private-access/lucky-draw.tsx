@@ -2,8 +2,8 @@
 
 import { LuckyDrawLayout } from "@/public/assets";
 import Image from "next/image";
-import LuckyDrawImage from "../../images/lucky-draw.png";
-import GiftBox from "../../images/giftbox.png";
+import LuckyDrawImage from "@/images/lucky-draw.png";
+import GiftBox from "@/images/giftbox.png";
 import { Button } from "../ui/button";
 
 export interface ILuckyDrawProps {

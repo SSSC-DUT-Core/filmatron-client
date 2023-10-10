@@ -1,5 +1,5 @@
-import { MainNav } from "@/components/nav";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { MainNav } from "@/src/components/nav";
+import { ThemeToggle } from "@/src/components/theme-toggle";
 
 const Navbar = () => {
 

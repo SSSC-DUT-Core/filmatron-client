@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import MoMo from "../../images/momo.png";
+import MoMo from "@/images/momo.png";
 import { Button } from "../ui/button";
 
 export const ExclusiveDiscounts = () => {

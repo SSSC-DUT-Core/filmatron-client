@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Ticket from "../../images/ticket.png";
+import Ticket from "@/images/ticket.png";
 
 export const WinTicket = () => {
     return (

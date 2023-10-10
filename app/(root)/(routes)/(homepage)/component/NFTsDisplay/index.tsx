@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import React from 'react';
 
-import {NFT} from '../../../../../../src/types/types';
+import {NFT} from '@/src/types/types';
 import './NFTCard.css'
 
 type Props = {

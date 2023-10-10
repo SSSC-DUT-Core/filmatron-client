@@ -1,10 +1,10 @@
 "use client";
 
-import { Portfolio } from "@/components/portfolio";
+import { Portfolio } from "@/src/components/portfolio";
 import Image from "next/image";
-import { CardSection } from "@/components/card-section";
-import banner from "../../../images/banner.png";
-import avatar from "../../../images/avatar.png";
+import { CardSection } from "@/src/components/card-section";
+import banner from "@/images/banner.png";
+import avatar from "@/images/avatar.png";
 
 const Profile = () => {
     return (

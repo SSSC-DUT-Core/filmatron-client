@@ -1,11 +1,11 @@
 "use client";
 
-import { LuckyDraw } from "@/components/private-access/lucky-draw";
-import { WinTicket } from "@/components/private-access/win-ticket";
-import { ExclusiveDiscounts } from "@/components/private-access/exclusive-discounts";
-import { OnlyFans } from "@/components/private-access/only-fans";
-import { BehindTheScenes } from "@/components/private-access/behind-the-scenes";
-import { TalkToStar } from "@/components/private-access/talk-to-star";
+import { LuckyDraw } from "@/src/components/private-access/lucky-draw";
+import { WinTicket } from "@/src/components/private-access/win-ticket";
+import { ExclusiveDiscounts } from "@/src/components/private-access/exclusive-discounts";
+import { OnlyFans } from "@/src/components/private-access/only-fans";
+import { BehindTheScenes } from "@/src/components/private-access/behind-the-scenes";
+import { TalkToStar } from "@/src/components/private-access/talk-to-star";
 
 const PrivateAccess = () => {
     return (
