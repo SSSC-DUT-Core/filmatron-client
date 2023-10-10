@@ -1,0 +1,21 @@
+query getFilmById($id: ID!) {
+    getFilmById(id: $id) {
+        id
+        name
+        description
+        background
+        avatar
+        duration
+        releaseDate
+        genres
+        stars
+        directors
+        adminProcess
+        status
+        topCasts {
+            name
+            avatar
+        }
+        endDateSubscriber
+    }
+}

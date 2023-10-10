@@ -431,6 +431,13 @@ export type CreateFilmMutationVariables = Exact<{
 
 export type CreateFilmMutation = { __typename?: 'Mutation', createFilm: { __typename?: 'ReturnMessageBase', success: boolean, message: string } };
 
+export type GetFilmByIdQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type GetFilmByIdQuery = { __typename?: 'Query', getFilmById: { __typename?: 'FilmEntity', id: string, name: string, description: string, background: string, avatar: string, duration: number, releaseDate: any, genres: Array<string>, stars: Array<string>, directors: Array<string>, adminProcess: AdminProcessStatus, status: FilmStatus, endDateSubscriber: any, topCasts?: Array<{ __typename?: 'FilmTopCast', name: string, avatar: string }> | null } };
+
 export type GetFilmsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
@@ -521,6 +528,57 @@ export function useCreateFilmMutation(baseOptions?: ApolloReactHooks.MutationHoo
 export type CreateFilmMutationHookResult = ReturnType<typeof useCreateFilmMutation>;
 export type CreateFilmMutationResult = Apollo.MutationResult<CreateFilmMutation>;
 export type CreateFilmMutationOptions = Apollo.BaseMutationOptions<CreateFilmMutation, CreateFilmMutationVariables>;
+export const GetFilmByIdDocument = gql`
+    query getFilmById($id: ID!) {
+  getFilmById(id: $id) {
+    id
+    name
+    description
+    background
+    avatar
+    duration
+    releaseDate
+    genres
+    stars
+    directors
+    adminProcess
+    status
+    topCasts {
+      name
+      avatar
+    }
+    endDateSubscriber
+  }
+}
+    `;
+
+/**
+ * __useGetFilmByIdQuery__
+ *
+ * To run a query within a React component, call `useGetFilmByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetFilmByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetFilmByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetFilmByIdQuery(baseOptions: ApolloReactHooks.QueryHookOptions<GetFilmByIdQuery, GetFilmByIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetFilmByIdQuery, GetFilmByIdQueryVariables>(GetFilmByIdDocument, options);
+      }
+export function useGetFilmByIdLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetFilmByIdQuery, GetFilmByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetFilmByIdQuery, GetFilmByIdQueryVariables>(GetFilmByIdDocument, options);
+        }
+export type GetFilmByIdQueryHookResult = ReturnType<typeof useGetFilmByIdQuery>;
+export type GetFilmByIdLazyQueryHookResult = ReturnType<typeof useGetFilmByIdLazyQuery>;
+export type GetFilmByIdQueryResult = Apollo.QueryResult<GetFilmByIdQuery, GetFilmByIdQueryVariables>;
 export const GetFilmsDocument = gql`
     query getFilms($first: Int, $after: String, $last: Int, $before: String) {
   getFilms(first: $first, after: $after, last: $last, before: $before) {

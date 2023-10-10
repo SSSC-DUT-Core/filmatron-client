@@ -5,23 +5,16 @@ import React from 'react';
 
 import { useGetFilmsQuery, FilmEntity } from '@/graphql/generated';
 import { mapFilmsFromGraphQLResponse } from '@/lib';
-import { LiveFilms, FilmData, NFTs } from '../data';
+import { LiveFilms, FilmData, NFTs, films } from '../data';
 import { FilmCardInCol } from './FilmCol';
 import { NFTsDisplay } from './NFTsDisplay';
 
-export const LiveFilmSection = () => {
-  const {data: film,loading,error} = useGetFilmsQuery({
-    variables: {
-      
-    },
-    fetchPolicy: 'network-only', // Force a network request
-    onCompleted: (data) => {
-      setFilmList(mapFilmsFromGraphQLResponse(data));
-    }
-
-  });
-  const [filmList,setFilmList] = useState<FilmEntity[]>([]);
-    const [selectedFilm, setSelectedFilm] = useState<FilmData | null>(LiveFilms[0]);
+interface LiveFilmSectionProps  {
+  films: FilmEntity[];
+}
+export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
+  
+    const [selectedFilm, setSelectedFilm] = useState<FilmEntity | null>(films?.[0]);
     const [previousFilmIndex, setPreviousFilmIndex] = useState<number>(0);
   
   
@@ -85,11 +78,11 @@ export const LiveFilmSection = () => {
               {/* list of film cards */}
               <div className="relative w-full h-640 overflow-y-scroll scrollbar-track-gray-300 overflow-x-hidden">
                 {/* Film Cards Col */}
-                {LiveFilms.map((film: FilmData, index: number) => (
+                {films?.map((film: FilmEntity, index: number) => (
                   <div key={index} onClick={() => {}}>
                     <FilmCardInCol 
-                      posterSrc={film.posterSrc} title={film.title} 
-                      rating={film.rating} 
+                    genre={film.genres}
+                      posterSrc={film.avatar} title={film.name} 
                       duration={film.duration} 
                       releaseDate={film.releaseDate}
                       isSelected={previousFilmIndex === index} 

@@ -1,5 +1,5 @@
 overwrite: true
-schema: http://api.truongnguyen.tech/graphql
+schema: https://api.truongnguyen.tech/graphql
 documents: "graphql/**/*.graphql"
 generates:
   graphql/generated/index.tsx:

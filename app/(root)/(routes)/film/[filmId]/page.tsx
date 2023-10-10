@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 
 
 import PrivateAccess from '@/components/private-access';
+import { useGetFilmByIdQuery } from '@/graphql/generated';
+import { formatDate } from '@/lib';
 import {FilmRow } from '../../(homepage)/FilmRow/index';
 
 import {FilmPosterDetail} from '../../(homepage)/filmPosterDetail/index';
@@ -12,12 +14,19 @@ import {FilmData, sectionFilmRow, FilmCardInRowProps } from '../../(homepage)/da
 
 
 
+interface HomepageDetailProps {
+  params: { filmId: string }
+}
 
-
-
-const HomepageDetail = ()=> {
-
-  
+const HomepageDetail = ({
+  params: { filmId },
+}: HomepageDetailProps) => {
+  const {data: getFilmById,loading,error} = useGetFilmByIdQuery({
+    variables: {
+        id: filmId
+    }
+  })
+  const film = getFilmById?.getFilmById;
   const filmPosterDetail = {
     posterSrc: '/assets/images/film1.png',
     title: 'Wednesday',
@@ -379,32 +388,31 @@ const prizeList = [
         }}
       >
         {/* Your JSX content */}
+        {film ? (
         <FilmPosterDetail
-          posterSrc={filmPosterDetail.posterSrc}
-          title={filmPosterDetail.title}
-          logoSrc={filmPosterDetail.logoSrc}
-         
-         
-          duration={filmPosterDetail.duration} 
-          releaseDate={filmPosterDetail.releaseDate}
-          genres={filmPosterDetail.genres}
-          stars={filmPosterDetail.stars}
-          director={filmPosterDetail.director}
-
+          posterSrc={film.background}
+          title={film?.name}
+          duration={film.duration}
+          releaseDate={formatDate(film.releaseDate)}
+          genres={film.genres}
+          stars={film.stars}
+          director={film.directors}
           NFTClaimImg={filmPosterDetail.NFTClaimImg}
           NFTEventName={filmPosterDetail.NFTEventName}
           expirationDate={filmPosterDetail.expirationDate}
-
           trailerVideo={filmPosterDetail.trailerVideo}
-          trailerImg={filmPosterDetail.trailerImg}
+          trailerImg={film.avatar}
           eventImg={filmPosterDetail.eventImg}
-
         />
+      ) : (
+        // Render a fallback component or message when film is undefined
+        <div>No film data available</div>
+      )}
           <PrivateAccess/>
 
         {  similarFilms.map((sectionFilmRow: sectionFilmRow) => (
             <FilmRow
-              // key={sectionFilmRow.title}
+              key="similarFilms"
               filmRowTitle={sectionFilmRow.filmRowTitle}
               filmRow={sectionFilmRow.filmRow}
             />

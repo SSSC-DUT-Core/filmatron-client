@@ -7,7 +7,7 @@ import './LiveFilmCol.css'
 import { FilmCardInColProps, sectionFilmCol, films } from '../../data';
 import { FilmData } from '../../FilmDetail';
 
-export const FilmCardInCol = ({ posterSrc, title, rating, duration, releaseDate,isSelected, onClick }: FilmCardInColProps) => {
+export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSelected, onClick }: FilmCardInColProps) => {
   const imageCardStyle = {
     // border: '10px solid red',
     backgroundImage: `url(${posterSrc})`,
@@ -98,7 +98,8 @@ export const FilmCardInCol = ({ posterSrc, title, rating, duration, releaseDate,
               {/* <RatingStars rating={rating}/> */}
 
               {/* star icon */}
-              <svg
+              {rating && <>
+                 <svg
                   width="20"
                   height="18"
                   viewBox="0 0 15 15"
@@ -115,6 +116,15 @@ export const FilmCardInCol = ({ posterSrc, title, rating, duration, releaseDate,
       
                 {rating}
               </p>
+                </>}
+                <p
+                                className="text-white font-light text-12"
+                                style={{
+                                    opacity: "0.6",
+                                }}
+                            >
+                                {genre} • Movie
+                            </p>
             </div>
             
             {/* duration */}
@@ -215,11 +225,12 @@ export const FilmCol = ({filmColTitle, filmCol} : sectionFilmCol) => {
         }}
       >
         {/* Film Cards Col */}
-        {films.map((film : FilmData, index: number) => (
+        {filmCol.map((film : FilmData, index: number) => (
           <div key={index} onClick={() => {
           
           }}>
             <FilmCardInCol 
+              genre = {film.genres}
               posterSrc={film.posterSrc} title={film.title} 
               rating={film.rating} 
               duration={film.duration} 

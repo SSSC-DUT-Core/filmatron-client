@@ -1,3 +1,4 @@
+import { FilmEntity } from "@/graphql/generated";
 
 export type FilmData = {
     id: string;
@@ -23,12 +24,12 @@ export type FilmData = {
 // Name of row title and list of filmData
 export type sectionFilmRow = {
     filmRowTitle: string;
-    filmRow: FilmData[];
+    filmRow: FilmEntity[];
 };
 
 export type sectionFilmCol = {
     filmColTitle: string;
-    filmCol: FilmData[];
+    filmCol: FilmEntity[];
 };
 
 export type FilmCardProps = {
@@ -42,9 +43,9 @@ export type FilmCardProps = {
 
 export type FilmCardInColProps = {
     posterSrc: string;
-
+    genre: string[];
     title: string;
-    rating: number;
+    rating?: number;
     duration: number;
     releaseDate: string;
     isSelected: boolean;
@@ -55,7 +56,7 @@ export type FilmCardInColProps = {
 export type FilmCardInRowProps = {
     posterSrc: string;
     title: string;
-    rating: number;
+    rating?: number;
     genre: string;
     // duration: number;
     // isSelected: boolean;
