@@ -1,8 +1,9 @@
 'use client'
+
 import { useState } from 'react';
 import React from 'react';
 
-import {films,  NFT} from '../../data';
+import {NFT} from '../../../../../../src/types/types';
 import './NFTCard.css'
 
 type Props = {

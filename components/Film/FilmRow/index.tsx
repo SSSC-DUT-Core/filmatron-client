@@ -1,12 +1,12 @@
 "use client";
 
-import { FilmCardInRowProps, sectionFilmRow} from '../data';
+import { FilmCardInRowProps, sectionFilmRow} from '../../../src/types/types';
 import './filmRow.css'
 import React from "react";
 
 import "./filmRow.css";
 import Link from 'next/link';
-import { getFilmRoute } from '@/lib/utils';
+import { getFilmRoute } from '@/src/lib/utils';
 import { FilmEntity } from '@/graphql/generated';
 const FilmCardInRow = ({
     posterSrc,

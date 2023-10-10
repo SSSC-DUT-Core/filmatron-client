@@ -2,7 +2,7 @@
 
 import { HTMLAttributes } from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn } from "@/src/lib/utils";
 import NavItem from "./nav-item";
 import AvatarDemo from "./Avatar/index";
 import DropdownMenuDemo from "./DropDownMenu/index";

@@ -1,16 +1,15 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 
 import PrivateAccess from '@/components/private-access';
 import { FilmEntity, useGetFilmByIdQuery, useGetFilmsQuery } from '@/graphql/generated';
-import { formatDate, mapFilmsFromGraphQLResponse } from '@/lib';
-import {FilmRow } from '../../(homepage)/FilmRow/index';
+import { formatDate, mapFilmsFromGraphQLResponse } from '@/src/lib';
+import {FilmPosterDetail} from '@/components/Film/filmPosterDetail/index';
+import {FilmRow } from '@/components/Film/FilmRow/index';
 
-import {FilmPosterDetail} from '../../(homepage)/filmPosterDetail/index';
 
-import {FilmData, sectionFilmRow, FilmCardInRowProps } from '../../(homepage)/data';
 
 
 
@@ -61,33 +60,6 @@ const [filmList, setFilmList] = useState<FilmEntity[]>([]);
     eventImg: './assets/filmDetail/gallery/galleryImg1.png',
   }
 
-  const NFTs = [
-    {
-      name: 'NFT 1',
-      description: 'This is NFT 1',
-      imageUrl: '/assets/images/nft1.png',
-      collectionName: 'Collection 1',
-      filmName: 'Wednesday',
-      attributes: ['Attribute 1', 'Attribute 2'],
-    },
-    {
-      name: 'NFT 2',
-      description: 'This is NFT 2',
-      imageUrl: './assets/NFTs/NFT2.png',
-      collectionName: 'Collection 1',
-      filmName: 'Wednesday',
-      attributes: ['Attribute 3', 'Attribute 4'],
-    },
-    {
-      name: 'NFT 3',
-      description: 'This is NFT 3',
-      imageUrl: './assets/NFTs/NFT2.png',
-      collectionName: 'Collection 2',
-      filmName: 'NGƯỜI VỢ CUỐI CÙNG',
-      attributes: ['Attribute 5', 'Attribute 6'],
-    },
-    // Thêm các NFT khác tại đây
-  ];
 
  const filmPosterDetailImage = {
   galleryImgUrls: [
@@ -169,35 +141,6 @@ const [filmList, setFilmList] = useState<FilmEntity[]>([]);
  }
 
  
-const prizeList = [
-  {
-    title: '10 free takes to the film',
-    ticketLogo: './assets/ticket/ticket-logo.png',
-    announcementDate: '2023-10-18T15:45:00',
-    typeOfPrize: 'Ticket Event',
-    prizeImg: './assets/filmDetail/gallery/galleryImg1.png',
-    walletCreatorAddress: '4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j',
-    dateCreated: '2023-10-05T15:45:00.000Z', 
-  },
-  {
-    title: '10 free takes to the film',
-    announcementDate: '2023-10-18T15:45:00',
-    ticketLogo: './assets/ticket/ticket-logo.png',
-    typeOfPrize: 'Ticket Event',
-    prizeImg: './assets/filmDetail/gallery/galleryImg1.png',
-    walletCreatorAddress: '4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j',
-    dateCreated: '2023-10-05T15:45:00.000Z', 
-  },
-  {
-    title: '10 free takes to the film',
-    announcementDate: '2023-10-18T15:45:00',
-    ticketLogo: './assets/ticket/ticket-logo.png',
-    typeOfPrize: 'Ticket Event',
-    prizeImg: './assets/filmDetail/gallery/galleryImg1.png',
-    walletCreatorAddress: '4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j',
-    dateCreated: '2023-10-05T15:45:00.000Z', 
-  },
-]
 
   return (
     <div className="flex-col">

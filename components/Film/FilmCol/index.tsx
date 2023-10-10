@@ -1,14 +1,13 @@
 'use client'
 
-import { useState } from 'react';
-import React from 'react';
+import React,{ useState } from 'react';
 
 import './LiveFilmCol.css'
 import { FilmEntity } from '@/graphql/generated';
-import { FilmCardInColProps, sectionFilmCol, films } from '../../data';
-import { FilmData } from '../../FilmDetail';
+import { formatDateToMMMDD } from '@/src/lib';
+import { FilmCardInColProps, sectionFilmCol } from '../../../src/types/types';
 
-export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSelected, onClick }: FilmCardInColProps) => {
+export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSelected, onClick, releaseDate }: FilmCardInColProps) => {
   const imageCardStyle = {
     // border: '10px solid red',
     backgroundImage: `url(${posterSrc})`,
@@ -124,7 +123,7 @@ export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSele
                                     opacity: "0.6",
                                 }}
                             >
-                                {genre} • Movie
+                                {genre.join(" | ")} • Movie
                             </p>
             </div>
             
@@ -166,8 +165,7 @@ export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSele
           
               }}
             >
-              Nov 16
-              {/* {releaseDate} */}
+              {formatDateToMMMDD(releaseDate)}
             </div>
           </div>
         </div>

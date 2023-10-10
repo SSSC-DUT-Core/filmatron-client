@@ -1,13 +1,11 @@
 'use client'
 
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 
-import { useGetFilmsQuery, FilmEntity } from '@/graphql/generated';
-import { mapFilmsFromGraphQLResponse } from '@/lib';
-import { LiveFilms, FilmData, NFTs, films } from '../data';
-import { FilmCardInCol } from './FilmCol';
-import { NFTsDisplay } from './NFTsDisplay';
+import { FilmEntity } from '@/graphql/generated';
+import { FilmCardInCol } from '@/../../components/Film/FilmCol';
+import { NFTs } from '../../../../../../src/types/types';
+import { NFTsDisplay } from '../NFTsDisplay';
 
 interface LiveFilmSectionProps  {
   films: FilmEntity[];

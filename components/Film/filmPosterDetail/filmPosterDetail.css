@@ -88,40 +88,7 @@
     margin-bottom: -7px;
   }
 
-  /* .NFTClaimImg:hover {
-    
-    transform: scale(1.05);
-  } */
-/* 
-  .NFTImg-multi-border {
-    position: relative;
-    width: 296px;
-    height: 371px;
-  }
-  
-  .NFTImg-multi-border::before,
-  .NFTImg-multi-border::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 1px solid #f0c679;
-  }
-  
-  .NFTImg-multi-border::before {
-    top: 7px;
-    bottom: 7px;
-    right: 7px;
-  }
-  
-  .NFTImg-multi-border::after {
-    left: 7px;
-    top: 7px;
-    bottom: 7px;
-  } */
-
+ 
     .posterDetailVideoImg:hover {
         transform: scale(1.05) eses-out;
         cursor: pointer;

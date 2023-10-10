@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { config } from "@/config";
+import { config } from "@/src/config";
 import DiscordLoginImage from "../../public/assets/auth/login-discord.svg";
 import FacebookLoginImage from "../../public/assets/auth/login-facebook.svg";
 import GoogleLoginImage from "../../public/assets/auth/login-google.svg";
