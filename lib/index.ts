@@ -1,2 +1,2 @@
-export * from './dates.ts'
-export * from './utils.ts'
+export * from './dates'
+export * from './utils'
