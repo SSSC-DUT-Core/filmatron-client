@@ -4,8 +4,6 @@ import { FilmRow } from "./FilmRow";
 
 import { LiveFilmSection } from "./LiveFilmSection";
 
-import { sectionFilmRow, SectionFilmRowsPopularOfWeek } from "./data";
-
 import { FilmPosterDetail } from "./filmPosterDetail";
 
 import { PrizeTicketHomePage } from "./PrizeTicketHomePage";

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import React from 'react';
 
 import './LiveFilmCol.css'
+import { FilmEntity } from '@/graphql/generated';
 import { FilmCardInColProps, sectionFilmCol, films } from '../../data';
 import { FilmData } from '../../FilmDetail';
 
@@ -176,7 +177,7 @@ export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSele
 };
 
 export const FilmCol = ({filmColTitle, filmCol} : sectionFilmCol) => {
-  const [selectedFilm, setSelectedFilm] = useState<FilmData | null>(films[0]);
+  const [selectedFilm, setSelectedFilm] = useState<FilmEntity | null>();
   const [previousFilmIndex, setPreviousFilmIndex] = useState<number>(0);
 
   return (
@@ -225,14 +226,13 @@ export const FilmCol = ({filmColTitle, filmCol} : sectionFilmCol) => {
         }}
       >
         {/* Film Cards Col */}
-        {filmCol.map((film : FilmData, index: number) => (
+        {filmCol.map((film : FilmEntity, index: number) => (
           <div key={index} onClick={() => {
           
           }}>
             <FilmCardInCol 
               genre = {film.genres}
-              posterSrc={film.posterSrc} title={film.title} 
-              rating={film.rating} 
+              posterSrc={film.background} title={film.name} 
               duration={film.duration} 
               releaseDate={film.releaseDate}
               isSelected={previousFilmIndex === index} 
