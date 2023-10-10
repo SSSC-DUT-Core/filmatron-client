@@ -6,7 +6,7 @@ import { LiveFilmSection } from "./LiveFilmSection";
 
 import {
     sectionFilmRow,
-    listOfSectionFilmRows,
+    SectionFilmRowsPopularOfWeek
 } from "./data";
 
 import { FilmPosterDetail } from './filmPosterDetail';
@@ -192,7 +192,7 @@ export const HomePage = () => {
 
         {/* Popular film */}
         {
-          listOfSectionFilmRows.map((sectionFilmRow: sectionFilmRow) => (
+          SectionFilmRowsPopularOfWeek.map((sectionFilmRow: sectionFilmRow) => (
             <FilmRow
               // key={sectionFilmRow.title}
               filmRowTitle={sectionFilmRow.filmRowTitle}

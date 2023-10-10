@@ -19,9 +19,9 @@ export type FilmPosterDetailProps = {
     stars: string[];
     director: string[];
   
-    NFTClaimImg: string;
-    NFTEventName: string;
-    expirationDate: string;
+    NFTClaimImg?: string;
+    NFTEventName?: string;
+    expirationDate?: string;
   
     trailerVideo?: string;
     trailerImg?: string;
@@ -54,11 +54,11 @@ export const calculateRemainingTime = (expirationTime: number) => {
   return 'Expired';
 };
 
-export const NFTClaimBarTimeCountDown = ({ expirationDate }: { expirationDate: string }) => {
+export const NFTClaimBarTimeCountDown = ({ expirationDate }: { expirationDate?: string }) => {
     const [remainingTime, setRemainingTime] = useState('?H: ?M: ?S');
-  
+    const expirationTime = new Date(String(expirationDate)).getTime();
+
     useEffect(() => {
-      const expirationTime = new Date(expirationDate).getTime();
   
       const updateRemainingTime = () => {
         setRemainingTime(calculateRemainingTime(expirationTime));

@@ -95,6 +95,7 @@ module.exports = {
         "prettier/prettier": "off",
         "no-use-before-define": "off",
         "import/no-duplicates": "off",
+        "space-comment": "off",
         // "prettier/prettier": ["error", prettierOptions],
     },
 };

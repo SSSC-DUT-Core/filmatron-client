@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react';
 
 
@@ -47,7 +48,7 @@ export const PrizeTicket = ({ title, ticketLogo, announcementDate, typeOfPrize, 
         return `${prefix}...${suffix}`;
     }
 
-    //thêm "th", "st", "nd", "rd" cho ngày
+    // thêm "th", "st", "nd", "rd" cho ngày
     const getDaySuffix = (day: number) => {
         if (day >= 11 && day <= 13) {
           return 'th';
@@ -86,7 +87,7 @@ export const PrizeTicket = ({ title, ticketLogo, announcementDate, typeOfPrize, 
         const inputDate = new Date(dateCreated);
         const currentDate = new Date();
       
-        if (isNaN(inputDate.getTime()) || inputDate > currentDate) {
+        if (Number.isNaN(inputDate.getTime()) || inputDate > currentDate) {
   
           return 'Invalid date';
         }
@@ -122,7 +123,7 @@ export const PrizeTicket = ({ title, ticketLogo, announcementDate, typeOfPrize, 
                         <div/>
 
                         {/* <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white to-transparent filter blur-[10px]"></div> */}
-                        <div className="absolute top-20 -left-3 w-[4.5rem] h-[0.5rem] bg-gradient-to-t from-white to-transparent filter brightness-110 blur-[8px]"></div>
+                        <div className="absolute top-20 -left-3 w-[4.5rem] h-[0.5rem] bg-gradient-to-t from-white to-transparent filter brightness-110 blur-[8px]" />
                         {/* top-80 left-[-8px]  */}
                     </div>
 
@@ -165,7 +166,7 @@ export const PrizeTicket = ({ title, ticketLogo, announcementDate, typeOfPrize, 
                         <div className='text-gray-400 font-poppins font-normal text-xs leading-tight text-right round float-right leading-4'>
                             by 
                             <span className='text-white'>
-                                {' ' + shortenAddress(walletCreatorAddress)}
+                                {` ${  shortenAddress(walletCreatorAddress)}`}
                             </span>
                         </div>
 

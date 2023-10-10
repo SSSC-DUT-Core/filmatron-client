@@ -13,13 +13,13 @@ const DOMAIN = "http://127.0.0.1:3001"
 console.log(
     `API_URL: ${API_URL}`,
     `DOMAIN: ${DOMAIN}`,
-    `APP_HOST: ${process.env.APP_HOST}`,
-    `APP_PORT: ${process.env.APP_PORT}`,
-    `FILMATRON_SERVER_URL: ${process.env.FILMATRON_SERVER_URL}`,
+    `APP_HOST: ${process.env.NEXT_PUBLIC_APP_HOST}`,
+    `APP_PORT: ${process.env.NEXT_PUBLIC_APP_HOST}`,
+    `FILMATRON_SERVER_URL: ${process.env.NEXT_PUBLIC_FILMATRON_SERVER_URL}`,
 );
 export const config = {
     domain: process.env.NEXT_PUBLIC_APP_HOST ?? DOMAIN,
-    port: process.env.NEXT_PUBLIC_APP_PORT ?? 3000,
+    port: process.env.NEXT_PUBLIC_APP_HOST ?? 3000,
     apiUrl: process.env.NEXT_PUBLIC_FILMATRON_SERVER_URL ?? API_URL,
     admin: {
         // wallet address that admin will sign transaction when film maker action create a collection for their NFT collection

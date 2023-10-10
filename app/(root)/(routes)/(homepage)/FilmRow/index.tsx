@@ -1,6 +1,6 @@
 "use client";
 
-import {films,  FilmData, FilmCardInRowProps, sectionFilmRow, listOfSectionFilmRows} from '../data';
+import { FilmData, FilmCardInRowProps, sectionFilmRow} from '../data';
 import './filmRow.css'
 import React from "react";
 

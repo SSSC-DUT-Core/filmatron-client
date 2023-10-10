@@ -23,9 +23,9 @@ export type FilmData = {
 
     genres: string[];
     // name of actors
-    stars: string;
+    stars: string[];
 
-    director: string;
+    director: string[];
 };
 
 export type FilmCardProps = {
@@ -554,9 +554,8 @@ export const FilmDetails = () => {
             duration: 130,
             releaseDate: "Sep 23 2023",
             genres: ["DramaAdventure"],
-
-            stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-            director: "Simon McQuoid",
+            stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+            director: ["Simon McQuoid"],
         },
 
         {
@@ -568,8 +567,10 @@ export const FilmDetails = () => {
             releaseDate: "Sep 23 2023",
             genres: ["DramaAdventure"],
 
-            stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-            director: "Simon McQuoid",
+            stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+            director: ["Simon McQuoid"],
+
         },
 
         {
@@ -580,8 +581,10 @@ export const FilmDetails = () => {
             duration: 130,
             releaseDate: "Sep 23 2023",
             genres: ["Drama", "Adventure"],
-            stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-            director: "Simon McQuoid",
+            stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+                       director: ["Simon McQuoid"],
+
         },
 
         {
@@ -592,8 +595,10 @@ export const FilmDetails = () => {
             duration: 130,
             releaseDate: "Sep 23 2023",
             genres: ["Drama", "Adventure"],
-            stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-            director: "Simon McQuoid",
+            stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+                       director: ["Simon McQuoid"],
+
         },
 
         {
@@ -604,8 +609,10 @@ export const FilmDetails = () => {
             duration: 130,
             releaseDate: "Sep 23 2023",
             genres: ["Drama", "Adventure"],
-            stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-            director: "Simon McQuoid",
+            stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+                       director: ["Simon McQuoid"],
+
         },
 
         {
@@ -616,8 +623,10 @@ export const FilmDetails = () => {
             duration: 130,
             releaseDate: "Sep 23 2023",
             genres: ["Drama", "Adventure"],
-            stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-            director: "Simon McQuoid",
+            stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+                       director: ["Simon McQuoid"],
+
         },
         // Add more films here
         // Define the film data
@@ -655,8 +664,8 @@ export const FilmDetails = () => {
                         posterSrc={selectedFilm.posterSrc}
                         title={selectedFilm.title}
                         logoSrc={selectedFilm.logoSrc}
-                        description={selectedFilm.description}
-                        rating={selectedFilm.rating}
+                        // description={selectedFilm.description}
+                        // rating={selectedFilm.rating}
                         duration={selectedFilm.duration}
                         releaseDate={selectedFilm.releaseDate}
                         genres={selectedFilm.genres}

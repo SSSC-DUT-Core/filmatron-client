@@ -15,9 +15,9 @@ export type FilmData = {
 
     genres: string[];
     // name of actors
-    stars: string;
+    stars: string[];
 
-    director: string;
+    director: string[];
 };
 
 // Name of row title and list of filmData
@@ -90,7 +90,7 @@ export type CollectionsOfFilm = {
 
 
 export const films: FilmData[] = [
-    {
+    {   id: "10",
         posterSrc: "/assets/images/film1.png",
         title: "Wednesday",
         logoSrc: "/assets/images/Logo-Wednesday.png",
@@ -99,26 +99,27 @@ export const films: FilmData[] = [
         rating: 8.2,
         duration: 130,
         releaseDate: "Sep 23 2023",
-        genres: ["Drama", "Adventure"],
-
-        stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-        director: "Simon McQuoid",
+        genres: ["DramaAdventure"],
+        stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+        director: ["Simon McQuoid"],
     },
 
     {
-        title: "NGƯỜI VỢ CUỐI CÙNG",
+        id: "10",title: "NGƯỜI VỢ CUỐI CÙNG",
         posterSrc: "/assets/images/film1.png",
         description: "test description",
         rating: 9.0,
         duration: 130,
         releaseDate: "Sep 23 2023",
-        genres: ["Drama", "Adventure"],
+        genres: ["DramaAdventure"],
 
-        stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-        director: "Simon McQuoid",
+        stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+        director: ["Simon McQuoid"],
+
     },
 
-    {
+    {id: "10",
         posterSrc: "/assets/images/film1.png",
         title: "ÂM MƯU GÓT DÀY NHỌN",
         description: "test description",
@@ -126,11 +127,13 @@ export const films: FilmData[] = [
         duration: 130,
         releaseDate: "Sep 23 2023",
         genres: ["Drama", "Adventure"],
-        stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-        director: "Simon McQuoid",
+        stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+                   director: ["Simon McQuoid"],
+
     },
 
-    {
+    {id: "10",
         posterSrc: "/assets/images/film1.png",
         title: "CÔ HẦU GÁI",
         description: "test description",
@@ -138,11 +141,13 @@ export const films: FilmData[] = [
         duration: 130,
         releaseDate: "Sep 23 2023",
         genres: ["Drama", "Adventure"],
-        stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-        director: "Simon McQuoid",
+        stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+                   director: ["Simon McQuoid"],
+
     },
 
-    {
+    {id: "10",
         posterSrc: "/assets/images/film1.png",
         title: "Chị Chị Em Em",
         description: "test description",
@@ -150,21 +155,25 @@ export const films: FilmData[] = [
         duration: 130,
         releaseDate: "Sep 23 2023",
         genres: ["Drama", "Adventure"],
-        stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-        director: "Simon McQuoid",
-    },
+        stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
 
-    {
-        posterSrc: "/assets/images/film1.png",
-        title: "Chị Chị Em Em 2",
-        description: "test description",
-        rating: 9.0,
-        duration: 130,
-        releaseDate: "Sep 23 2023",
-        genres: ["Drama", "Adventure"],
-        stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-        director: "Simon McQuoid",
+                   director: ["Simon McQuoid"],
+
     },
+    {id: "10",
+    posterSrc: "/assets/images/film1.png",
+    title: "Chị Chị Em Em",
+    description: "test description",
+    rating: 9.0,
+    duration: 130,
+    releaseDate: "Sep 23 2023",
+    genres: ["Drama", "Adventure"],
+    stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+               director: ["Simon McQuoid"],
+
+},
+
     // Add more films here
     // Define the film data
 ];
@@ -218,8 +227,8 @@ const filmWednesdayDetail = {
 }
 
 
-export const LiveFilms: FilmData[] = [
-    {
+export const LiveFilms: FilmData[] =[
+    {   id: "10",
         posterSrc: "/assets/images/film1.png",
         title: "Wednesday",
         logoSrc: "/assets/images/Logo-Wednesday.png",
@@ -228,26 +237,27 @@ export const LiveFilms: FilmData[] = [
         rating: 8.2,
         duration: 130,
         releaseDate: "Sep 23 2023",
-        genres: ["Drama", "Adventure"],
-
-        stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-        director: "Simon McQuoid",
+        genres: ["DramaAdventure"],
+        stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+        director: ["Simon McQuoid"],
     },
 
     {
-        title: "NGƯỜI VỢ CUỐI CÙNG",
+        id: "10",title: "NGƯỜI VỢ CUỐI CÙNG",
         posterSrc: "/assets/images/film1.png",
         description: "test description",
         rating: 9.0,
         duration: 130,
         releaseDate: "Sep 23 2023",
-        genres: ["Drama", "Adventure"],
+        genres: ["DramaAdventure"],
 
-        stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-        director: "Simon McQuoid",
+        stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+        director: ["Simon McQuoid"],
+
     },
 
-    {
+    {id: "10",
         posterSrc: "/assets/images/film1.png",
         title: "ÂM MƯU GÓT DÀY NHỌN",
         description: "test description",
@@ -255,11 +265,13 @@ export const LiveFilms: FilmData[] = [
         duration: 130,
         releaseDate: "Sep 23 2023",
         genres: ["Drama", "Adventure"],
-        stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-        director: "Simon McQuoid",
+        stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+                   director: ["Simon McQuoid"],
+
     },
 
-    {
+    {id: "10",
         posterSrc: "/assets/images/film1.png",
         title: "CÔ HẦU GÁI",
         description: "test description",
@@ -267,11 +279,13 @@ export const LiveFilms: FilmData[] = [
         duration: 130,
         releaseDate: "Sep 23 2023",
         genres: ["Drama", "Adventure"],
-        stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-        director: "Simon McQuoid",
+        stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+                   director: ["Simon McQuoid"],
+
     },
 
-    {
+    {id: "10",
         posterSrc: "/assets/images/film1.png",
         title: "Chị Chị Em Em",
         description: "test description",
@@ -279,21 +293,25 @@ export const LiveFilms: FilmData[] = [
         duration: 130,
         releaseDate: "Sep 23 2023",
         genres: ["Drama", "Adventure"],
-        stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-        director: "Simon McQuoid",
-    },
+        stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
 
-    {
-        posterSrc: "/assets/images/film1.png",
-        title: "Chị Chị Em Em 2",
-        description: "test description",
-        rating: 9.0,
-        duration: 130,
-        releaseDate: "Sep 23 2023",
-        genres: ["Drama", "Adventure"],
-        stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-        director: "Simon McQuoid",
+                   director: ["Simon McQuoid"],
+
     },
+    {id: "10",
+    posterSrc: "/assets/images/film1.png",
+    title: "Chị Chị Em Em",
+    description: "test description",
+    rating: 9.0,
+    duration: 130,
+    releaseDate: "Sep 23 2023",
+    genres: ["Drama", "Adventure"],
+    stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+
+               director: ["Simon McQuoid"],
+
+},
+
     // Add more films here
     // Define the film data
 ];
@@ -308,8 +326,7 @@ export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] =
     {
         filmRowTitle: "Popular of the week",
         filmRow: [
-            {
-                id: "1",
+            {   id: "10",
                 posterSrc: "/assets/images/film1.png",
                 title: "Wednesday",
                 logoSrc: "/assets/images/Logo-Wednesday.png",
@@ -318,30 +335,27 @@ export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] =
                 rating: 8.2,
                 duration: 130,
                 releaseDate: "Sep 23 2023",
-                genres: ["Drama", "Adventure"],
-
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
+                genres: ["DramaAdventure"],
+                stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+                director: ["Simon McQuoid"],
             },
-
+        
             {
-                
-                id: "1",
-                title: "NGƯỜI VỢ CUỐI CÙNG",
+                id: "10",title: "NGƯỜI VỢ CUỐI CÙNG",
                 posterSrc: "/assets/images/film1.png",
                 description: "test description",
                 rating: 9.0,
                 duration: 130,
                 releaseDate: "Sep 23 2023",
-                genres: ["Drama", "Adventure"],
-
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
+                genres: ["DramaAdventure"],
+        
+                stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+        
+                director: ["Simon McQuoid"],
+        
             },
-
-            {
-                id: "1",
-
+        
+            {id: "10",
                 posterSrc: "/assets/images/film1.png",
                 title: "ÂM MƯU GÓT DÀY NHỌN",
                 description: "test description",
@@ -349,13 +363,13 @@ export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] =
                 duration: 130,
                 releaseDate: "Sep 23 2023",
                 genres: ["Drama", "Adventure"],
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
+                stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+        
+                           director: ["Simon McQuoid"],
+        
             },
-
-            {
-                id: "1",
-
+        
+            {id: "10",
                 posterSrc: "/assets/images/film1.png",
                 title: "CÔ HẦU GÁI",
                 description: "test description",
@@ -363,13 +377,13 @@ export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] =
                 duration: 130,
                 releaseDate: "Sep 23 2023",
                 genres: ["Drama", "Adventure"],
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
+                stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+        
+                           director: ["Simon McQuoid"],
+        
             },
-
-            {
-                id: "1",
-
+        
+            {id: "10",
                 posterSrc: "/assets/images/film1.png",
                 title: "Chị Chị Em Em",
                 description: "test description",
@@ -377,121 +391,34 @@ export const SectionFilmRowsPopularOfWeek: sectionFilmRow[] =
                 duration: 130,
                 releaseDate: "Sep 23 2023",
                 genres: ["Drama", "Adventure"],
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
+                stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+        
+                           director: ["Simon McQuoid"],
+        
             },
-
-            {
-                id: "1",
-                posterSrc: "/assets/images/film1.png",
-                title: "Chị Chị Em Em 2",
-                description: "test description",
-                rating: 9.0,
-                duration: 130,
-                releaseDate: "Sep 23 2023",
-                genres: ["Drama", "Adventure"],
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
-            },
+            {id: "10",
+            posterSrc: "/assets/images/film1.png",
+            title: "Chị Chị Em Em",
+            description: "test description",
+            rating: 9.0,
+            duration: 130,
+            releaseDate: "Sep 23 2023",
+            genres: ["Drama", "Adventure"],
+            stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+        
+                       director: ["Simon McQuoid"],
+        
+        },
+        
             // Add more films here
             // Define the film data
-        ],
-    },
-];
-
-export const listOfSectionFilmRows: sectionFilmRow[] = [
-    {
-        filmRowTitle: "Comedy",
-        filmRow: [
-            {
-                id: "1",
-                posterSrc: "/assets/images/film1.png",
-                title: "Wednesday",
-                logoSrc: "/assets/images/Logo-Wednesday.png",
-                description:
-                    "Wednesday Addams, a teenager who possesses psychic powers.Wednesday's cold, emotionless personality and her defiant nature make it difficult for her to connect with her schoolmates and cause her to run afoul of the school's principal Larissa Weems. However, she discovers she has inherited her mother's psychic abilities which allow her to solve a local murder mystery.",
-                rating: 8.2,
-                duration: 130,
-                releaseDate: "Sep 23 2023",
-                genres: ["Drama", "Adventure"],
-
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
-            },
-
-            {
-                title: "NGƯỜI VỢ CUỐI CÙNG",
-                id: "1",
-                posterSrc: "/assets/images/film1.png",
-                description: "test description",
-                rating: 9.0,
-                duration: 130,
-                releaseDate: "Sep 23 2023",
-                genres: ["Drama", "Adventure"],
-
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
-            },
-
-            {
-                id: "1",
-                posterSrc: "/assets/images/film1.png",
-                title: "ÂM MƯU GÓT DÀY NHỌN",
-                description: "test description",
-                rating: 9.0,
-                duration: 130,
-                releaseDate: "Sep 23 2023",
-                genres: ["Drama", "Adventure"],
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
-            },
-
-            {
-                id: "1",
-                posterSrc: "/assets/images/film1.png",
-                title: "CÔ HẦU GÁI",
-                description: "test description",
-                rating: 9.0,
-                duration: 130,
-                releaseDate: "Sep 23 2023",
-                genres: ["Drama", "Adventure"],
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
-            },
-
-            {
-                id: "1",
-                posterSrc: "/assets/images/film1.png",
-                title: "Chị Chị Em Em",
-                description: "test description",
-                rating: 9.0,
-                duration: 130,
-                releaseDate: "Sep 23 2023",
-                genres: ["Drama", "Adventure"],
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
-            },
-
-            {
-                id: "1",
-                posterSrc: "/assets/images/film1.png",
-                title: "Chị Chị Em Em 2",
-                description: "test description",
-                rating: 9.0,
-                duration: 130,
-                releaseDate: "Sep 23 2023",
-                genres: ["Drama", "Adventure"],
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
-            },
-        ],
+        ]
     },
 
     {
         filmRowTitle: "Drama",
         filmRow: [
-            {
-                id: "1",
+            {   id: "10",
                 posterSrc: "/assets/images/film1.png",
                 title: "Wednesday",
                 logoSrc: "/assets/images/Logo-Wednesday.png",
@@ -500,28 +427,27 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
                 rating: 8.2,
                 duration: 130,
                 releaseDate: "Sep 23 2023",
-                genres: ["Drama", "Adventure"],
-
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
+                genres: ["DramaAdventure"],
+                stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+                director: ["Simon McQuoid"],
             },
-
+        
             {
-                title: "NGƯỜI VỢ CUỐI CÙNG",
-                id: "1",
+                id: "10",title: "NGƯỜI VỢ CUỐI CÙNG",
                 posterSrc: "/assets/images/film1.png",
                 description: "test description",
                 rating: 9.0,
                 duration: 130,
                 releaseDate: "Sep 23 2023",
-                genres: ["Drama", "Adventure"],
-
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
+                genres: ["DramaAdventure"],
+        
+                stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+        
+                director: ["Simon McQuoid"],
+        
             },
-
-            {
-                id: "1",
+        
+            {id: "10",
                 posterSrc: "/assets/images/film1.png",
                 title: "ÂM MƯU GÓT DÀY NHỌN",
                 description: "test description",
@@ -529,12 +455,13 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
                 duration: 130,
                 releaseDate: "Sep 23 2023",
                 genres: ["Drama", "Adventure"],
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
+                stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+        
+                           director: ["Simon McQuoid"],
+        
             },
-
-            {
-                id: "1",
+        
+            {id: "10",
                 posterSrc: "/assets/images/film1.png",
                 title: "CÔ HẦU GÁI",
                 description: "test description",
@@ -542,12 +469,13 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
                 duration: 130,
                 releaseDate: "Sep 23 2023",
                 genres: ["Drama", "Adventure"],
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
+                stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+        
+                           director: ["Simon McQuoid"],
+        
             },
-
-            {
-                id: "1",
+        
+            {id: "10",
                 posterSrc: "/assets/images/film1.png",
                 title: "Chị Chị Em Em",
                 description: "test description",
@@ -555,23 +483,27 @@ export const listOfSectionFilmRows: sectionFilmRow[] = [
                 duration: 130,
                 releaseDate: "Sep 23 2023",
                 genres: ["Drama", "Adventure"],
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
+                stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+        
+                           director: ["Simon McQuoid"],
+        
             },
-
-            {
-                id: "1",
-                posterSrc: "/assets/images/film1.png",
-                title: "Chị Chị Em Em 2",
-                description: "test description",
-                rating: 9.0,
-                duration: 130,
-                releaseDate: "Sep 23 2023",
-                genres: ["Drama", "Adventure"],
-                stars: "Lewis Tan, Jessica McNamee, Josh Lawson",
-                director: "Simon McQuoid",
-            },
-
-        ],
+            {id: "10",
+            posterSrc: "/assets/images/film1.png",
+            title: "Chị Chị Em Em",
+            description: "test description",
+            rating: 9.0,
+            duration: 130,
+            releaseDate: "Sep 23 2023",
+            genres: ["Drama", "Adventure"],
+            stars: ["Lewis Tan", "Jessica McNamee", "Josh Lawson"],
+        
+                       director: ["Simon McQuoid"],
+        
+        },
+        
+            // Add more films here
+            // Define the film data
+        ]
     },
 ];
