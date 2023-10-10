@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader } from "@/components/ui/loader";
+import { Loader } from "@/src/components/ui/loader";
 
 const Loading = () => {
     return (

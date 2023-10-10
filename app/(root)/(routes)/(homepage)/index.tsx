@@ -1,17 +1,16 @@
-import { formatDate, mapFilmsFromGraphQLResponse } from "@/lib/index";
+import { formatDate, mapFilmsFromGraphQLResponse } from "@/src/lib/index";
 import { useState } from "react";
-import { FilmRow } from "./FilmRow";
-
-import { LiveFilmSection } from "./LiveFilmSection";
-
-import { FilmPosterDetail } from "./filmPosterDetail";
-
-import { PrizeTicketHomePage } from "./PrizeTicketHomePage";
+import { FilmPosterDetail } from "@/src/components/Film/filmPosterDetail";
 import {
-    GetFilmsQuery,
     useGetFilmsQuery,
     FilmEntity,
-} from "../../../../graphql/generated/index";
+} from "@/graphql/generated/index";
+import { PrizeTicketHomePage } from "@/src/components/PrizeTicketHomePage";
+import { FilmRow } from "@/src/components/Film/FilmRow";
+
+import { LiveFilmSection } from "./component/LiveFilmSection";
+
+
 
 const filmPosterDetailData = {
     posterSrc: "/assets/images/film1.png",

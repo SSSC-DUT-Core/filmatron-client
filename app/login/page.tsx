@@ -5,12 +5,12 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { config } from "@/config";
-import DiscordLoginImage from "../../public/assets/auth/login-discord.svg";
-import FacebookLoginImage from "../../public/assets/auth/login-facebook.svg";
-import GoogleLoginImage from "../../public/assets/auth/login-google.svg";
-import TwitterLoginImage from "../../public/assets/auth/login-twitter.svg";
-import logo from "../../public/assets/logo.svg";
+import { config } from "@/src/config";
+import DiscordLoginImage from "@/public/assets/auth/login-discord.svg";
+import FacebookLoginImage from "@/public/assets/auth/login-facebook.svg";
+import GoogleLoginImage from "@/public/assets/auth/login-google.svg";
+import TwitterLoginImage from "@/public/assets/auth/login-twitter.svg";
+import logo from "@/public/assets/logo.svg";
 
 const socialLoginOptions = [
     {

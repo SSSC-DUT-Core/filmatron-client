@@ -1,0 +1,97 @@
+.genreTag {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(30px);
+  border-radius: 40px;
+  padding: 2px 8px 2px 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  margin-right: 16px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.filmButton {
+    width: 206px;
+    height: 54px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.16);
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.5s, transform 0.2s, background-color 0.2s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  
+  /* Màu sắc cho nút "Watch Trailer" */
+  .watch-button {
+    background-color: #e6e6e8;
+    color: #000000;
+  }
+  
+  /* Màu sắc cho nút "More Info" */
+  .info-button {
+    background-color: #1e1f20;
+    color: #ffffff;
+  }
+  
+  /* Hiệu ứng hover chung cho tất cả các nút */
+  .filmButton:hover {
+    transform: scale(1.05); 
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.16); 
+  }
+  
+  /* Hiệu ứng hover cho nút "Watch Trailer" */
+  .watch-button:hover {
+    background-color: #ffffff; 
+    color: #1e1f20; 
+  }
+  
+  /* Hiệu ứng hover cho nút "More Info" */
+  .info-button:hover {
+    background-color: #1d1c1f; 
+    color: #e6e6e8; 
+  }
+  
+
+.NFTClaimButton {
+    width: 6rem;
+    height: 3rem;
+    border-radius:20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.16);
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.5s, transform 0.2s, background-color 0.2s, box-shadow 0.3s;
+    
+
+    background-color: rgb(238,197,118);
+  }
+  
+  .NFTClaimButton:hover {
+    transform: scale(1.05); 
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.16); 
+    cursor: pointer;
+  }
+
+  .NFTImg-multi-border {
+    width: 296px;
+    height: 371px;
+    padding-top: 7px;
+    padding-right: 7px;
+    border: 1px solid #f0c679;
+    margin-bottom: -7px;
+  }
+
+ 
+    .posterDetailVideoImg:hover {
+        transform: scale(1.05) eses-out;
+        cursor: pointer;
+        box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.16); 
+    }
+ 

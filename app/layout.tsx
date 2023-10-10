@@ -2,13 +2,12 @@
 
 import { Inter } from "next/font/google";
 
-import { ModalProvider } from "@/providers/modal-provider";
-import { ToastProvider } from "@/providers/toast-provider";
-import { ThemeProvider } from "@/providers/theme-provider";
+import { ModalProvider } from "@/src/providers/modal-provider";
+import { ToastProvider } from "@/src/providers/toast-provider";
+import { ThemeProvider } from "@/src/providers/theme-provider";
 
 import "./globals.css";
-import { ApolloProvider } from "@apollo/client";
-import { ApolloWrapper } from "@/config/apollo-wrapper";
+import { ApolloWrapper } from "@/src/config/apollo-wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
