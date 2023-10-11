@@ -1,35 +1,41 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 
 import './filmPosterDetail.css'
 import { useMintCompressedNftMutation } from '@/graphql/generated';
 import { Button } from '../../ui/button';
 
+interface CNFT {
+    id: string;
+    name: string;
+    description?: string;
+    symbol: string;
+}
+
 export type FilmPosterDetailProps = {
     posterSrc: string;
-  
+    filmId: string;
     logoSrc?: string;
     title: string;
-  
-    
+
     duration: number;
     releaseDate: string;
     genres: string[];
-    
+
     stars: string[];
     director: string[];
-  
+
     NFTClaimImg?: string;
     NFTEventName?: string;
     expirationDate?: string;
-  
+
     trailerVideo?: string;
     trailerImg?: string;
     eventImg?: string;
-  
+
     onClick?: () => void;
+    listCnft: CNFT[];
 };
 
 export const calculateRemainingTime = (expirationTime: number) => {
@@ -103,8 +109,8 @@ export const displayGenres = (genres: string[]) => {
 
   
 
-export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate,  trailerVideo, trailerImg, eventImg, onClick}: FilmPosterDetailProps) => {
-  const posterStyle = {
+export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerImg, filmId, listCnft}: FilmPosterDetailProps) => {
+    const posterStyle = {
     // border: '1px solid red',
     backgroundImage: `url(${posterSrc})`,
     backgroundSize: 'cover',
@@ -126,11 +132,11 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
     border: '1px solid #F3C879',
 
   };
-  const nftList = getCompressedNFTsOfFilm()
+
   const [mintCompressedNftMutation, { data, loading }] =
       useMintCompressedNftMutation({
           variables: {
-              cNFTId: nftList[random(0,nftList.length)].id,
+              cNFTId: listCnft?.[0].id,
           },
           context: {
               headers: {
@@ -139,7 +145,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
           },
       });
 
-  const onClaim = () => {
+  const onClaim = async () => {
     mintCompressedNftMutation();
   };
   

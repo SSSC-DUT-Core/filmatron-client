@@ -1,3 +1,4 @@
+import LockIcon from "./lock.svg";
 import CopyIcon from "./copy.svg";
 import ChatIcon from "./chat.svg";
 import Facebook from "./facebook.svg";
@@ -16,4 +17,5 @@ export {
     Search,
     LuckyDrawLayout,
     PainIcon,
+    LockIcon,
 };
