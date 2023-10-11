@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useSignInWithSocialMutation } from "@/graphql/generated";
+import { Role, useSignInWithSocialMutation } from "@/graphql/generated";
 import { HomePage } from './(homepage)/index';
 
 
@@ -18,7 +18,7 @@ const Home = () => {
                     variables: {
                         input: { 
                             publicKey: "",
-                            role: "USER"
+                            role: Role.User
                          },
                     },
                     context: {

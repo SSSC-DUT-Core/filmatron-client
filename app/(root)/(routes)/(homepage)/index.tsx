@@ -109,6 +109,8 @@ export const HomePage = () => {
                     trailerVideo={filmPosterDetailData.trailerVideo}
                     trailerImg={firstFilm.avatar}
                     eventImg={filmPosterDetailData.eventImg}
+                    filmId={firstFilm.id}
+                    listCnft={[]}
                 />
             )}
             {/* Popular film */}
