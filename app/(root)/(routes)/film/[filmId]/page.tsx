@@ -240,7 +240,7 @@ const HomepageDetail = ({
                                       width={40}
                                       height={40}
                                   />
-                                  <p className="text-3xl py-3 font-semibold">
+                                  <p className="text-3xl text-white py-3 font-semibold">
                                       You need an NFT to unlock exclusive
                                       content
                                   </p>
