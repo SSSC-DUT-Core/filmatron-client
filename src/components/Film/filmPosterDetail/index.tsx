@@ -126,11 +126,11 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
     border: '1px solid #F3C879',
 
   };
-
+  const nftList = getCompressedNFTsOfFilm()
   const [mintCompressedNftMutation, { data, loading }] =
       useMintCompressedNftMutation({
           variables: {
-              cNFTId: "1",
+              cNFTId: nftList[random(0,nftList.length)].id,
           },
           context: {
               headers: {

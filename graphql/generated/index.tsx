@@ -283,6 +283,7 @@ export type Query = {
   getFilms: PaginatedFilm;
   getGalleriesOfFilm: PaginatedFilmGallery;
   getGalleryById: FilmGalleryEntity;
+  getSolanaAddress: ReturnSolanaAddressDto;
   getWhitelistOfFilm: Array<WhitelistEntity>;
   helloFilmMaker: Scalars['String']['output'];
   logOut: ReturnMessageBase;
@@ -358,6 +359,11 @@ export type ReturnMessageBase = {
   success: Scalars['Boolean']['output'];
 };
 
+export type ReturnSolanaAddressDto = {
+  __typename?: 'ReturnSolanaAddressDto';
+  address: Scalars['String']['output'];
+};
+
 export type ReturnTokenDto = {
   __typename?: 'ReturnTokenDto';
   accessToken: Scalars['String']['output'];
@@ -377,6 +383,7 @@ export type SignInDto = {
 
 export type SignInWithSocialDto = {
   publicKey: Scalars['String']['input'];
+  role: Role;
 };
 
 export type UpdateFilmDto = {
@@ -416,6 +423,18 @@ export type WhitelistEntity = {
   person: PublicInformationPerson;
   personId: Scalars['Float']['output'];
 };
+
+export type GetSolanaAddressQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSolanaAddressQuery = { __typename?: 'Query', getSolanaAddress: { __typename?: 'ReturnSolanaAddressDto', address: string } };
+
+export type SignInWithSocialMutationVariables = Exact<{
+  input: SignInWithSocialDto;
+}>;
+
+
+export type SignInWithSocialMutation = { __typename?: 'Mutation', signInWithSocial: { __typename?: 'ReturnAccountDto', accessToken: string } };
 
 export type CreateCollectionMutationVariables = Exact<{
   input: CreateCollectionNftDto;
@@ -467,6 +486,73 @@ export type MintCompressedNftMutationVariables = Exact<{
 export type MintCompressedNftMutation = { __typename?: 'Mutation', mintCompressedNFT: { __typename?: 'ReturnMessageBase', success: boolean, message: string } };
 
 
+export const GetSolanaAddressDocument = gql`
+    query getSolanaAddress {
+  getSolanaAddress {
+    address
+  }
+}
+    `;
+
+/**
+ * __useGetSolanaAddressQuery__
+ *
+ * To run a query within a React component, call `useGetSolanaAddressQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSolanaAddressQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSolanaAddressQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetSolanaAddressQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetSolanaAddressQuery, GetSolanaAddressQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetSolanaAddressQuery, GetSolanaAddressQueryVariables>(GetSolanaAddressDocument, options);
+      }
+export function useGetSolanaAddressLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetSolanaAddressQuery, GetSolanaAddressQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetSolanaAddressQuery, GetSolanaAddressQueryVariables>(GetSolanaAddressDocument, options);
+        }
+export type GetSolanaAddressQueryHookResult = ReturnType<typeof useGetSolanaAddressQuery>;
+export type GetSolanaAddressLazyQueryHookResult = ReturnType<typeof useGetSolanaAddressLazyQuery>;
+export type GetSolanaAddressQueryResult = Apollo.QueryResult<GetSolanaAddressQuery, GetSolanaAddressQueryVariables>;
+export const SignInWithSocialDocument = gql`
+    mutation signInWithSocial($input: SignInWithSocialDto!) {
+  signInWithSocial(input: $input) {
+    accessToken
+  }
+}
+    `;
+export type SignInWithSocialMutationFn = Apollo.MutationFunction<SignInWithSocialMutation, SignInWithSocialMutationVariables>;
+
+/**
+ * __useSignInWithSocialMutation__
+ *
+ * To run a mutation, you first call `useSignInWithSocialMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSignInWithSocialMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [signInWithSocialMutation, { data, loading, error }] = useSignInWithSocialMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useSignInWithSocialMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SignInWithSocialMutation, SignInWithSocialMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<SignInWithSocialMutation, SignInWithSocialMutationVariables>(SignInWithSocialDocument, options);
+      }
+export type SignInWithSocialMutationHookResult = ReturnType<typeof useSignInWithSocialMutation>;
+export type SignInWithSocialMutationResult = Apollo.MutationResult<SignInWithSocialMutation>;
+export type SignInWithSocialMutationOptions = Apollo.BaseMutationOptions<SignInWithSocialMutation, SignInWithSocialMutationVariables>;
 export const CreateCollectionDocument = gql`
     mutation createCollection($input: CreateCollectionNFTDto!) {
   createCollection(input: $input) {
