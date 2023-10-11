@@ -136,7 +136,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
   const [mintCompressedNftMutation, { data, loading }] =
       useMintCompressedNftMutation({
           variables: {
-              cNFTId: listCnft?.[0].id,
+              cNFTId: listCnft?.[0]?.id,
           },
           context: {
               headers: {
