@@ -459,6 +459,13 @@ export type GetCompressedNfTsOfFilmQueryVariables = Exact<{
 
 export type GetCompressedNfTsOfFilmQuery = { __typename?: 'Query', getCompressedNFTsOfFilm: { __typename?: 'PaginatedCompressedNFT', edges?: Array<{ __typename?: 'FilmCompressedNFTEntityEdge', cursor: string, node: { __typename?: 'FilmCompressedNFTEntity', id: string, name: string, symbol: string, uri: string, filmId: number } }> | null, pageInfo?: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } | null } };
 
+export type MintCompressedNftMutationVariables = Exact<{
+  cNFTId: Scalars['ID']['input'];
+}>;
+
+
+export type MintCompressedNftMutation = { __typename?: 'Mutation', mintCompressedNFT: { __typename?: 'ReturnMessageBase', success: boolean, message: string } };
+
 
 export const CreateCollectionDocument = gql`
     mutation createCollection($input: CreateCollectionNFTDto!) {
@@ -704,3 +711,37 @@ export function useGetCompressedNfTsOfFilmLazyQuery(baseOptions?: ApolloReactHoo
 export type GetCompressedNfTsOfFilmQueryHookResult = ReturnType<typeof useGetCompressedNfTsOfFilmQuery>;
 export type GetCompressedNfTsOfFilmLazyQueryHookResult = ReturnType<typeof useGetCompressedNfTsOfFilmLazyQuery>;
 export type GetCompressedNfTsOfFilmQueryResult = Apollo.QueryResult<GetCompressedNfTsOfFilmQuery, GetCompressedNfTsOfFilmQueryVariables>;
+export const MintCompressedNftDocument = gql`
+    mutation mintCompressedNFT($cNFTId: ID!) {
+  mintCompressedNFT(cNFTId: $cNFTId) {
+    success
+    message
+  }
+}
+    `;
+export type MintCompressedNftMutationFn = Apollo.MutationFunction<MintCompressedNftMutation, MintCompressedNftMutationVariables>;
+
+/**
+ * __useMintCompressedNftMutation__
+ *
+ * To run a mutation, you first call `useMintCompressedNftMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useMintCompressedNftMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [mintCompressedNftMutation, { data, loading, error }] = useMintCompressedNftMutation({
+ *   variables: {
+ *      cNFTId: // value for 'cNFTId'
+ *   },
+ * });
+ */
+export function useMintCompressedNftMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<MintCompressedNftMutation, MintCompressedNftMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<MintCompressedNftMutation, MintCompressedNftMutationVariables>(MintCompressedNftDocument, options);
+      }
+export type MintCompressedNftMutationHookResult = ReturnType<typeof useMintCompressedNftMutation>;
+export type MintCompressedNftMutationResult = Apollo.MutationResult<MintCompressedNftMutation>;
+export type MintCompressedNftMutationOptions = Apollo.BaseMutationOptions<MintCompressedNftMutation, MintCompressedNftMutationVariables>;
