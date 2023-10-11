@@ -443,6 +443,13 @@ export type CreateCollectionMutationVariables = Exact<{
 
 export type CreateCollectionMutation = { __typename?: 'Mutation', createCollection: { __typename?: 'ReturnMessageBase', success: boolean, message: string } };
 
+export type CreateCompressedNftMetadataMutationVariables = Exact<{
+  input: CreateCompressedNftMetadata;
+}>;
+
+
+export type CreateCompressedNftMetadataMutation = { __typename?: 'Mutation', createCompressedNFTMetadata: { __typename?: 'ReturnMessageBase', message: string, success: boolean } };
+
 export type CreateFilmMutationVariables = Exact<{
   input: CreateFilmDto;
 }>;
@@ -587,6 +594,40 @@ export function useCreateCollectionMutation(baseOptions?: ApolloReactHooks.Mutat
 export type CreateCollectionMutationHookResult = ReturnType<typeof useCreateCollectionMutation>;
 export type CreateCollectionMutationResult = Apollo.MutationResult<CreateCollectionMutation>;
 export type CreateCollectionMutationOptions = Apollo.BaseMutationOptions<CreateCollectionMutation, CreateCollectionMutationVariables>;
+export const CreateCompressedNftMetadataDocument = gql`
+    mutation createCompressedNFTMetadata($input: CreateCompressedNFTMetadata!) {
+  createCompressedNFTMetadata(input: $input) {
+    message
+    success
+  }
+}
+    `;
+export type CreateCompressedNftMetadataMutationFn = Apollo.MutationFunction<CreateCompressedNftMetadataMutation, CreateCompressedNftMetadataMutationVariables>;
+
+/**
+ * __useCreateCompressedNftMetadataMutation__
+ *
+ * To run a mutation, you first call `useCreateCompressedNftMetadataMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateCompressedNftMetadataMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createCompressedNftMetadataMutation, { data, loading, error }] = useCreateCompressedNftMetadataMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateCompressedNftMetadataMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateCompressedNftMetadataMutation, CreateCompressedNftMetadataMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<CreateCompressedNftMetadataMutation, CreateCompressedNftMetadataMutationVariables>(CreateCompressedNftMetadataDocument, options);
+      }
+export type CreateCompressedNftMetadataMutationHookResult = ReturnType<typeof useCreateCompressedNftMetadataMutation>;
+export type CreateCompressedNftMetadataMutationResult = Apollo.MutationResult<CreateCompressedNftMetadataMutation>;
+export type CreateCompressedNftMetadataMutationOptions = Apollo.BaseMutationOptions<CreateCompressedNftMetadataMutation, CreateCompressedNftMetadataMutationVariables>;
 export const CreateFilmDocument = gql`
     mutation createFilm($input: CreateFilmDto!) {
   createFilm(input: $input) {
