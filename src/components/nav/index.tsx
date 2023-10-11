@@ -6,6 +6,7 @@ import { cn } from "@/src/lib/utils";
 import NavItem from "./nav-item";
 import AvatarDemo from "./Avatar/index";
 import DropdownMenuDemo from "./DropDownMenu/index";
+import { HowItWork } from "./HowItWork/index";
 
 export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
     const routes = [
@@ -15,40 +16,31 @@ export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
         { href: "/filmmaker", text: "Filmmaker" },
     ];
 
-  return (
-    <div 
-      className={cn('hidden sm:flex w-full relative items-center justify-between px-24', className)}
-      style={{
-        height: '80px',
-        backgroundColor: 'rgba(65, 65, 77, 0)',
-      }}
-      {...props}
-    >
-      {/* Logo */}
-      <div className="mr-5">
-        <Image src="/assets/images/logo-header.png" width={135} height={28} alt="Logo" className="h-8" />
-      </div>
-
-            {/* Navigation Items */}
-            <div className="flex items-center justify-center flex-grow space-x-5">
-                {routes.map((route, index) => (
-                    <NavItem
-                        key={`navroute-${index}`}
-                        href={route.href}
-                        text={route.text}
-                    />
-                ))}
+    return (
+        <>
+            <div
+            className={cn(
+                "hidden sm:flex w-full relative items-center justify-between px-24",
+                className
+            )}
+            style={{
+                height: "80px",
+                backgroundColor: "rgba(65, 65, 77, 0)",
+            }}
+            {...props}
+        >
+            {/* Logo */}
+            <div className="mr-5">
+                <Image
+                    src="/assets/images/logo-header.png"
+                    width={144}
+                    height={28}
+                    alt="Logo"
+                    className="h-8"
+                />
             </div>
 
-            {/* User and Search Icon */}
-            {/* <div className="relative ml-auto">
-        <button className="p-2 bg-gray-500 rounded-full text-white hover:bg-gray-600">
-          Search
-        </button>
-        <button className="p-2 text-white hover:bg-gray-600">
-          User
-        </button>
-      </div> */}
+            {/* Nav */}
             <div className="flex items-center space-x-2">
                 {/* lookup button */}
                 <div className="relative">
@@ -62,6 +54,7 @@ export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
                             alignItems: "center",
                             justifyContent: "center",
                             color: "white",
+
                             /* background-color: white; */
                             /* box-shadow: 0 2px 10px var(--black-a7); */
                         }}
@@ -90,6 +83,15 @@ export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
                     <DropdownMenuDemo />
                 </div>
             </div>
-        </div>
+
+           
+           
+            </div>
+
+            {/* HowItWork */}
+             <div className="w-full">
+                <HowItWork />
+            </div>
+        </>
     );
 }
