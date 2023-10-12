@@ -136,7 +136,7 @@ const HomepageDetail = ({
  const [listCnft, setListCnft] = useState<CNFT[]>([]);
  const filmNfts = mapFilmNftsFromGraphQLResponse(filmsNftsData)
  const isPrivateAccess = 
- filmNfts.some(item => listCnft.some(ownedNft => ownedNft.name === item.name));
+ filmNfts?.some(item => listCnft?.some(ownedNft => ownedNft.name === item.name));
 
   return (
       <div className="flex-col">
