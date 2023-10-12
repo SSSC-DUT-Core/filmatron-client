@@ -35,6 +35,7 @@ export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
             {...props}
         >
             {/* Logo */}
+            <Link href="/">
             <div className="mr-5">
                 <Image
                     src="/assets/images/logo-header.png"
@@ -44,7 +45,7 @@ export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
                     className="h-8"
                 />
             </div>
-
+            </Link>
             {/* Nav */}
             <div className="flex items-center space-x-2">
                 {/* lookup button */}
