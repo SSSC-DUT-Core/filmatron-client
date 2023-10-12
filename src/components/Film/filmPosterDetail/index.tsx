@@ -151,7 +151,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
         variables: {
             cNFTId: listCnft?.[0]?.id,
         },
-        onCompleted: (data) => {
+        onCompleted: (_data) => {
             refetch?.();
         },
         context: {
