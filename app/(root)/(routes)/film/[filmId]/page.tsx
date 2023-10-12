@@ -4,13 +4,14 @@ import React, { useState } from 'react';
 
 
 import PrivateAccess from '@/src/components/private-access';
-import { FilmEntity, useGetFilmByIdQuery, useGetFilmsQuery, useGetSolanaAddressQuery } from '@/graphql/generated';
+import { FilmEntity, useGetCompressedNfTsOfFilmQuery, useGetFilmByIdQuery, useGetFilmsQuery, useGetSolanaAddressQuery } from '@/graphql/generated';
 import { formatDate, mapFilmsFromGraphQLResponse } from '@/src/lib';
 import {FilmPosterDetail} from '@/src/components/Film/filmPosterDetail/index';
 import {FilmRow } from '@/src/components/Film/FilmRow/index';
 import Image from 'next/image';
 import { LockIcon } from '@/public/assets';
 import PrivateAccessImage from "../../../../../images/private-access.png";
+import { mapFilmNftsFromGraphQLResponse } from '../../../../../src/lib/utils';
 
 
 interface CNFT {
@@ -66,7 +67,7 @@ const HomepageDetail = ({
     },
 });
 
-   const accessToken = sessionStorage.getItem("access_token") ?? "";
+   const accessToken = localStorage.getItem("access_token") ?? "";
    const { data: getSolanaAddress } = useGetSolanaAddressQuery({
        context: {
            headers: {
@@ -86,6 +87,16 @@ const HomepageDetail = ({
            });
        },
    });
+
+  const {data: filmsNftsData} = useGetCompressedNfTsOfFilmQuery(
+    {
+      variables: {
+        filmId 
+      },
+      fetchPolicy: 'network-only', 
+    }
+
+   )
   const [filmList, setFilmList] = useState<FilmEntity[]>([]);
   const film = getFilmById?.getFilmById;
   const filmPosterDetail = {
@@ -113,89 +124,11 @@ const HomepageDetail = ({
   }
 
 
- const filmPosterDetailImage = {
-  galleryImgUrls: [
-    './assets/filmDetail/gallery/galleryImg1.png',
-    './assets/filmDetail/gallery/galleryImg2.png',
-    './assets/filmDetail/gallery/galleryImg3.png',
-    './assets/filmDetail/gallery/galleryImg1.png',
-    './assets/filmDetail/gallery/galleryImg2.png',
-  ],
-  startAvaUrls: [
-    './assets/filmDetail/startAva/ava1.png',
-    './assets/filmDetail/startAva/ava1.png',
-    './assets/filmDetail/startAva/ava1.png',
-    './assets/filmDetail/startAva/ava1.png',
-    './assets/filmDetail/startAva/ava1.png',
-    './assets/filmDetail/startAva/ava1.png',
-  ],
-  redBandTrailers: [
-    {
-      redBandTrailerImg: '/assets/images/film1.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-    {
-      redBandTrailerImg: '/assets/images/film1.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-    {
-      redBandTrailerImg: '/assets/images/film1.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-    {
-      redBandTrailerImg: '/assets/images/film1.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-    {
-      redBandTrailerImg: '/assets/images/film1.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-    {
-      redBandTrailerImg: '/assets/images/film1.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-    {
-      redBandTrailerImg: '/assets/images/film1.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-  ],
-
-  BehindTheScences: [
-    {
-      BehindTheScenceImg: '/assets/images/film1.png',
-      BehindTheScenceVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-    {
-      BehindTheScenceImg: '/assets/images/film1.png',
-      BehindTheScenceVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-    {
-      BehindTheScenceImg: '/assets/images/film1.png',
-      BehindTheScenceVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-    {
-      BehindTheScenceImg: '/assets/images/film1.png',
-      BehindTheScenceVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-    {
-      BehindTheScenceImg: '/assets/images/film1.png',
-      BehindTheScenceVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-    {
-      BehindTheScenceImg: '/assets/images/film1.png',
-      BehindTheScenceVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-    {
-      BehindTheScenceImg: '/assets/images/film1.png',
-      BehindTheScenceVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
-    },
-  ],
- }
 
  const [listCnft, setListCnft] = useState<CNFT[]>([]);
-
- const isPrivateAccess =
-     listCnft.filter(({ name }) => name === film?.name).length > 0;
+ const filmNfts = mapFilmNftsFromGraphQLResponse(filmsNftsData)
+ const isPrivateAccess = 
+ filmNfts.some(item => listCnft.some(ownedNft => ownedNft.name === item.name));
 
   return (
       <div className="flex-col">
@@ -221,11 +154,11 @@ const HomepageDetail = ({
                       trailerImg={film.avatar}
                       eventImg={filmPosterDetail.eventImg}
                       filmId={filmId}
-                      listCnft={listCnft}
+                      listCnft={filmNfts}
                   />
               ) : (
                   // Render a fallback component or message when film is undefined
-                  <div>No film data available</div>
+                  null
               )}
 
               <div className="relative">

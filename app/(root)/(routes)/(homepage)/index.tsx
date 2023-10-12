@@ -1,9 +1,10 @@
-import { formatDate, mapFilmsFromGraphQLResponse } from "@/src/lib/index";
+import { formatDate, mapFilmNftsFromGraphQLResponse, mapFilmsFromGraphQLResponse } from "@/src/lib/index";
 import { useState } from "react";
 import { FilmPosterDetail } from "@/src/components/Film/filmPosterDetail";
 import {
     useGetFilmsQuery,
     FilmEntity,
+    useGetCompressedNfTsOfFilmQuery
 } from "@/graphql/generated/index";
 import { PrizeTicketHomePage } from "@/src/components/PrizeTicketHomePage";
 import { FilmRow } from "@/src/components/Film/FilmRow";
@@ -82,9 +83,18 @@ export const HomePage = () => {
             setFilmList(mapFilmsFromGraphQLResponse(data));
         },
     });
+   
     const [filmList, setFilmList] = useState<FilmEntity[]>([]);
     const firstFilm = filmList?.[filmList.length-1];
-
+    const {data: filmsNftsData} = useGetCompressedNfTsOfFilmQuery(
+        {
+          variables: {
+            filmId : firstFilm?.id
+          },
+          fetchPolicy: 'network-only', 
+        }
+    
+       )
     return (
         <div
             className=""
@@ -110,7 +120,7 @@ export const HomePage = () => {
                     trailerImg={firstFilm.avatar}
                     eventImg={filmPosterDetailData.eventImg}
                     filmId={firstFilm.id}
-                    listCnft={[]}
+                    listCnft={mapFilmNftsFromGraphQLResponse(filmsNftsData)}
                 />
             )}
             {/* Popular film */}

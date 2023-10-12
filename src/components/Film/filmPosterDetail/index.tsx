@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 
 import './filmPosterDetail.css'
-import { useMintCompressedNftMutation } from '@/graphql/generated';
+import { FilmCompressedNftEntity, useMintCompressedNftMutation } from '@/graphql/generated';
 import { Button } from '../../ui/button';
 
 interface CNFT {
@@ -35,7 +35,7 @@ export type FilmPosterDetailProps = {
     eventImg?: string;
 
     onClick?: () => void;
-    listCnft: CNFT[];
+    listCnft: FilmCompressedNftEntity[];
 };
 
 export const calculateRemainingTime = (expirationTime: number) => {
@@ -132,21 +132,31 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
     border: '1px solid #F3C879',
 
   };
-
+console.log(listCnft);
   const [mintCompressedNftMutation, { data, loading }] =
       useMintCompressedNftMutation({
-          variables: {
-              cNFTId: listCnft?.[0]?.id,
-          },
+        variables: {
+            cNFTId: listCnft?.[0]?.id,
+        },
           context: {
               headers: {
-                  Authorization: sessionStorage.getItem("access_token"),
+                  Authorization: localStorage.getItem("access_token"),
               },
           },
       });
 
   const onClaim = async () => {
-    mintCompressedNftMutation();
+    mintCompressedNftMutation({
+        variables: {
+            cNFTId: listCnft?.[0]?.id,
+        },
+        context: {
+            headers: {
+                Authorization: localStorage.getItem("access_token"),
+            },
+        },
+      
+    });
   };
   
 
@@ -407,9 +417,10 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                           </div>
                       </div>
 
+                     { listCnft && 
                       <Button className="NFTClaimButton" disabled={loading} onClick={onClaim}>
                           CLAIM
-                      </Button>
+                      </Button>}
                   </div>
               </div>
           </div>

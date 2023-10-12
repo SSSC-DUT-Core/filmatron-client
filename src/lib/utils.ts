@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import {GetFilmsQuery, FilmEntity} from "@/graphql/generated";
+import {GetFilmsQuery, FilmEntity, GetCompressedNfTsOfFilmQuery, FilmCompressedNftEntity} from "@/graphql/generated";
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
@@ -18,4 +18,12 @@ export function mapFilmsFromGraphQLResponse(data: GetFilmsQuery): FilmEntity[] {
     }
   
     return data.getFilms.edges.map((filmEdge) => filmEdge.node);
+}
+
+export function mapFilmNftsFromGraphQLResponse(data?: GetCompressedNfTsOfFilmQuery): FilmCompressedNftEntity[] {
+    if (!data || !data.getCompressedNFTsOfFilm || !data.getCompressedNFTsOfFilm.edges) {
+      return [];
+    }
+  
+    return data.getCompressedNFTsOfFilm.edges.map((filmEdge) => filmEdge.node);
 }
