@@ -10,9 +10,9 @@ import { HowItWork } from "./HowItWork/index";
 import { Button } from "../ui/button";
 
 export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
-    let isLoggedIn = false;
+    let isLoggedIn = true;
     useEffect(() => {
-        isLoggedIn = !!localStorage?.getItem('access_token');
+        isLoggedIn = Boolean(localStorage?.getItem('access_token'));
     })
     const routes = [
         { href: "/", text: "Home" },
