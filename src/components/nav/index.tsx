@@ -3,12 +3,15 @@
 import { HTMLAttributes } from "react";
 import Image from "next/image";
 import { cn } from "@/src/lib/utils";
-import NavItem from "./nav-item";
 import AvatarDemo from "./Avatar/index";
 import DropdownMenuDemo from "./DropDownMenu/index";
 import { HowItWork } from "./HowItWork/index";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
+    const isLoggedIn = !!localStorage?.getItem('access_token');
+
     const routes = [
         { href: "/", text: "Home" },
         { href: "/movies", text: "Movies" },
@@ -75,13 +78,25 @@ export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
                         </svg>
                     </button>
                 </div>
-
-                <div className="relative">
-                    <AvatarDemo />
-                </div>
-                <div className="relative">
-                    <DropdownMenuDemo />
-                </div>
+                {
+  isLoggedIn ? (
+    <>
+      <div className="relative">
+        <AvatarDemo />
+      </div>
+      <div className="relative">
+        <DropdownMenuDemo />
+      </div>
+    </>
+  ) : (
+    <Link href="/login">
+      <Button className="NFTClaimButton">
+        Login
+      </Button>
+    </Link>
+  )
+}
+              
             </div>
 
            

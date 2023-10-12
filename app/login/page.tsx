@@ -19,7 +19,7 @@ const socialLoginOptions = [
         imageClass: "w-6 mr-2 login-button-images",
         divClass: "col-span-3",
         imageSrc: GoogleLoginImage,
-        imgAltText: "Login with Google",
+        imgAltText: "Login",
         buttonLoginText: true,
         translateLoginText: "dappLogin.continue",
         verifier: "Google",
