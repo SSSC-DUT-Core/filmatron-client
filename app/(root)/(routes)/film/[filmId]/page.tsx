@@ -67,6 +67,7 @@ const HomepageDetail = ({
 
   const {
     data: films,
+    refetch
 } = useGetFilmsQuery({
     variables: {},
     fetchPolicy: "network-only", // Force a network request
@@ -148,6 +149,7 @@ const HomepageDetail = ({
           >
               {film ? (
                   <FilmPosterDetail
+                      refetch={refetch}
                       posterSrc={film.background}
                       title={film?.name}
                       duration={film.duration}

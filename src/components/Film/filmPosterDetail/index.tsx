@@ -14,6 +14,7 @@ interface CNFT {
 }
 
 export type FilmPosterDetailProps = {
+    refetch?: () => void;
     posterSrc: string;
     filmId: string;
     logoSrc?: string;
@@ -109,7 +110,7 @@ export const displayGenres = (genres: string[]) => {
 
   
 
-export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerImg, listCnft}: FilmPosterDetailProps) => {
+export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerImg, listCnft, refetch}: FilmPosterDetailProps) => {
     const posterStyle = {
     // border: '1px solid red',
     backgroundImage: `url(${posterSrc})`,
@@ -142,18 +143,23 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                   Authorization: localStorage.getItem("access_token"),
               },
           },
-      });
+      }
+      );
 
   const onClaim = async () => {
     mintCompressedNftMutation({
         variables: {
             cNFTId: listCnft?.[0]?.id,
         },
+        onCompleted: (data) => {
+            refetch();
+        },
         context: {
             headers: {
                 Authorization: localStorage.getItem("access_token"),
             },
         },
+
       
     });
   };
