@@ -1,17 +1,19 @@
 "use client";
 
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/src/lib/utils";
+import Link from "next/link";
 import AvatarDemo from "./Avatar/index";
 import DropdownMenuDemo from "./DropDownMenu/index";
 import { HowItWork } from "./HowItWork/index";
 import { Button } from "../ui/button";
-import Link from "next/link";
 
 export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
-    const isLoggedIn = !!localStorage?.getItem('access_token');
-
+    let isLoggedIn = false;
+    useEffect(() => {
+        isLoggedIn = !!localStorage?.getItem('access_token');
+    })
     const routes = [
         { href: "/", text: "Home" },
         { href: "/movies", text: "Movies" },

@@ -96,7 +96,7 @@ module.exports = {
         "no-use-before-define": "off",
         "import/no-duplicates": "off",
         "space-comment": "off",
-        "jsx-a11y/media-has-caption": "warn "
+        "jsx-a11y/media-has-caption": "warn"
         // "prettier/prettier": ["error", prettierOptions],
     },
 };
