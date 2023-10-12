@@ -109,7 +109,7 @@ export const displayGenres = (genres: string[]) => {
 
   
 
-export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerImg, compressedNFTId}: FilmPosterDetailProps) => {
+export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerImg, listCnft}: FilmPosterDetailProps) => {
     const posterStyle = {
     // border: '1px solid red',
     backgroundImage: `url(${posterSrc})`,
@@ -132,7 +132,6 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
     border: '1px solid #F3C879',
 
   };
-console.log(listCnft);
   const [mintCompressedNftMutation, { data, loading }] =
       useMintCompressedNftMutation({
         variables: {

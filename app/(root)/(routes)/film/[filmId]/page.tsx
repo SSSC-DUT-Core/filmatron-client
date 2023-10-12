@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 
 import PrivateAccess from '@/src/components/private-access';
 import { FilmEntity, useGetCompressedNfTsOfFilmQuery, useGetFilmByIdQuery, useGetFilmsQuery, useGetSolanaAddressQuery } from '@/graphql/generated';
-import { FilmEntity, useGetCompressedNfTsOfFilmQuery, useGetFilmByIdQuery, useGetFilmsQuery, useGetSolanaAddressQuery } from '@/graphql/generated';
 import { formatDate, mapFilmsFromGraphQLResponse } from '@/src/lib';
 import {FilmPosterDetail} from '@/src/components/Film/filmPosterDetail/index';
 import {FilmRow } from '@/src/components/Film/FilmRow/index';
