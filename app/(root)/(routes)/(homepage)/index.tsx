@@ -110,7 +110,7 @@ export const HomePage = () => {
                     trailerImg={firstFilm.avatar}
                     eventImg={filmPosterDetailData.eventImg}
                     filmId={firstFilm.id}
-                    listCnft={[]}
+                    compressedNFTId=""
                 />
             )}
             {/* Popular film */}

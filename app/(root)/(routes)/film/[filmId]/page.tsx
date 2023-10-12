@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 
 import PrivateAccess from '@/src/components/private-access';
-import { FilmEntity, useGetFilmByIdQuery, useGetFilmsQuery, useGetSolanaAddressQuery } from '@/graphql/generated';
+import { FilmEntity, useGetCompressedNfTsOfFilmQuery, useGetFilmByIdQuery, useGetFilmsQuery, useGetSolanaAddressQuery } from '@/graphql/generated';
 import { formatDate, mapFilmsFromGraphQLResponse } from '@/src/lib';
 import {FilmPosterDetail} from '@/src/components/Film/filmPosterDetail/index';
 import {FilmRow } from '@/src/components/Film/FilmRow/index';
@@ -56,6 +56,14 @@ const HomepageDetail = ({
     },
   })
 
+  const { data: conpressedNFT } = useGetCompressedNfTsOfFilmQuery({
+      variables: {
+          filmId,
+      },
+  });
+
+  const compressedNFTId = conpressedNFT?.getCompressedNFTsOfFilm.edges?.[0]?.node?.id;
+
   const {
     data: films,
 } = useGetFilmsQuery({
@@ -76,7 +84,7 @@ const HomepageDetail = ({
        onCompleted: data => {
            getAssetsByOwner(data.getSolanaAddress.address).then(data => {
                setListCnft(
-                   data.items.map((item: any) => ({
+                   data?.items.map((item: any) => ({
                        id: item.id,
                        name: item.content.metadata.name,
                        description: item.content.metadata.description,
@@ -195,7 +203,7 @@ const HomepageDetail = ({
  const [listCnft, setListCnft] = useState<CNFT[]>([]);
 
  const isPrivateAccess =
-     listCnft.filter(({ name }) => name === film?.name).length > 0;
+     listCnft?.filter(({ name }) => name === film?.name).length > 0;
 
   return (
       <div className="flex-col">
@@ -221,7 +229,7 @@ const HomepageDetail = ({
                       trailerImg={film.avatar}
                       eventImg={filmPosterDetail.eventImg}
                       filmId={filmId}
-                      listCnft={listCnft}
+                      compressedNFTId={compressedNFTId}
                   />
               ) : (
                   // Render a fallback component or message when film is undefined
