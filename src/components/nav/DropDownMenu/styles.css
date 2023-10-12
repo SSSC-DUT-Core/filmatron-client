@@ -5,6 +5,7 @@ button {
 
 .DropdownMenuContent,
 .DropdownMenuSubContent {
+    color:black;
     min-width: 100px;
     background-color: white;
     border-radius: 6px;
