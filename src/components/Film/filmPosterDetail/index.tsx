@@ -391,7 +391,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
                 
               }}  
-              src={listCnft?.[0].uri} 
+              src={listCnft?.[0]?.uri} 
               alt="" 
             />
            
