@@ -17,7 +17,7 @@ const Home = () => {
                 {
                     variables: {
                         input: { 
-                            publicKey: "",
+                            publicKey: "test",
                             role: Role.User
                          },
                     },

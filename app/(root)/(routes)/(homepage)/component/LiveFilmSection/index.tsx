@@ -29,43 +29,39 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
               width: '33%', 
               height: '560px',
         
-              // border: "1px solid blue",
-  
-              // padding: '0 18px',
+            
+         
   
               overflow: 'hidden',
-
-              // marginRight: '20px',
   
-              // overflowY: 'auto',
             }}
           >
 
-            {/* <FilmCol
-                filmColTitle='Live' 
-                filmCol={LiveFilms}
-            /> */}
-            <div className="w-full h-full flex flex-col justify-between items-center"
+           
+            <div className="w-full h-full flex flex-col items-center"
               style={{
-                // border: '8px solid green',
-                // padding: '0 4px',
+            
               }}
             >
               {/* title of live flims */}
-              <div className='w-full flex-start '
+              <div className='w-full flex-start mb-[16px] gap-[16px]'
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                 }}
               >
-                <svg width="45" height="45" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.875 7.5C9.875 8.81168 8.81168 9.875 7.5 9.875C6.18832 9.875 5.125 8.81168 5.125 7.5C5.125 6.18832 6.18832 5.125 7.5 5.125C8.81168 5.125 9.875 6.18832 9.875 7.5Z" fill="green" /></svg>
+                {/* <svg width="45" height="45" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.875 7.5C9.875 8.81168 8.81168 9.875 7.5 9.875C6.18832 9.875 5.125 8.81168 5.125 7.5C5.125 6.18832 6.18832 5.125 7.5 5.125C8.81168 5.125 9.875 6.18832 9.875 7.5Z" fill="green" /></svg> */}
+                
+                <div className="w-[16px] h-[16px]  rounded-full p-3 bg-[#00C5A3] leading-9">
+                </div>
+                
                 <h3 className='text-white'
                   style={{
                     fontWeight: '600',
                     fontSize: '30px',
                     lineHeight: '36px',
                     flex: 'start',
-                    marginBottom: '8px',
+               
                   }}
                 >
                   {/* Icon live status */}
@@ -74,12 +70,12 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
               </div>
               
               {/* list of film cards */}
-              <div className="relative w-full h-640 overflow-y-scroll scrollbar-track-gray-300 overflow-x-hidden">
+              <div className="relative flex-end w-full h-640 overflow-y-scroll scrollbar-track-gray-300 overflow-x-hidden">
                 {/* Film Cards Col */}
                 {films?.map((film: FilmEntity, index: number) => (
                   <div key={index} onClick={() => {}}>
                     <FilmCardInCol 
-                    genre={film.genres}
+                      genre={film.genres}
                       posterSrc={film.avatar} title={film.name} 
                       duration={film.duration} 
                       releaseDate={film.releaseDate}
@@ -102,7 +98,7 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
             style={{
               height: '560px',
               // width: '1010px',
-              width: '75%',
+              width: '70%',
               backgroundColor: '#131020', 
 
   

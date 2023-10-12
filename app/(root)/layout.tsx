@@ -13,12 +13,14 @@ export default async function SetupLayout({
         <div
             style={{
                 // backgroundColor: 'black',
-                backgroundImage: customBackgroundImage,
+                // backgroundImage: customBackgroundImage,
                 backgroundSize: "cover", // Adjust this property as needed
                 backgroundRepeat: "no-repeat", // Adjust this property as needed
                 backgroundPosition: "center", // Adjust this property as needed
                 // Add any other background-related styles here
                 minHeight: "100vh", // Ensure the container covers the full viewport height
+
+                backgroundColor: "black",
             }}
         >
             <MainNav />

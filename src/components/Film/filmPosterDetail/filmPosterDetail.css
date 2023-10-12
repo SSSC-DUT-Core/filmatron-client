@@ -8,6 +8,7 @@
   margin-right: 16px;
   margin-bottom: 16px;
   display: inline-block;
+  color: #00fbeb;
 }
 
 .filmButton {
@@ -70,7 +71,7 @@
     transition: color 0.5s, transform 0.2s, background-color 0.2s, box-shadow 0.3s;
     
 
-    background-color: rgb(238,197,118);
+    background-color: #fdd848;
   }
   
   .NFTClaimButton:hover {

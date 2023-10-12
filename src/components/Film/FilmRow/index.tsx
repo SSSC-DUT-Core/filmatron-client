@@ -150,7 +150,7 @@ const FilmCardInRow = ({
 
 export const FilmRow = ({ filmRowTitle, filmRow }: sectionFilmRow) => {
     return (
-        <div>
+        <div className="mb-[24px]">
             <div
                 className="w-full h-full flex flex-col justify-between items-center"
                 style={{

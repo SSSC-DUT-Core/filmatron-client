@@ -10,7 +10,7 @@ import { PrizeTicketHomePage } from "@/src/components/PrizeTicketHomePage";
 import { FilmRow } from "@/src/components/Film/FilmRow";
 
 import { LiveFilmSection } from "./component/LiveFilmSection";
-
+import { RedBandTrailer } from "../../../../src/components/RedBandTrailer";
 
 
 const filmPosterDetailData = {
@@ -71,6 +71,44 @@ const prizeList = [
     },
 ];
 
+const redBandTrailersFetching = [
+    {
+      filmId: 1,
+      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+    },
+    {
+      filmId: 2,
+      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+    },
+    {
+      filmId: 3,
+      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+    },
+    {
+      filmId: 4,
+      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+    },
+    {
+      filmId: 5,
+      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+    },
+    {
+      filmId: 6,
+      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+    },
+    {
+      filmId: 7,
+      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+    },
+];
+
 export const HomePage = () => {
     const {
         data: film,
@@ -100,6 +138,7 @@ export const HomePage = () => {
             className=""
             style={{
                 padding: "0px 80px",
+                marginBottom: "24px",
             }}
         >
             {firstFilm && (
@@ -132,9 +171,9 @@ export const HomePage = () => {
             {/* prizeticket and redBandTrailer */}
             <div className="flex justify-between w-full pb-16">
                 {/* prizeticketHomePage */}
-                <div className="w-1/2">
+                <div className="lg:w-1/2 sm:w-full">
                     {/* FilmRow header title */}
-                    <div className="w-full flex-start flex items-center gap-4 items-center">
+                    <div className="w-full flex-start flex items-center gap-4 items-center pb-6">
                         <img
                             src={ticketIconUrl}
                             alt="Prize Ticket"
@@ -155,7 +194,7 @@ export const HomePage = () => {
                         </h3>
                     </div>
 
-                    <div className="flex flex-row lt-md:flex-wrap justify-around">
+                    <div className="flex flex-row flex-wrap justify-around">
                         {prizeList.slice(0, 2).map((prize, index) => (
                             <PrizeTicketHomePage key={index} {...prize} />
                         ))}
@@ -163,9 +202,9 @@ export const HomePage = () => {
                 </div>
 
                 {/* redbandTrailerHomePage */}
-                <div className="w-1/2">
+                <div className="lg:w-1/2 sm:w-full">
                     {/* FilmRow header title */}
-                    <div className="w-full flex-start flex items-center gap-4 items-center">
+                    <div className="w-full flex-start flex items-center gap-4 items-center pb-6">
                         <img
                             src={cinemaIconUrl}
                             alt="Prize Ticket"
@@ -190,9 +229,20 @@ export const HomePage = () => {
                         {/* {prizeList.slice(0, 2).map((prize, index) => (
                     <PrizeTicketHomePage key={index} {...prize} />
                 ))} */}
+
+                    {redBandTrailersFetching.slice(0, 2).map((trailer, index) => (
+                        <RedBandTrailer
+                            data={trailer}
+                            onClick={(id: string) => {
+                                console.log("RedBandTrailer: clicked: ", id);
+                        
+                            }}
+                        />
+                    ))}
                     </div>
                 </div>
             </div>
+            
             <LiveFilmSection films={filmList} />
 
             {/* <homepageDetailPoster/> */}
