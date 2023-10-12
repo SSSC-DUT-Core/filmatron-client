@@ -1,6 +1,6 @@
 "use client";
 
-import { HTMLAttributes, useEffect } from "react";
+import { HTMLAttributes, useEffect, useState } from "react";
 import Image from "next/image";
 import { cn } from "@/src/lib/utils";
 import Link from "next/link";
@@ -10,9 +10,9 @@ import { HowItWork } from "./HowItWork/index";
 import { Button } from "../ui/button";
 
 export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
-    let isLoggedIn = true;
+    const [isLoggedIn, setLoggedIn] = useState(false);
     useEffect(() => {
-        isLoggedIn = Boolean(localStorage?.getItem('access_token'));
+        setLoggedIn(Boolean(localStorage?.getItem('access_token')));
     })
     const routes = [
         { href: "/", text: "Home" },
