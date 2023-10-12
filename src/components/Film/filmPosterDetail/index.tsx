@@ -386,7 +386,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
                 
               }}  
-              src={NFTClaimImg} 
+              src={listCnft?.[0].uri} 
               alt="" 
             />
            
