@@ -12,7 +12,7 @@ const Home = () => {
 
     const [signInWithSocialMutation, { data, loading, error }] = useSignInWithSocialMutation();
     useEffect(() => {
-        if (sessionStorage.getItem("access_token")) {
+        if (localStorage.getItem("access_token")) {
             signInWithSocialMutation(
                 {
                     variables: {
@@ -23,7 +23,7 @@ const Home = () => {
                     },
                     context: {
                         headers: {
-                            Authorization: sessionStorage.getItem("access_token"),
+                            Authorization: localStorage.getItem("access_token"),
                         },
                     },
                 }

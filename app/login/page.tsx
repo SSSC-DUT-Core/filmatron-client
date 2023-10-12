@@ -26,30 +26,6 @@ const socialLoginOptions = [
         loginUrl:
             `https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=${config.domain}/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature`,
     },
-    {
-        imageClass: "w-6 login-button-images",
-        loginType: "facebook",
-        imageSrc: FacebookLoginImage,
-        imgAltText: "Login with Facebook",
-        loginUrl:
-            `https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=${config.domain}/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature`,
-    },
-    {
-        loginType: "twitter",
-        imageClass: "w-6 login-button-images",
-        imageSrc: TwitterLoginImage,
-        imgAltText: "Login with Twitter",
-        loginUrl:
-            `https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=${config.domain}/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature`,
-    },
-    {
-        imageClass: "w-6 login-button-images",
-        loginType: "discord",
-        imageSrc: DiscordLoginImage,
-        imgAltText: "Login with Discord",
-        loginUrl:
-            `https://filmatron-jwks.kylan.so/wallet/request?callbackUrl=${config.domain}/login&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature`,
-    },
 ];
 
 const LoginPage = () => {
@@ -73,7 +49,7 @@ const LoginPage = () => {
                     return response.json();
                 })
                 .then(data => {
-                    sessionStorage.setItem("access_token", `Bearer ${data}`);
+                    localStorage.setItem("access_token", `Bearer ${data}`);
                     router.push("/");
                 })
                 .catch(error => {

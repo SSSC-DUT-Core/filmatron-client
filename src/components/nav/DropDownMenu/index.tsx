@@ -23,7 +23,9 @@ const DropdownMenuDemo = () => {
         },
         {
             label: "Logout",
-            onClick: () => router.push("/logout"),
+            onClick: () => {
+              localStorage.removeItem("access_token");
+              router.push("/")},
         },
     ];
     return (
