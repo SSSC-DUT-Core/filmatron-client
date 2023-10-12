@@ -109,7 +109,7 @@ export const displayGenres = (genres: string[]) => {
 
   
 
-export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerImg, filmId, listCnft}: FilmPosterDetailProps) => {
+export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerImg, compressedNFTId}: FilmPosterDetailProps) => {
     const posterStyle = {
     // border: '1px solid red',
     backgroundImage: `url(${posterSrc})`,
