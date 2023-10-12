@@ -97,15 +97,19 @@ const HomepageDetail = ({
        },
    });
 
-  const {data: filmsNftsData} = useGetCompressedNfTsOfFilmQuery(
+  const {data: filmsNftsData, refetch: refetchCompressedNfTsOfFilmQuery} = useGetCompressedNfTsOfFilmQuery(
     {
       variables: {
         filmId 
       },
       fetchPolicy: 'network-only', 
     }
-
    )
+
+   const refetchGetCompressNFT = () => {
+    refetchCompressedNfTsOfFilmQuery();
+   }
+
   const [filmList, setFilmList] = useState<FilmEntity[]>([]);
   const film = getFilmById?.getFilmById;
   const filmPosterDetail = {
@@ -165,11 +169,11 @@ const HomepageDetail = ({
                       eventImg={filmPosterDetail.eventImg}
                       filmId={filmId}
                       listCnft={filmNfts}
+                      isPrivateAccess={isPrivateAccess}
+                      refetchGetCompressNFT={refetchGetCompressNFT}
                   />
-              ) : (
-                  // Render a fallback component or message when film is undefined
-                  null
-              )}
+              ) : // Render a fallback component or message when film is undefined
+              null}
 
               <div className="relative">
                   {!isPrivateAccess ? (

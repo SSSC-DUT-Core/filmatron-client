@@ -6,11 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { config } from "@/src/config";
-import DiscordLoginImage from "@/public/assets/auth/login-discord.svg";
-import FacebookLoginImage from "@/public/assets/auth/login-facebook.svg";
 import GoogleLoginImage from "@/public/assets/auth/login-google.svg";
-import TwitterLoginImage from "@/public/assets/auth/login-twitter.svg";
 import logo from "@/public/assets/logo.svg";
+import { LogoFilm } from "@/public/assets";
 
 const socialLoginOptions = [
     {
@@ -88,9 +86,7 @@ const LoginPage = () => {
                                                 >
                                                     <div className="absolute z-0 inset-0 w-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-70 transition-all duration-500 ease-out group-hover:w-full" />
                                                     <Image
-                                                        src={
-                                                            socialLoginOption.imageSrc
-                                                        }
+                                                        src={LogoFilm}
                                                         width={20}
                                                         height={20}
                                                         alt={
@@ -98,7 +94,7 @@ const LoginPage = () => {
                                                         }
                                                         className="z-10"
                                                     />
-                                                    <p className="m-0 z-10 font-normal text-sm">
+                                                    <p className="m-0 z-10 font-semibold text-base">
                                                         {
                                                             socialLoginOption.imgAltText
                                                         }
