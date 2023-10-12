@@ -15,6 +15,7 @@ interface CNFT {
 }
 
 export type FilmPosterDetailProps = {
+    refetch?: () => void;
     posterSrc: string;
     filmId: string;
     logoSrc?: string;
@@ -112,23 +113,7 @@ export const displayGenres = (genres: string[]) => {
 
   
 
-export const FilmPosterDetail = ({
-    posterSrc,
-    logoSrc,
-    title,
-    duration,
-    releaseDate,
-    genres,
-    stars,
-    director,
-    NFTClaimImg,
-    NFTEventName,
-    expirationDate,
-    trailerImg,
-    listCnft,
-    isPrivateAccess,
-    refetchGetCompressNFT,
-}: FilmPosterDetailProps) => {
+export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerImg, listCnft, refetch, isPrivateAccess}: FilmPosterDetailProps) => {
     const posterStyle = {
         // border: '1px solid red',
         backgroundImage: `url(${posterSrc})`,
@@ -142,43 +127,47 @@ export const FilmPosterDetail = ({
         borderRadius: "32px",
     };
 
-    const trailerImgStyle = {
-        backgroundImage: `url(${trailerImg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        height: "16rem",
-        border: "1px solid #fdd848",
-    };
-    const [mintCompressedNftMutation, { data, loading }] =
-        useMintCompressedNftMutation({
-            variables: {
-                cNFTId: listCnft?.[0]?.id,
-            },
-            context: {
-                headers: {
-                    Authorization: localStorage.getItem("access_token"),
-                },
-            },
-        });
+  const trailerImgStyle = {
+    backgroundImage: `url(${trailerImg})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    height: "16rem", 
+    border: '1px solid #fdd848',
 
-    const onClaim = async () => {
-        mintCompressedNftMutation({
-            variables: {
-                cNFTId: listCnft?.[0]?.id,
-            },
-            context: {
-                headers: {
-                    Authorization: localStorage.getItem("access_token"),
-                },
-            },
-            onCompleted: () => {
-                toast.success("NFT Claimed!");
-                refetchGetCompressNFT?.();
-            },
-        });
-    };
+  };
+  const [mintCompressedNftMutation, { data, loading }] =
+      useMintCompressedNftMutation({
+        variables: {
+            cNFTId: listCnft?.[0]?.id,
+        },
+          context: {
+              headers: {
+                  Authorization: localStorage.getItem("access_token"),
+              },
+          },
+      }
+      );
 
+  const onClaim = async () => {
+    mintCompressedNftMutation({
+        variables: {
+            cNFTId: listCnft?.[0]?.id,
+        },
+        onCompleted: () => {
+            toast.success("NFT Claimed!");
+            refetch?.();
+        },
+        context: {
+            headers: {
+                Authorization: localStorage.getItem("access_token"),
+            },
+        },
+
+      
+    });
+  };
+  
     return (
         <div className="relative flex items-end mb-6" style={posterStyle}>
             {/* poster logo + info section */}

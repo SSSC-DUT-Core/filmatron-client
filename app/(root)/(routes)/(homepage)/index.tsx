@@ -113,6 +113,7 @@ export const HomePage = () => {
     const {
         data: film,
         loading,
+        refetch,
         error,
     } = useGetFilmsQuery({
         variables: {},
@@ -146,7 +147,7 @@ export const HomePage = () => {
                     posterSrc={firstFilm.background}
                     title={firstFilm?.name}
                     // logoSrc={firstFilm.name ?? "vc"}
-
+                    refetch={() => refetch}
                     duration={firstFilm.duration}
                     releaseDate={formatDate(firstFilm.releaseDate)}
                     genres={firstFilm.genres}
