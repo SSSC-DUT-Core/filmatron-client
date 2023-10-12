@@ -7,6 +7,7 @@ import Twitter from "./twitter.svg";
 import Search from "./search.svg";
 import LuckyDrawLayout from "./lucky-draw-layout.svg";
 import PainIcon from "./pain.svg";
+import LogoFilm from './logo-film.svg'
 
 export {
     CopyIcon,
@@ -18,4 +19,5 @@ export {
     LuckyDrawLayout,
     PainIcon,
     LockIcon,
+    LogoFilm,
 };
