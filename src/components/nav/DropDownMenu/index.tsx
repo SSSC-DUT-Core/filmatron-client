@@ -6,7 +6,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import './styles.css';
 import { useRouter } from 'next/navigation';
 
-const DropdownMenuDemoParams = ["Profile", "Setting", "Logout"];
+const DropdownMenuDemoParams = ["Profile", "Logout"];
 
 
 const DropdownMenuDemo = () => {
@@ -16,10 +16,6 @@ const DropdownMenuDemo = () => {
         {
             label: "Profile",
             onClick: () => router.push("/profile"),
-        },
-        {
-            label: "Setting",
-            onClick: () => router.push("/setting"),
         },
         {
             label: "Logout",

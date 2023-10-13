@@ -408,7 +408,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
           >
 
             {/* NFT claim bar infor */}
-            <div className='flex row justify-between items-center'
+            <div className='flex row justify-between items-center gap-[16px]'
               style={{
                 // border: '1px solid orange',
                 width: '256px',
