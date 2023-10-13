@@ -6,14 +6,14 @@ export type PrizeTicketType = {
     title: string;
     ticketLogo: string;
     announcementDate: string;
-    typeOfPrize: string;
+    ticketEvent: string;
     prizeImg: string;
     walletCreatorAddress: string;
     dateCreated: string;
     // width:, height 
 }
 
-export const PrizeTicketHomePage = ({ title, ticketLogo, announcementDate, typeOfPrize, prizeImg, walletCreatorAddress, dateCreated } : PrizeTicketType) => {
+export const PrizeTicketHomePage = ({ title, ticketLogo, announcementDate, ticketEvent, prizeImg, walletCreatorAddress, dateCreated } : PrizeTicketType) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleToggle = () => {
@@ -152,8 +152,8 @@ export const PrizeTicketHomePage = ({ title, ticketLogo, announcementDate, typeO
                         alt="" />
 
                         {/* ticket title */}
-                        <div className='text-gray-400 font-poppins text-[10px] leading-4 text-right round float-left leading-5'>
-                            {typeOfPrize}
+                        <div className='text-[#f0aa2c] font-poppins text-[10px] leading-4 text-right round float-left leading-5'>
+                          {ticketEvent}
                         </div>
                         
                     </div>
@@ -179,7 +179,7 @@ export const PrizeTicketHomePage = ({ title, ticketLogo, announcementDate, typeO
               <PrizeTicketHomePageModal
                 isOpen={isModalOpen}
                 onClose={handleToggle}
-                TicketData={{ title, ticketLogo, announcementDate, typeOfPrize, prizeImg, walletCreatorAddress, dateCreated }}
+                TicketData={{ title, ticketLogo, announcementDate, ticketEvent, prizeImg, walletCreatorAddress, dateCreated }}
               />
             )}
         </div>
