@@ -5,14 +5,14 @@ export type PrizeTicketLargeProps = {
     title: string;
     ticketLogo: string;
     announcementDate: string;
-    typeOfPrize: string;
+    ticketEvent: string;
     prizeImg: string;
     walletCreatorAddress: string;
     dateCreated: string;
     // width:, height 
 }
 
-export const PrizeTicketLarge = ({ title, ticketLogo, announcementDate, typeOfPrize, prizeImg, walletCreatorAddress, dateCreated } : PrizeTicketLargeProps) => {
+export const PrizeTicketLarge = ({ title, ticketLogo, announcementDate, ticketEvent, prizeImg, walletCreatorAddress, dateCreated } : PrizeTicketLargeProps) => {
 
   
   const ticketBGLarge = './assets/ticket/ticket-bg-large.png';
@@ -147,8 +147,8 @@ export const PrizeTicketLarge = ({ title, ticketLogo, announcementDate, typeOfPr
                         alt="" />
 
                         {/* ticket title */}
-                        <div className='text-gray-400 font-poppins text-[24px] leading-[3rem] text-right round float-left leading-[3.75rem]'>
-                            {typeOfPrize}
+                        <div className='text-[#f0aa2c] font-poppins text-[24px] leading-[3rem] text-right round float-left leading-[3.75rem]'>
+                            {ticketEvent}
                         </div>
                         
                     </div>
