@@ -1,7 +1,9 @@
-// RedBandTrailer.tsx
+"use client"
+
 import React, { useState } from 'react';
 import RedBandTrailerModal from './RedBandTrailerModal';
 import './RedBandTrailer.css';
+import { Button } from '../ui/button';
 
 interface RedBandTrailerProps {
   data: {
@@ -33,7 +35,7 @@ export const RedBandTrailer: React.FC<RedBandTrailerProps> = ({ data, onClick })
           backgroundImage: `url(${data?.redBandTrailerImg})`,
         }}
       >
-        <button className="playBut h-[4rem] w-[4rem]" >
+        <Button className="playBut h-[4rem] w-[4rem]" >
           <a href="#trailer" className="">
             <svg
               version="1.1"
@@ -62,17 +64,17 @@ export const RedBandTrailer: React.FC<RedBandTrailerProps> = ({ data, onClick })
                 className="circle"
                 id="XMLID_17_"
                 fill="none"
-                stroke-width="8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
+                strokeWidth="8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeMiterlimit="10"
                 cx="106.8"
                 cy="106.8"
                 r="103.3"
               />
             </svg>
           </a>
-        </button>
+        </Button>
       </div>
 
       <RedBandTrailerModal isOpen={isModalOpen} onClose={handleToggle} videoUrl={data?.redBandTrailerVideoUrl} />

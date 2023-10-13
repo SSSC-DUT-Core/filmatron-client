@@ -19,7 +19,7 @@ const SelectLang: React.FC<SelectProps> = ({ options }) => {
     <div className='relative flex flex-col items-center w-[148px] h-[44px] rounded'>
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`bg-[#41414d] font-medium text-sm py-2.5 px-4 w-full flex items-center justify-between  rounded-[20px] tracking-wider border-4 border-transparent active:border-white cursor-pointer`}
+        className="bg-[#41414d] font-medium text-sm py-2.5 px-4 w-full flex items-center justify-between rounded-[20px] tracking-wider border-4 border-transparent active:border-white cursor-pointer"
       >
           <svg
             width="24"

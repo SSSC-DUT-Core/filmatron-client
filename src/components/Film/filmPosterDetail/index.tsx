@@ -5,14 +5,9 @@ import React, { useState, useEffect } from 'react';
 import './filmPosterDetail.css'
 import { FilmCompressedNftEntity, useMintCompressedNftMutation } from '@/graphql/generated';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 import { Button } from '../../ui/button';
 
-interface CNFT {
-    id: string;
-    name: string;
-    description?: string;
-    symbol: string;
-}
 
 export type FilmPosterDetailProps = {
     refetch?: () => void;
@@ -369,11 +364,11 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                 >
                     {/* NFT image */}
                     <div>
-                        <img
+                        <Image
                             className="NFTImage"
+                            width="192"
+                            height="272"
                             style={{
-                                width: "12rem", // 192px converted to rem
-                                height: "17rem", // 272px converted to rem
                                 // borderRadius: '16px',
                                 transform: "translate(-50%, -50%)",
 

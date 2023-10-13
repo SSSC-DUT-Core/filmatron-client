@@ -234,8 +234,9 @@ export const HomePage = () => {
                     <PrizeTicketHomePage key={index} {...prize} />
                 ))} */}
 
-                    {redBandTrailersFetching.slice(0, 2).map((trailer, index) => (
+                    {redBandTrailersFetching.slice(0, 2)?.map((trailer, index) => (
                         <RedBandTrailer
+                            key={index}
                             data={trailer}
                             onClick={(id: string) => {
                                 console.log("RedBandTrailer: clicked: ", id);
