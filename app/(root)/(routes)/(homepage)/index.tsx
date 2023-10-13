@@ -74,22 +74,22 @@ const prizeList = [
 const redBandTrailersFetching = [
     {
       filmId: 1,
-      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-1.png',
       redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
       filmId: 2,
-      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-2.png',
       redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
       filmId: 3,
-      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-3.png',
       redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
       filmId: 4,
-      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-4.png',
       redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {

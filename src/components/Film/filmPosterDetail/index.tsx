@@ -364,7 +364,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                 >
                     {/* NFT image */}
                     <div>
-                        <Image
+                        <img
                             className="NFTImage"
                             width="192"
                             height="272"
@@ -375,16 +375,10 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                                 // image props to not crash the img
                                 objectFit: "cover",
                                 objectPosition: "center",
-
-                                // boxShadow: '7px -7px 0 -1px #ffffff, 7px -7px #c6a66d, 14px -14px 0 -1px #ffffff, 14px -14px #c6a66d, 21px -21px 0 -1px #ffffff, 21px -21px #c6a66d',
-
-                // border: '1px solid #f0c679'
-
-                
-              }}  
-              src={listCnft?.[0]?.uri} 
-              alt="" 
-            />
+                            }}  
+                            src={listCnft?.[0]?.uri} 
+                            alt="" 
+                        />
            
           
 
