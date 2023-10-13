@@ -401,53 +401,49 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
 
 
-                    {/* NFT claim bar */}
-                    <div
-                        className="flex row justify-between items-center"
-                        style={{
-                            width: "24rem",
-                            height: "5rem",
-                            borderRadius: "16px",
-                            border: "1px solid rgb(255, 255, 255)",
-                            padding: "16px",
-                            gap: "4px",
-                            backgroundColor: "rgba(30, 30, 30, 0.12)",
-                            position: "absolute",
-                            top: "16%",
-                            right: "8%",
-                            backdropFilter: "blur(30px)",
-                        }}
-                    >
-                        {/* NFT claim bar infor */}
-                        <div
-                            className="flex row justify-between items-center"
-                            style={{
-                                // border: '1px solid orange',
-                                width: "256px",
-                                height: "54px",
-                            }}
-                        >
-                            {/* NFT event */}
-                            <div className="flex col">
-                                <div>
-                                    <p
-                                        className="font-bold text-16"
-                                        style={{
-                                            color: "#00FFEE",
-                                            marginBottom: "8px",
-                                        }}
-                                    >
-                                        NFT Event
-                                    </p>
+          {/* NFT claim bar */}
+          <div className='flex row justify-between items-center'
+            style={{
+              width: '24rem',
+              height: '5rem',
+              borderRadius: '16px',
+              border: '1px solid rgb(255, 255, 255)',
+              padding: '16px',
+              gap: '4px',
+              backgroundColor: 'rgba(30, 30, 30, 0.12)',
+              position: 'absolute',
+              top: '16%',
+              right: '8%',
+              backdropFilter: 'blur(30px)',
+            }}
+          >
 
-                                    <p
-                                        className="font-bold text-16"
-                                        style={{ color: "#FFFFFF" }}
-                                    >
-                                        {NFTEventName}
-                                    </p>
-                                </div>
-                            </div>
+            {/* NFT claim bar infor */}
+            <div className='flex row justify-between items-center'
+              style={{
+                // border: '1px solid orange',
+                width: '256px',
+                height: '54px',
+              }}
+            >
+
+              {/* NFT event */}
+              <div className='flex col'
+              >
+                <div>
+                    <p className='font-bold text-16' style={{ 
+                      color: '#00FFEE', 
+                      marginBottom: '8px',
+                    }}>
+                      NFT Event
+                    </p>
+                    
+                    <p className='font-bold text-16' style={{ color: '#FFFFFF' }}>
+                      {NFTEventName}
+                    </p>
+                </div>
+              
+              </div>
 
                             <div className="flex col justify-center items-center">
                                 <NFTClaimBarTimeCountDown

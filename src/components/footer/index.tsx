@@ -3,7 +3,18 @@
 import Image from "next/image";
 import React from "react";
 
-import { SelectDemo } from './selectLang/index';
+import SelectLang from './selectLang/index'
+
+const Lang = [
+    {
+        label: "English",
+        value: "english",
+    },
+    {
+        label: "VietNamese",
+        value: "vietnamese",
+    },
+];
 
 const Footer = () => {
 
@@ -135,52 +146,16 @@ const Footer = () => {
                         <a href="/filmmaker">Filmmaker</a> */}
                     </div>
 
-                    <div className="flex items-center md:ml-8 flex-end">
-                        <div style={{
-                            position: 'relative',
-                            display: 'inline-block',
-                            width: '169px',
-                            height: '44px',
-                        }}>
-                            <select
-                                className="text-white border border-gray-600 rounded-md p-2 focus:outline-none"
-                                style={{
-                                    width: '164px',
-                                    height: '44px',
-                                    borderRadius: '40px',
-                                    backgroundColor: '#41414d',
-                                    paddingLeft: "54px",
-                                    paddingRight: "12px",
-                                }}
-                            >
-                                <option value="english">English</option>
-                                <option value="spanish">VietNamese</option>
-                            </select>
+                    <div className="flex items-center mr-8 flex-end">
 
-                            <div
-                                style={{
-                                    position: 'absolute',
-                                    top: '12%',
-                                    left: '16px',
-                                    transform: 'translateX(-50%)',
-                                    marginTop: '5px',
-                                }}
-                            >
-                                <svg
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 15 15"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z"
-                                        fill="currentColor"
-                                    />
-                                </svg>
-                            </div>
-                        </div>
+                        <SelectLang
+                            options={Lang}
+                        />
+
                     </div>
+
+                  
+
                 </div>
             </div>
         </footer>

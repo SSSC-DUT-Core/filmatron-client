@@ -132,8 +132,9 @@ export const HomePage = () => {
           },
           fetchPolicy: 'network-only', 
         }
-    
-       )
+    )
+
+
     return (
         <div
             className=""
@@ -153,9 +154,11 @@ export const HomePage = () => {
                     genres={firstFilm.genres}
                     stars={firstFilm.stars}
                     director={firstFilm.directors}
+                    
                     NFTClaimImg={filmPosterDetailData.NFTClaimImg}
                     NFTEventName={filmPosterDetailData.NFTEventName}
-                    expirationDate={filmPosterDetailData.expirationDate}
+
+                    expirationDate={firstFilm.endDateSubscriber}
                     trailerVideo={filmPosterDetailData.trailerVideo}
                     trailerImg={firstFilm.avatar}
                     eventImg={filmPosterDetailData.eventImg}
