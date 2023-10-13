@@ -8,9 +8,10 @@ import {
 } from "@/graphql/generated/index";
 import { PrizeTicketHomePage } from "@/src/components/PrizeTicketHomePage";
 import { FilmRow } from "@/src/components/Film/FilmRow";
-import { useTour } from "@reactour/tour";
+
 import { LiveFilmSection } from "./component/LiveFilmSection";
 import { RedBandTrailer } from "../../../../src/components/RedBandTrailer";
+import { useTour } from "@reactour/tour";
 
 
 const filmPosterDetailData = {
@@ -43,11 +44,20 @@ const cinemaIconUrl = "./assets/icons/cinema-icon.svg";
 
 const prizeList = [
     {
-        title: "10 free takes to the film",
+        title: "Free Ticket",
         ticketLogo: "./assets/ticket/ticket-logo.png",
         announcementDate: "2023-10-18T15:45:00",
-        typeOfPrize: "Ticket Event",
-        prizeImg: "./assets/filmDetail/gallery/galleryImg1.png",
+        ticketEvent: "Người Mặt Trời",
+        prizeImg: "./assets/ticket/ticket-prize-free.png",
+        walletCreatorAddress: "4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j",
+        dateCreated: "2023-10-05T15:45:00.000Z",
+    },
+    {
+        title: "Vip Ticket",
+        announcementDate: "2023-10-18T15:45:00",
+        ticketLogo: "./assets/ticket/ticket-logo.png",
+        ticketEvent: "Người Mặt Trời",
+        prizeImg: "./assets/ticket/ticket-prize-vip.png",
         walletCreatorAddress: "4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j",
         dateCreated: "2023-10-05T15:45:00.000Z",
     },
@@ -55,16 +65,7 @@ const prizeList = [
         title: "10 free takes to the film",
         announcementDate: "2023-10-18T15:45:00",
         ticketLogo: "./assets/ticket/ticket-logo.png",
-        typeOfPrize: "Ticket Event",
-        prizeImg: "./assets/filmDetail/gallery/galleryImg1.png",
-        walletCreatorAddress: "4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j",
-        dateCreated: "2023-10-05T15:45:00.000Z",
-    },
-    {
-        title: "10 free takes to the film",
-        announcementDate: "2023-10-18T15:45:00",
-        ticketLogo: "./assets/ticket/ticket-logo.png",
-        typeOfPrize: "Ticket Event",
+        ticketEvent: "Người Mặt Trời",
         prizeImg: "./assets/filmDetail/gallery/galleryImg1.png",
         walletCreatorAddress: "4Y4s28YSYCuhomMEpa9wXwUotssQ5EN7EAzvUs3ZMZ9j",
         dateCreated: "2023-10-05T15:45:00.000Z",
@@ -74,22 +75,22 @@ const prizeList = [
 const redBandTrailersFetching = [
     {
       filmId: 1,
-      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-1.png',
       redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
       filmId: 2,
-      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-2.png',
       redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
       filmId: 3,
-      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-3.png',
       redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
       filmId: 4,
-      redBandTrailerImg: '/assets/images/film1.png',
+      redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-4.png',
       redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
@@ -110,7 +111,6 @@ const redBandTrailersFetching = [
 ];
 
 export const HomePage = () => {
-  const { setIsOpen } = useTour();
     const {
         data: film,
         loading,
@@ -135,12 +135,13 @@ export const HomePage = () => {
         }
     )
 
+    const { setIsOpen } = useTour();
     useEffect(() => {
-      const guildTourStatus = sessionStorage.getItem("guild_tour_status");
+        const guildTourStatus = sessionStorage.getItem("guild_tour_status");
 
-      if (guildTourStatus !== 'done') setIsOpen(true);
-    })
-    
+        if (guildTourStatus !== "done") setIsOpen(true);
+    });
+
 
     return (
         <div

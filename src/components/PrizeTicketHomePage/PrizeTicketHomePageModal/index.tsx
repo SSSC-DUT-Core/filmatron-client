@@ -10,7 +10,7 @@ interface PrizeTicketHomePageModalProps {
     title: string;
     ticketLogo: string;
     announcementDate: string;
-    typeOfPrize: string;
+    ticketEvent: string;
     prizeImg: string;
     walletCreatorAddress: string;
     dateCreated: string;
