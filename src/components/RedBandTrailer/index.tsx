@@ -35,7 +35,7 @@ export const RedBandTrailer: React.FC<RedBandTrailerProps> = ({ data, onClick })
           backgroundImage: `url(${data?.redBandTrailerImg})`,
         }}
       >
-        <Button className="playBut h-[4rem] w-[4rem]" >
+        <button className="playBut h-[4rem] w-[4rem]" >
           <a href="#trailer" className="">
             <svg
               version="1.1"
@@ -74,7 +74,7 @@ export const RedBandTrailer: React.FC<RedBandTrailerProps> = ({ data, onClick })
               />
             </svg>
           </a>
-        </Button>
+        </button>
       </div>
 
       <RedBandTrailerModal isOpen={isModalOpen} onClose={handleToggle} videoUrl={data?.redBandTrailerVideoUrl} />
