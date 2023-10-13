@@ -213,9 +213,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                                 >
                                     Release date:
                                 </p>
-                                <p
-                                    className="text-white font-normal text-16"
-                                >
+                                <p className="text-white font-normal text-16">
                                     {releaseDate}
                                 </p>
                             </div>
@@ -282,9 +280,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                             >
                                 Star:
                             </p>
-                            <p
-                                className="text-white font-normal text-16"
-                            >
+                            <p className="text-white font-normal text-16">
                                 {stars?.join(", ")}
                             </p>
                         </div>
@@ -304,9 +300,11 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
                             <p
                                 className="text-white font-normal text-16"
-                                style={{
-                                    // opacity: "0.9",
-                                }}
+                                style={
+                                    {
+                                        // opacity: "0.9",
+                                    }
+                                }
                             >
                                 {director?.join(", ")}
                             </p>
@@ -375,60 +373,59 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                                 // image props to not crash the img
                                 objectFit: "cover",
                                 objectPosition: "center",
-                            }}  
-                            src={listCnft?.[0]?.uri} 
-                            alt="" 
+                            }}
+                            src={listCnft?.[0]?.uri}
+                            alt=""
                         />
-           
-          
+                    </div>
 
-          </div>
+                    {/* NFT claim bar */}
+                    <div
+                        className="flex row justify-between items-center"
+                        style={{
+                            width: "24rem",
+                            height: "5rem",
+                            borderRadius: "16px",
+                            border: "1px solid rgb(255, 255, 255)",
+                            padding: "16px",
+                            gap: "4px",
+                            backgroundColor: "rgba(30, 30, 30, 0.12)",
+                            position: "absolute",
+                            top: "16%",
+                            right: "8%",
+                            backdropFilter: "blur(30px)",
+                        }}
+                    >
+                        {/* NFT claim bar infor */}
+                        <div
+                            className="flex row justify-between items-center gap-[16px]"
+                            style={{
+                                // border: '1px solid orange',
+                                width: "256px",
+                                height: "54px",
+                            }}
+                        >
+                            {/* NFT event */}
+                            <div className="flex col">
+                                <div>
+                                    <p
+                                        className="font-bold text-16"
+                                        style={{
+                                            color: "#00FFEE",
+                                            marginBottom: "8px",
+                                        }}
+                                    >
+                                        NFT Event
+                                    </p>
 
-
-
-          {/* NFT claim bar */}
-          <div className='flex row justify-between items-center'
-            style={{
-              width: '24rem',
-              height: '5rem',
-              borderRadius: '16px',
-              border: '1px solid rgb(255, 255, 255)',
-              padding: '16px',
-              gap: '4px',
-              backgroundColor: 'rgba(30, 30, 30, 0.12)',
-              position: 'absolute',
-              top: '16%',
-              right: '8%',
-              backdropFilter: 'blur(30px)',
-            }}
-          >
-
-            {/* NFT claim bar infor */}
-            <div className='flex row justify-between items-center gap-[16px]'
-              style={{
-                // border: '1px solid orange',
-                width: '256px',
-                height: '54px',
-              }}
-            >
-
-              {/* NFT event */}
-              <div className='flex col'
-              >
-                <div>
-                    <p className='font-bold text-16' style={{ 
-                      color: '#00FFEE', 
-                      marginBottom: '8px',
-                    }}>
-                      NFT Event
-                    </p>
-                    
-                    <p className='font-bold text-16' style={{ color: '#FFFFFF' }}>
-                      {NFTEventName}
-                    </p>
-                </div>
-              
-              </div>
+                                    <p
+                                        className="font-bold text-16"
+                                        style={{ color: "#FFFFFF" }}
+                                    >
+                                        {NFTEventName}
+                                    </p>
+                                </div>
+                            </div>
 
                             <div className="flex col justify-center items-center">
                                 <NFTClaimBarTimeCountDown
@@ -439,7 +436,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
                         {listCnft && (
                             <Button
-                                className="NFTClaimButton"
+                                className="NFTClaimButton claim-button"
                                 disabled={loading || isPrivateAccess}
                                 onClick={onClaim}
                             >
