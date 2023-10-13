@@ -5,8 +5,9 @@ import React, { useState, useEffect } from 'react';
 import './filmPosterDetail.css'
 import { FilmCompressedNftEntity, useMintCompressedNftMutation } from '@/graphql/generated';
 import toast from 'react-hot-toast';
-import Image from 'next/image';
 import { Button } from '../../ui/button';
+import { Modal } from '../../ui/modal';
+import { QRCode } from '../../card-section/qr-code';
 
 
 export type FilmPosterDetailProps = {
@@ -109,6 +110,7 @@ export const displayGenres = (genres: string[]) => {
   
 
 export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerImg, listCnft, refetch, isPrivateAccess}: FilmPosterDetailProps) => {
+  const [isShowQrCode, setIsShowQrCode] = useState<boolean>(false);
     const posterStyle = {
         // border: '1px solid red',
         backgroundImage: `url(${posterSrc})`,
@@ -151,6 +153,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
         },
         onCompleted: () => {
             toast.success("NFT Claimed!");
+            setIsShowQrCode(true)
             refetch?.();
         },
         context: {
@@ -162,9 +165,29 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
       
     });
   };
+
+  const onCloseQrCode = () => {
+    setIsShowQrCode(false)
+  }
   
     return (
         <div className="relative flex items-end mb-6" style={posterStyle}>
+            <Modal
+                title="Your QR code:"
+                description="Share the movie with everyone."
+                isOpen={isShowQrCode}
+                onClose={onCloseQrCode}
+            >
+                <div className="pt-6 flex flex-col justify-center space-x-2 items-center w-full">
+                    <QRCode />
+                    <Button
+                        onClick={onCloseQrCode}
+                        className="w-60 mt-8 hover:bg-brand rounded-full transform active:scale-75 transition-transform hover:scale-110 duration-500 ease-out cursor-pointer flex flex-row justify-center items-center bg-brand text-black"
+                    >
+                        <p className="text-lg font-semibold">Close</p>
+                    </Button>
+                </div>
+            </Modal>
             {/* poster logo + info section */}
             <div
                 className=""

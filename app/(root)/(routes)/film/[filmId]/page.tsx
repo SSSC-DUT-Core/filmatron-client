@@ -10,16 +10,9 @@ import {FilmPosterDetail} from '@/src/components/Film/filmPosterDetail/index';
 import {FilmRow } from '@/src/components/Film/FilmRow/index';
 import Image from 'next/image';
 import { LockIcon } from '@/public/assets';
+import { CNFT } from '@/src/types/types';
 import PrivateAccessImage from "../../../../../images/private-access.png";
-import { mapFilmNftsFromGraphQLResponse } from '../../../../../src/lib/utils';
-
-
-interface CNFT {
-    id: string;
-    name: string;
-    description?: string;
-    symbol: string;
-}
+import { getAssetsByOwner, mapFilmNftsFromGraphQLResponse } from '../../../../../src/lib/utils';
 
 
 interface HomepageDetailProps {
@@ -29,28 +22,6 @@ interface HomepageDetailProps {
 const HomepageDetail = ({
   params: { filmId },
 }: HomepageDetailProps) => {
-   const getAssetsByOwner = async (ownerAddress: string) => {
-       const url = `https://devnet.helius-rpc.com/?api-key=ea771cf6-1e92-4e45-a2fc-e8bd8f6ae6a0`;
-       const response = await fetch(url, {
-           method: "POST",
-           headers: {
-               "Content-Type": "application/json",
-           },
-           body: JSON.stringify({
-               jsonrpc: "2.0",
-               id: "my-id",
-               method: "getAssetsByOwner",
-               params: {
-                   ownerAddress,
-                   page: 1,
-                   limit: 1000,
-               },
-           }),
-       });
-       const { result } = await response.json();
-       return result;
-   };
-
   const {data: getFilmById,loading,error} = useGetFilmByIdQuery({
     variables: {
         id: filmId
@@ -91,6 +62,7 @@ const HomepageDetail = ({
                        name: item.content.metadata.name,
                        description: item.content.metadata.description,
                        symbol: item.content.metadata.symbol,
+                       image: item.content.json_uri,
                    }))
                );
            });
@@ -139,6 +111,7 @@ const HomepageDetail = ({
 
 
  const [listCnft, setListCnft] = useState<CNFT[]>([]);
+
  const filmNfts = mapFilmNftsFromGraphQLResponse(filmsNftsData)
  const isPrivateAccess = 
  filmNfts?.some(item => listCnft?.some(ownedNft => ownedNft.name === item.name));

@@ -109,3 +109,13 @@ export const NFTs: NFT[] = [
         attributes: ["Attribute 5", "Attribute 6"],
     },
 ];
+
+
+export interface CNFT {
+    id: string;
+    name: string;
+    description?: string;
+    symbol: string;
+    image: string;
+    author?: string;
+}

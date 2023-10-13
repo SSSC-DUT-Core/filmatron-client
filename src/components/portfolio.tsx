@@ -1,8 +1,8 @@
 "use client";
 
+
 import { CopyIcon, ChatIcon, Facebook, Google, Twitter } from "@/public/assets";
 import Image, { StaticImageData } from "next/image";
-
 export interface IPortfolioProps {
     name: string;
     description: string;
@@ -29,6 +29,7 @@ const socialList = [
 ];
 
 export const Portfolio = ({ name, description, image }: IPortfolioProps) => {
+
     return (
         <div className="w-full bg-black bg-opacity-30 p-6 rounded-t-3xl flex flex-row">
             <div className="w-1/4 flex justify-center items-center">
