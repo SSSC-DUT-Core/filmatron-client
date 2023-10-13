@@ -220,7 +220,6 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                                 </p>
                                 <p
                                     className="text-white font-normal text-16"
-                                    style={{}}
                                 >
                                     {releaseDate}
                                 </p>
@@ -290,9 +289,6 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                             </p>
                             <p
                                 className="text-white font-normal text-16"
-                                style={{
-                                    opacity: "0.9",
-                                }}
                             >
                                 {stars?.join(", ")}
                             </p>
@@ -314,7 +310,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                             <p
                                 className="text-white font-normal text-16"
                                 style={{
-                                    opacity: "0.9",
+                                    // opacity: "0.9",
                                 }}
                             >
                                 {director?.join(", ")}
@@ -419,9 +415,9 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
           >
 
             {/* NFT claim bar infor */}
-            <div className='flex row justify-between items-center'
+            <div className='flex row justify-between items-center gap-[16px]'
               style={{
-                // border: '1px solid orange',
+                border: '1px solid orange',
                 width: '256px',
                 height: '54px',
               }}
