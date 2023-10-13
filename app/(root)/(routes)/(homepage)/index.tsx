@@ -1,5 +1,5 @@
 import { formatDate, mapFilmNftsFromGraphQLResponse, mapFilmsFromGraphQLResponse } from "@/src/lib/index";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FilmPosterDetail } from "@/src/components/Film/filmPosterDetail";
 import {
     useGetFilmsQuery,
@@ -8,7 +8,7 @@ import {
 } from "@/graphql/generated/index";
 import { PrizeTicketHomePage } from "@/src/components/PrizeTicketHomePage";
 import { FilmRow } from "@/src/components/Film/FilmRow";
-
+import { useTour } from "@reactour/tour";
 import { LiveFilmSection } from "./component/LiveFilmSection";
 import { RedBandTrailer } from "../../../../src/components/RedBandTrailer";
 
@@ -110,6 +110,7 @@ const redBandTrailersFetching = [
 ];
 
 export const HomePage = () => {
+  const { setIsOpen } = useTour();
     const {
         data: film,
         loading,
@@ -134,6 +135,12 @@ export const HomePage = () => {
         }
     )
 
+    useEffect(() => {
+      const guildTourStatus = sessionStorage.getItem("guild_tour_status");
+
+      if (guildTourStatus !== 'done') setIsOpen(true);
+    })
+    
 
     return (
         <div

@@ -5,9 +5,10 @@ import { Inter } from "next/font/google";
 import { ModalProvider } from "@/src/providers/modal-provider";
 import { ToastProvider } from "@/src/providers/toast-provider";
 import { ThemeProvider } from "@/src/providers/theme-provider";
-
+import { TourProvider } from "@reactour/tour";
 import "./globals.css";
 import { ApolloWrapper } from "@/src/config/apollo-wrapper";
+import { steps } from "@/src/components/steps";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +17,9 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
+  const onCloseTour = () => {
+    sessionStorage.setItem("guild_tour_status", "done");
+  };
     return (
         <>
             <html lang="en">
@@ -26,9 +30,14 @@ export default function RootLayout({
                             defaultTheme="system"
                             enableSystem
                         >
-                            <ToastProvider />
-                            <ModalProvider />
-                            {children}
+                            <TourProvider
+                                steps={steps}
+                                beforeClose={onCloseTour}
+                            >
+                                <ToastProvider />
+                                <ModalProvider />
+                                {children}
+                            </TourProvider>
                         </ThemeProvider>
                     </ApolloWrapper>
                 </body>

@@ -113,3 +113,16 @@ body,
 .border-gradient {
   background-image: linear-gradient(to right, rgba(243, 200, 121, 0.7), rgba(169, 102, 255, 0.7));
 }
+
+.reactour__popover {
+  border-radius: 1rem;
+  opacity:0.95;
+}
+
+.reactour__popover span {
+ background: #FDD949 !important;
+}
+
+.reactour__popover div {
+ --reactour-accent: #FDD949 !important;
+}

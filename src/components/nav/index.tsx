@@ -93,7 +93,7 @@ export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
     </>
   ) : (
     <Link href="/login">
-      <Button className="NFTClaimButton">
+      <Button data-tut="reactour__iso" className="NFTClaimButton">
         Login
       </Button>
     </Link>

@@ -445,7 +445,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
                         {listCnft && (
                             <Button
-                                className="NFTClaimButton"
+                                className="NFTClaimButton claim-button"
                                 disabled={loading || isPrivateAccess}
                                 onClick={onClaim}
                             >

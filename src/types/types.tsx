@@ -58,7 +58,7 @@ export type FilmCardInRowProps = {
     title: string;
     rating?: number;
     genre: string;
-    onClick: () => void;
+    onClick?: () => void;
 };
 
 

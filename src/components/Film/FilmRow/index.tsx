@@ -195,24 +195,15 @@ export const FilmRow = ({ filmRowTitle, filmRow }: sectionFilmRow) => {
                     {filmRow?.map((film: FilmEntity, index: number) => (
                         <div
                             key={index}
-                            onClick={() => {
-                                console.log(filmRow);
-                                // setPreviousFilmIndex(index);
-                                // setSelectedFilm(film);
-                            }}
+                            className={"filmmatron-" + film.id}
                         >
                             <Link href={`/${getFilmRoute(film.id)}`}>
-                            <FilmCardInRow
-                                posterSrc={film.avatar}
-                                title={film.name}
-                                genre={film.genres[0]}
-                                onClick={() => {
-                                    // setPreviousFilmIndex(index);
-                                    // setSelectedFilm(film);
-                                }}
-                            />
+                                <FilmCardInRow
+                                    posterSrc={film.avatar}
+                                    title={film.name}
+                                    genre={film.genres[0]}
+                                />
                             </Link>
-                          
                         </div>
                     ))}
                 </div>
