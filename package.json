@@ -61,6 +61,7 @@
         "merkletreejs": "^0.3.10",
         "next": "13.4.5",
         "next-cloudinary": "^4.12.0",
+        "next-share": "^0.27.0",
         "next-themes": "^0.2.1",
         "postcss": "8.4.24",
         "prettier": "^3.0.3",

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, EmailShareButton, EmailIcon, LineShareButton, LineIcon, TelegramShareButton, TelegramIcon } from "next-share";
 
 export interface IQRCodeProps {
 }
@@ -35,6 +36,46 @@ export const QRCode = (props: IQRCodeProps) => {
   return (
       <div>
           <div id="canvas" />
+
+          <div className="flex flex-row mt-8 w-full h-full justify-center items-center">
+              <div className="w-1/4 flex justify-center items-center">
+                  <FacebookShareButton
+                      url="https://filmatron.vercel.app/"
+                      quote="Filmatron, a movie ticket claiming platform, is a convenient way to watch your favorite movies. By using the platform, you can find the movies you want to see, follow top casts, and book tickets quickly and easily."
+                      hashtag="#filmatron"
+                  >
+                      <FacebookIcon size={48} round />
+                  </FacebookShareButton>
+              </div>
+
+              <div className="w-1/4 flex justify-center items-center">
+                  <TelegramShareButton
+                      url="https://filmatron.vercel.app/"
+                      title="Filmatron, a movie ticket claiming platform, is a convenient way to watch your favorite movies. By using the platform, you can find the movies you want to see, follow top casts, and book tickets quickly and easily."
+                  >
+                      <TelegramIcon size={48} round />
+                  </TelegramShareButton>
+              </div>
+
+              <div className="w-1/4 flex justify-center items-center">
+                  <TwitterShareButton
+                      url="https://filmatron.vercel.app/"
+                      title="Filmatron, a movie ticket claiming platform, is a convenient way to watch your favorite movies. By using the platform, you can find the movies you want to see, follow top casts, and book tickets quickly and easily."
+                  >
+                      <TwitterIcon size={48} round />
+                  </TwitterShareButton>
+              </div>
+
+              <div className="w-1/4 flex justify-center items-center">
+                  <EmailShareButton
+                      url="https://filmatron.vercel.app/"
+                      subject="Next Share"
+                      body="body"
+                  >
+                      <EmailIcon size={48} round />
+                  </EmailShareButton>
+              </div>
+          </div>
       </div>
   );
 }
