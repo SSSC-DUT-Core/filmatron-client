@@ -1,12 +1,12 @@
 "use client"
+
 import React, { useState, useRef } from 'react';
 import { Modal } from './RedBandTrailerModal'; // Update the path accordingly
 import './RedBandTrailer.css';
 
 
-//extract youtube video id from url 
 const getYouTubeVideoId = (url: string | undefined): string | undefined => {
-  const match = url?.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  const match = url?.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
   return match?.[1];
 }
 

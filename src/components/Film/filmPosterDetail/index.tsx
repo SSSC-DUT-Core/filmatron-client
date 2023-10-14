@@ -127,7 +127,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
     };
 
     const getYouTubeVideoId = (url: string | undefined): string | undefined => {
-        const match = url?.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+        const match = url?.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
         return match?.[1];
     }
 
@@ -498,7 +498,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
             </div>
 
             <FilmPosterTrailerModal isOpen={isModalOpen} onClose={onClose}>
-                <iframe ref={iframeRef} width="100%" height="536px" title="trailer" src={embedUrl}></iframe>
+                <iframe ref={iframeRef} width="100%" height="536px" title="trailer" src={embedUrl} />
             </FilmPosterTrailerModal>
         </div>
     );
