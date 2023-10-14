@@ -58,9 +58,8 @@
   
 
 .NFTClaimButton {
-    width: 6rem;
-    height: 1.5rem;
-    border-radius:20px;
+
+    
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.16);
     font-size: 16px;
@@ -77,8 +76,14 @@
   .NFTClaimButton:hover {
     transform: scale(1.05); 
     box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.16); 
+    background-color: #f5ad2e;
     cursor: pointer;
   }
+
+  .NFTClaimButton:hover .NFTClaimButtonIcon{
+    transform: scale(1.05); 
+  }
+
 
   .NFTImg-multi-border {
     width: 296px;
@@ -95,4 +100,3 @@
         cursor: pointer;
         box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.16); 
     }
- 

@@ -164,7 +164,7 @@ export const HomePage = () => {
                     director={firstFilm.directors}
 
                     NFTClaimImg={filmPosterDetailData.NFTClaimImg}
-                    NFTEventName={filmPosterDetailData.NFTEventName}
+                    NFTEventName={firstFilm?.name}
 
                     expirationDate={firstFilm.endDateSubscriber}
                     trailerVideo={filmPosterDetailData.trailerVideo}

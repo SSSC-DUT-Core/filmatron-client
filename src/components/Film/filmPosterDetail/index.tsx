@@ -49,28 +49,40 @@ export const calculateRemainingTime = (expirationTime: number) => {
         const totalMinutes = Math.floor(totalSeconds / 60);
         const totalHours = Math.floor(totalMinutes / 60);
 
+        const days = Math.floor(totalHours / 24);
         const hours = totalHours % 24;
         const minutes = totalMinutes % 60;
-        const seconds = totalSeconds % 60;
 
-        const formattedHours = hours > 9 ? hours : `0${hours}`;
-        const formattedMinutes = minutes > 9 ? minutes : `0${minutes}`;
-        const formattedSeconds = seconds > 9 ? seconds : `0${seconds}`;
+        const formattedDays = days > 9 ? days.toString() : `0${days}`;
+        const formattedHours = hours > 9 ? hours.toString() : `0${hours}`;
+        const formattedMinutes = minutes > 9 ? minutes.toString() : `0${minutes}`;
 
-        return `${formattedHours}H : ${formattedMinutes}M : ${formattedSeconds}S`;
+        return {
+            remainDays: formattedDays,
+            remainHours: formattedHours,
+            remainMins: formattedMinutes,
+        };
     }
 
-    return 'Expired';
+    return {
+        remainDays: '00',
+        remainHours: '00',
+        remainMins: '00',
+    };
 };
 
 export const NFTClaimBarTimeCountDown = ({ expirationDate }: { expirationDate?: string }) => {
-    const [remainingTime, setRemainingTime] = useState('?H: ?M: ?S');
+    const [remainingTime, setRemainingTime] = useState({
+        remainDays: '00',
+        remainHours: '00',
+        remainMins: '00',
+    });
     const expirationTime = new Date(String(expirationDate)).getTime();
 
     useEffect(() => {
-
         const updateRemainingTime = () => {
-            setRemainingTime(calculateRemainingTime(expirationTime));
+            const calculatedTime = calculateRemainingTime(expirationTime);
+            setRemainingTime(calculatedTime);
         };
 
         const intervalId = setInterval(updateRemainingTime, 1000);
@@ -84,13 +96,32 @@ export const NFTClaimBarTimeCountDown = ({ expirationDate }: { expirationDate?: 
                 <p className='font-bold text-16' style={{ color: '#00FFEE', marginBottom: '8px' }}>
                     Remaining Time
                 </p>
-                <p className='font-bold text-16' style={{ width: '142px', color: '#FFFFFF' }}>
-                    {remainingTime}
-                </p>
+                <div className='flex justify-between items-center' style={{ width: '152px', color: 'black' }}>
+
+                    <div className="flex space-x-1">
+                        <div className="flex-none py-1 leading-5 px-2 text-center text-[12px] text-black font-semibold rounded-md bg-yellow-300">
+                            {remainingTime.remainDays + " D"}
+                        </div>
+
+                        <span className='text-white text-[16px] font-bold'>:</span>
+
+                        <div className="flex-none py-1 leading-5 px-2 text-center text-[12px] text-black font-semibold rounded-md bg-yellow-300">
+                            {remainingTime.remainHours + " H"}
+                        </div>
+
+                        <span className='text-white text-[16px] font-bold'>:</span>
+
+                        <div className="flex-none py-1 leading-5 px-2 text-center text-[12px] text-black font-semibold rounded-md bg-yellow-300">
+                            {remainingTime.remainMins + " M"}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
 };
+
+
 
 
 export const displayGenres = (genres: string[]) => {
@@ -134,7 +165,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
     // create embed url from youtube video id and add autoplay 
     const embedUrl = `https://www.youtube.com/embed/${getYouTubeVideoId(trailerVideo)}?autoplay=1`;
 
-  const [isShowQrCode, setIsShowQrCode] = useState<boolean>(false);
+    const [isShowQrCode, setIsShowQrCode] = useState<boolean>(false);
     const posterStyle = {
         // border: '1px solid red',
         backgroundImage: `url(${posterSrc})`,
@@ -153,7 +184,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        height: "16rem",
+        // height: "16rem",
         border: '1px solid #fdd848',
 
     };
@@ -170,29 +201,31 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
         }
         );
 
-  const onClaim = async () => {
-    mintCompressedNftMutation({
-        variables: {
-            cNFTId: listCnft?.[0]?.id,
-        },
-        onCompleted: () => {
-            toast.success("NFT Claimed!");
-            setIsShowQrCode(true)
-            refetch?.();
-        },
-        context: {
-            headers: {
-                Authorization: localStorage.getItem("access_token"),
+    const onClaim = async () => {
+        mintCompressedNftMutation({
+            variables: {
+                cNFTId: listCnft?.[0]?.id,
             },
-        },
+            onCompleted: () => {
+                toast.success("NFT Claimed!");
+                setIsShowQrCode(true)
+                refetch?.();
+            },
+            context: {
+                headers: {
+                    Authorization: localStorage.getItem("access_token"),
+                },
+            },
 
-      
-    });
-  };
+        
+        });
+    };
 
-  const onCloseQrCode = () => {
-    setIsShowQrCode(false)
-  }
+    const onCloseQrCode = () => {
+        setIsShowQrCode(false)
+    }
+
+    const giftIconUrl = "/assets/icons/gift-icon.svg";
   
     return (
         <div className="relative flex items-end mb-6" style={posterStyle}>
@@ -240,7 +273,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                 {/* img trailer + poster info wrapper */}
                 <div className="flex items-start justify-start flex-row gap-4">
                     {/* img trailer */}
-                    <div className="w-1/3" style={trailerImgStyle} />
+                    <div className="w-[12.5rem] h-[19rem]" style={trailerImgStyle} />
 
                     <div className="flex items-start justify-start flex-col">
                         {/*  Release date and duration */}
@@ -413,12 +446,12 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                     {/* NFT image */}
                     <div>
                         <img
-                            className="NFTImage"
-                            width="192"
-                            height="272"
+                            className="NFTImage w-[14.5rem] h-[20rem]"
+                            width=""
+                            height=""
                             style={{
                                 // borderRadius: '16px',
-                                transform: "translate(-50%, -50%)",
+                                transform: "translate(-48%, -42%)",
 
                                 // image props to not crash the img
                                 objectFit: "cover",
@@ -431,14 +464,13 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
                     {/* NFT claim bar */}
                     <div
-                        className="flex row justify-between items-center"
+                        className="flex row justify-between items-center py-[16px] px-[12px]"
                         style={{
-                            width: "24rem",
+                            // width: "27rem",
+                            gap: "46px",
                             height: "5rem",
                             borderRadius: "16px",
                             border: "1px solid rgb(255, 255, 255)",
-                            padding: "16px",
-                            gap: "4px",
                             backgroundColor: "rgba(30, 30, 30, 0.12)",
                             position: "absolute",
                             top: "16%",
@@ -448,7 +480,8 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                     >
                         {/* NFT claim bar infor */}
                         <div
-                            className="flex row justify-between items-center gap-[16px]"
+                            className="flex row justify-between 
+                             items-center gap-[16px]"
                             style={{
                                 // border: '1px solid orange',
                                 width: "256px",
@@ -456,7 +489,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                             }}
                         >
                             {/* NFT event */}
-                            <div className="flex col">
+                            <div className="flex col shrink-0">
                                 <div>
                                     <p
                                         className="font-bold text-16"
@@ -469,7 +502,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                                     </p>
 
                                     <p
-                                        className="font-bold text-16"
+                                        className="font-bold text-[14px]"
                                         style={{ color: "#FFFFFF" }}
                                     >
                                         {NFTEventName}
@@ -486,11 +519,16 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
                         {listCnft && (
                             <Button
-                                className="NFTClaimButton claim-button"
+                                className="NFTClaimButton w-[5rem] h-[2.5rem] rounded-[36px] claim-button text-black text-[24px] gap-2"
                                 disabled={loading || isPrivateAccess}
                                 onClick={onClaim}
                             >
-                                CLAIM
+                                 <img
+                                    src={giftIconUrl}
+                                    alt=""
+                                    className="w-7 h-7 NFTClaimButtonIcon" // Adjust the size as needed
+                                />
+                                Claim
                             </Button>
                         )}
                     </div>
