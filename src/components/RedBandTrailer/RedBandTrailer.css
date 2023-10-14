@@ -8,7 +8,7 @@
 }
 
 .playBut {
-    
+    background-color: transparent;
     display: inline-block;
     transition: all 0.5s ease;
     /* width: 36.64px;

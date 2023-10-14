@@ -32,7 +32,7 @@ const filmPosterDetailData = {
 
     expirationDate: "2023-10-18T12:30:00",
 
-    trailerVideo: "link vid from youtube",
+    trailerVideo: "https://www.youtube.com/watch?v=qdURq3NXQ0U",
     trailerImg: "/assets/images/film1.png",
 
     eventImg: "./assets/filmDetail/gallery/galleryImg1.png",
@@ -73,39 +73,39 @@ const prizeList = [
 
 const redBandTrailersFetching = [
     {
-      filmId: 1,
-      redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-1.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+        filmId: 1,
+        redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-1.png',
+        redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
-      filmId: 2,
-      redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-2.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+        filmId: 2,
+        redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-2.png',
+        redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
-      filmId: 3,
-      redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-3.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+        filmId: 3,
+        redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-3.png',
+        redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
-      filmId: 4,
-      redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-4.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+        filmId: 4,
+        redBandTrailerImg: '/assets/redBandTrailer/nguoi-mat-troi-redband-trailer-4.png',
+        redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
-      filmId: 5,
-      redBandTrailerImg: '/assets/images/film1.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+        filmId: 5,
+        redBandTrailerImg: '/assets/images/film1.png',
+        redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
-      filmId: 6,
-      redBandTrailerImg: '/assets/images/film1.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+        filmId: 6,
+        redBandTrailerImg: '/assets/images/film1.png',
+        redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
     {
-      filmId: 7,
-      redBandTrailerImg: '/assets/images/film1.png',
-      redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
+        filmId: 7,
+        redBandTrailerImg: '/assets/images/film1.png',
+        redBandTrailerVideoUrl: 'https://www.youtube.com/watch?v=1Vnghdsjmd0',
     },
 ];
 
@@ -122,15 +122,15 @@ export const HomePage = () => {
             setFilmList(mapFilmsFromGraphQLResponse(data));
         },
     });
-   
+
     const [filmList, setFilmList] = useState<FilmEntity[]>([]);
-    const firstFilm = filmList?.[filmList.length-1];
-    const {data: filmsNftsData} = useGetCompressedNfTsOfFilmQuery(
+    const firstFilm = filmList?.[filmList.length - 1];
+    const { data: filmsNftsData } = useGetCompressedNfTsOfFilmQuery(
         {
-          variables: {
-            filmId : firstFilm?.id
-          },
-          fetchPolicy: 'network-only', 
+            variables: {
+                filmId: firstFilm?.id
+            },
+            fetchPolicy: 'network-only',
         }
     )
 
@@ -154,7 +154,7 @@ export const HomePage = () => {
                     genres={firstFilm.genres}
                     stars={firstFilm.stars}
                     director={firstFilm.directors}
-                    
+
                     NFTClaimImg={filmPosterDetailData.NFTClaimImg}
                     NFTEventName={filmPosterDetailData.NFTEventName}
 
@@ -234,20 +234,19 @@ export const HomePage = () => {
                     <PrizeTicketHomePage key={index} {...prize} />
                 ))} */}
 
-                    {redBandTrailersFetching.slice(0, 2)?.map((trailer, index) => (
-                        <RedBandTrailer
-                            key={index}
-                            data={trailer}
-                            onClick={(id: string) => {
-                                console.log("RedBandTrailer: clicked: ", id);
-                        
-                            }}
-                        />
-                    ))}
+                        {redBandTrailersFetching.slice(0, 2)?.map((trailer, index) => (
+                            <RedBandTrailer
+                                key={index}
+                                data={trailer}
+                                onClick={(id: string) => {
+                                    console.log("RedBandTrailer: clicked: ", id);
+                                }}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
-            
+
             <LiveFilmSection films={filmList} />
 
             {/* <homepageDetailPoster/> */}

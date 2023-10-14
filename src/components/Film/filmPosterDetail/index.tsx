@@ -1,12 +1,13 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import './filmPosterDetail.css'
 import { FilmCompressedNftEntity, useMintCompressedNftMutation } from '@/graphql/generated';
 import toast from 'react-hot-toast';
 import Image from 'next/image';
 import { Button } from '../../ui/button';
+import { FilmPosterTrailerModal } from './FilmPosterTrailerModal';
 
 
 export type FilmPosterDetailProps = {
@@ -38,27 +39,27 @@ export type FilmPosterDetailProps = {
 };
 
 export const calculateRemainingTime = (expirationTime: number) => {
-  const now = new Date().getTime();
-  const timeDifference = expirationTime - now;
+    const now = new Date().getTime();
+    const timeDifference = expirationTime - now;
 
-  if (timeDifference > 0) {
-    const totalMilliseconds = timeDifference;
-    const totalSeconds = Math.floor(totalMilliseconds / 1000);
-    const totalMinutes = Math.floor(totalSeconds / 60);
-    const totalHours = Math.floor(totalMinutes / 60);
+    if (timeDifference > 0) {
+        const totalMilliseconds = timeDifference;
+        const totalSeconds = Math.floor(totalMilliseconds / 1000);
+        const totalMinutes = Math.floor(totalSeconds / 60);
+        const totalHours = Math.floor(totalMinutes / 60);
 
-    const hours = totalHours % 24;
-    const minutes = totalMinutes % 60;
-    const seconds = totalSeconds % 60;
+        const hours = totalHours % 24;
+        const minutes = totalMinutes % 60;
+        const seconds = totalSeconds % 60;
 
-    const formattedHours = hours > 9 ? hours : `0${hours}`;
-    const formattedMinutes = minutes > 9 ? minutes : `0${minutes}`;
-    const formattedSeconds = seconds > 9 ? seconds : `0${seconds}`;
+        const formattedHours = hours > 9 ? hours : `0${hours}`;
+        const formattedMinutes = minutes > 9 ? minutes : `0${minutes}`;
+        const formattedSeconds = seconds > 9 ? seconds : `0${seconds}`;
 
-    return `${formattedHours}H : ${formattedMinutes}M : ${formattedSeconds}S`;
-  }
+        return `${formattedHours}H : ${formattedMinutes}M : ${formattedSeconds}S`;
+    }
 
-  return 'Expired';
+    return 'Expired';
 };
 
 export const NFTClaimBarTimeCountDown = ({ expirationDate }: { expirationDate?: string }) => {
@@ -66,49 +67,72 @@ export const NFTClaimBarTimeCountDown = ({ expirationDate }: { expirationDate?: 
     const expirationTime = new Date(String(expirationDate)).getTime();
 
     useEffect(() => {
-  
-      const updateRemainingTime = () => {
-        setRemainingTime(calculateRemainingTime(expirationTime));
-      };
-  
-      const intervalId = setInterval(updateRemainingTime, 1000);
-  
-      return () => clearInterval(intervalId);
+
+        const updateRemainingTime = () => {
+            setRemainingTime(calculateRemainingTime(expirationTime));
+        };
+
+        const intervalId = setInterval(updateRemainingTime, 1000);
+
+        return () => clearInterval(intervalId);
     }, [expirationDate]);
-  
+
     return (
-      <div className='flex col justify-center items-center'>
-        <div>
-          <p className='font-bold text-16' style={{ color: '#00FFEE', marginBottom: '8px' }}>
-            Remaining Time
-          </p>
-          <p className='font-bold text-16' style={{ width: '142px', color: '#FFFFFF' }}>
-            {remainingTime}
-          </p>
+        <div className='flex col justify-center items-center'>
+            <div>
+                <p className='font-bold text-16' style={{ color: '#00FFEE', marginBottom: '8px' }}>
+                    Remaining Time
+                </p>
+                <p className='font-bold text-16' style={{ width: '142px', color: '#FFFFFF' }}>
+                    {remainingTime}
+                </p>
+            </div>
         </div>
-      </div>
     );
-  };
+};
 
 
 export const displayGenres = (genres: string[]) => {
-  return (
-    <div className="max-w-450 flex flex-wrap">
-      {genres.map((genre, index) => (
-        <div
-          key={index}
-          className="genreTag"
->
-          <p className="font-bold text-16">{genre}</p>
+    return (
+        <div className="max-w-450 flex flex-wrap">
+            {genres.map((genre, index) => (
+                <div
+                    key={index}
+                    className="genreTag"
+                >
+                    <p className="font-bold text-16">{genre}</p>
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
-  
 
-export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerImg, listCnft, refetch, isPrivateAccess}: FilmPosterDetailProps) => {
+
+export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerVideo, trailerImg, listCnft, refetch, isPrivateAccess }: FilmPosterDetailProps) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleToggle = () => {
+        setIsModalOpen(!isModalOpen);
+    };
+
+    const iframeRef = useRef<HTMLIFrameElement>(null);
+
+    const onClose = () => {
+        if (iframeRef.current) {
+            iframeRef.current.setAttribute('src', '');
+        }
+        setIsModalOpen(false);
+    };
+
+    const getYouTubeVideoId = (url: string | undefined): string | undefined => {
+        const match = url?.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+        return match?.[1];
+    }
+
+    // create embed url from youtube video id and add autoplay 
+    const embedUrl = `https://www.youtube.com/embed/${getYouTubeVideoId(trailerVideo)}?autoplay=1`;
+
     const posterStyle = {
         // border: '1px solid red',
         backgroundImage: `url(${posterSrc})`,
@@ -122,47 +146,47 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
         borderRadius: "32px",
     };
 
-  const trailerImgStyle = {
-    backgroundImage: `url(${trailerImg})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    height: "16rem", 
-    border: '1px solid #fdd848',
+    const trailerImgStyle = {
+        backgroundImage: `url(${trailerImg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        height: "16rem",
+        border: '1px solid #fdd848',
 
-  };
-  const [mintCompressedNftMutation, { data, loading }] =
-      useMintCompressedNftMutation({
-        variables: {
-            cNFTId: listCnft?.[0]?.id,
-        },
-          context: {
-              headers: {
-                  Authorization: localStorage.getItem("access_token"),
-              },
-          },
-      }
-      );
-
-  const onClaim = async () => {
-    mintCompressedNftMutation({
-        variables: {
-            cNFTId: listCnft?.[0]?.id,
-        },
-        onCompleted: () => {
-            toast.success("NFT Claimed!");
-            refetch?.();
-        },
-        context: {
-            headers: {
-                Authorization: localStorage.getItem("access_token"),
+    };
+    const [mintCompressedNftMutation, { data, loading }] =
+        useMintCompressedNftMutation({
+            variables: {
+                cNFTId: listCnft?.[0]?.id,
             },
-        },
+            context: {
+                headers: {
+                    Authorization: localStorage.getItem("access_token"),
+                },
+            },
+        }
+        );
 
-      
-    });
-  };
-  
+    const onClaim = async () => {
+        mintCompressedNftMutation({
+            variables: {
+                cNFTId: listCnft?.[0]?.id,
+            },
+            onCompleted: () => {
+                toast.success("NFT Claimed!");
+                refetch?.();
+            },
+            context: {
+                headers: {
+                    Authorization: localStorage.getItem("access_token"),
+                },
+            },
+
+
+        });
+    };
+
     return (
         <div className="relative flex items-end mb-6" style={posterStyle}>
             {/* poster logo + info section */}
@@ -319,7 +343,10 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                                 marginTop: "16px",
                             }}
                         >
-                            <button className="filmButton watch-button">
+                            <button 
+                                className="filmButton watch-button"
+                                onClick={handleToggle}
+                            >
                                 <div style={{ marginRight: "8px" }}>
                                     <svg
                                         width="24"
@@ -375,60 +402,60 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                                 // image props to not crash the img
                                 objectFit: "cover",
                                 objectPosition: "center",
-                            }}  
-                            src={listCnft?.[0]?.uri} 
-                            alt="" 
+                            }}
+                            src={listCnft?.[0]?.uri}
+                            alt=""
                         />
-           
-          
-
-          </div>
 
 
 
-          {/* NFT claim bar */}
-          <div className='flex row justify-between items-center'
-            style={{
-              width: '24rem',
-              height: '5rem',
-              borderRadius: '16px',
-              border: '1px solid rgb(255, 255, 255)',
-              padding: '16px',
-              gap: '4px',
-              backgroundColor: 'rgba(30, 30, 30, 0.12)',
-              position: 'absolute',
-              top: '16%',
-              right: '8%',
-              backdropFilter: 'blur(30px)',
-            }}
-          >
+                    </div>
 
-            {/* NFT claim bar infor */}
-            <div className='flex row justify-between items-center gap-[16px]'
-              style={{
-                // border: '1px solid orange',
-                width: '256px',
-                height: '54px',
-              }}
-            >
 
-              {/* NFT event */}
-              <div className='flex col'
-              >
-                <div>
-                    <p className='font-bold text-16' style={{ 
-                      color: '#00FFEE', 
-                      marginBottom: '8px',
-                    }}>
-                      NFT Event
-                    </p>
-                    
-                    <p className='font-bold text-16' style={{ color: '#FFFFFF' }}>
-                      {NFTEventName}
-                    </p>
-                </div>
-              
-              </div>
+
+                    {/* NFT claim bar */}
+                    <div className='flex row justify-between items-center'
+                        style={{
+                            width: '24rem',
+                            height: '5rem',
+                            borderRadius: '16px',
+                            border: '1px solid rgb(255, 255, 255)',
+                            padding: '16px',
+                            gap: '4px',
+                            backgroundColor: 'rgba(30, 30, 30, 0.12)',
+                            position: 'absolute',
+                            top: '16%',
+                            right: '8%',
+                            backdropFilter: 'blur(30px)',
+                        }}
+                    >
+
+                        {/* NFT claim bar infor */}
+                        <div className='flex row justify-between items-center gap-[16px]'
+                            style={{
+                                // border: '1px solid orange',
+                                width: '256px',
+                                height: '54px',
+                            }}
+                        >
+
+                            {/* NFT event */}
+                            <div className='flex col'
+                            >
+                                <div>
+                                    <p className='font-bold text-16' style={{
+                                        color: '#00FFEE',
+                                        marginBottom: '8px',
+                                    }}>
+                                        NFT Event
+                                    </p>
+
+                                    <p className='font-bold text-16' style={{ color: '#FFFFFF' }}>
+                                        {NFTEventName}
+                                    </p>
+                                </div>
+
+                            </div>
 
                             <div className="flex col justify-center items-center">
                                 <NFTClaimBarTimeCountDown
@@ -449,7 +476,10 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                     </div>
                 </div>
             </div>
+
+            <FilmPosterTrailerModal isOpen={isModalOpen} onClose={onClose}>
+                <iframe ref={iframeRef} width="100%" height="536px" title="trailer" src={embedUrl}></iframe>
+            </FilmPosterTrailerModal>
         </div>
     );
 };
-  
