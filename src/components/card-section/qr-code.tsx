@@ -24,7 +24,7 @@ export const QRCode = (props: IQRCodeProps) => {
       });
 
       qrCode.update({
-          data: "https://filmatron-client.vercel.app/",
+          data: "https://filmatron.vercel.app/",
       });
       qrCode.append(document.getElementById("canvas") as HTMLCanvasElement);
   };

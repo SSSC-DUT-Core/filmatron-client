@@ -7,7 +7,7 @@ dotenv.config();
 const API_URL = "http://127.0.0.1:3000/graphql";
 
 
-// const DOMAIN = "https://filmatron-client.vercel.app"
+// const DOMAIN = "https://filmatron.vercel.app"
 // local
 const DOMAIN = "http://127.0.0.1:3001"
 console.log(
