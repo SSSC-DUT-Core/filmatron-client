@@ -127,6 +127,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
     };
 
     const getYouTubeVideoId = (url: string | undefined): string | undefined => {
+        // eslint-disable-next-line security/detect-unsafe-regex, no-useless-escape
         const match = url?.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
         return match?.[1];
     }
