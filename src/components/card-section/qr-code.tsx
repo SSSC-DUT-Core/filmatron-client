@@ -14,7 +14,7 @@ export const QRCode = (props: IQRCodeProps) => {
           type: "svg",
           image: "https://res.cloudinary.com/drh6sa2x5/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1697222868/logo_acsbip.jpg?_s=public-apps",
           dotsOptions: {
-              color: "#F3C879",
+              color: "#91754D",
               type: "rounded",
           },
           imageOptions: {
