@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useRef, FC, ReactNode } from 'react';
 
-import './RedBandTrailerModal.css';
+import './FilmPosterTrailerModal.css';
 
-interface ModalProps {
+interface FilmPosterTrailerModalProps {
   isOpen: boolean;
   onClose: () => void;
   children?: ReactNode;
 }
 
-export const Modal: FC<ModalProps> = ({ isOpen, onClose,children }) => {
+export const FilmPosterTrailerModal: FC<FilmPosterTrailerModalProps> = ({ isOpen, onClose,children }) => {
   const [active, setActive] = useState(false);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const Modal: FC<ModalProps> = ({ isOpen, onClose,children }) => {
   
 
   return (
-    <div  className={`modal ${active ? 'active' : ''}`} onClick={closeModal}>
+    <div  className={`modal ${active ? 'active' : ''}`}  onClick={closeModal}>
       <div className="modal__content__close ">
             ❌
       </div>
