@@ -1,9 +1,14 @@
 "use client"
-
-import React, { useState } from 'react';
-import RedBandTrailerModal from './RedBandTrailerModal';
+import React, { useState, useRef } from 'react';
+import { Modal } from './RedBandTrailerModal'; // Update the path accordingly
 import './RedBandTrailer.css';
-import { Button } from '../ui/button';
+
+
+//extract youtube video id from url 
+const getYouTubeVideoId = (url: string | undefined): string | undefined => {
+  const match = url?.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return match?.[1];
+}
 
 interface RedBandTrailerProps {
   data: {
@@ -20,11 +25,24 @@ export const RedBandTrailer: React.FC<RedBandTrailerProps> = ({ data, onClick })
   const handleToggle = () => {
     onClick(data.filmId.toString());
     setIsModalOpen(!isModalOpen);
-  }
+  };
+
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const onClose = () => {
+    if (iframeRef.current) {
+      iframeRef.current.setAttribute('src', '');
+    }
+    setIsModalOpen(false); // Updated to directly set modal state
+  };
+
+  // create embed url from youtube video id
+  const embedUrl = `https://www.youtube.com/embed/${getYouTubeVideoId(data?.redBandTrailerVideoUrl)}`;
 
   return (
-    <div className="relative w-[22rem] h-[14rem] mt-[-32px] mx-[-20px] p-[32px]"
-    onClick={handleToggle}
+    <div
+      className="relative w-[22rem] h-[14rem] mt-[-32px] mx-[-20px] p-[32px]"
+      onClick={handleToggle}
     >
       <div
         className="
@@ -35,7 +53,7 @@ export const RedBandTrailer: React.FC<RedBandTrailerProps> = ({ data, onClick })
           backgroundImage: `url(${data?.redBandTrailerImg})`,
         }}
       >
-        <button className="playBut h-[4rem] w-[4rem]" >
+        <button className="playBut h-[4rem] w-[4rem]">
           <a href="#trailer" className="">
             <svg
               version="1.1"
@@ -77,7 +95,11 @@ export const RedBandTrailer: React.FC<RedBandTrailerProps> = ({ data, onClick })
         </button>
       </div>
 
-      <RedBandTrailerModal isOpen={isModalOpen} onClose={handleToggle} videoUrl={data?.redBandTrailerVideoUrl} />
+      {/* <Modal isOpen={isModalOpen} onClose={onClose}>
+          <iframe ref={iframeRef} width="100%" height="536px" title="trailer" src={embedUrl}></iframe>
+      </Modal> */}
     </div>
   );
 };
+
+
