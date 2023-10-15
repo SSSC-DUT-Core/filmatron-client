@@ -28,13 +28,6 @@ const HomepageDetail = ({
     },
   })
 
-  const { data: conpressedNFT } = useGetCompressedNfTsOfFilmQuery({
-      variables: {
-          filmId,
-      },
-  });
-
-  const compressedNFTId = conpressedNFT?.getCompressedNFTsOfFilm.edges?.[0]?.node?.id;
 
   const {
     data: films,
@@ -48,7 +41,7 @@ const HomepageDetail = ({
 });
 
    const accessToken = localStorage.getItem("access_token") ?? "";
-   const { data: getSolanaAddress } = useGetSolanaAddressQuery({
+   const { data: getSolanaAddress, refetch: refetchGetAddress } = useGetSolanaAddressQuery({
        context: {
            headers: {
                Authorization: accessToken,
@@ -80,6 +73,7 @@ const HomepageDetail = ({
 
    const refetchGetCompressNFT = () => {
     refetchCompressedNfTsOfFilmQuery();
+    refetchGetAddress();
    }
 
   const [filmList, setFilmList] = useState<FilmEntity[]>([]);
