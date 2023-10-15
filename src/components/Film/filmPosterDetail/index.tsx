@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './filmPosterDetail.css'
 import { FilmCompressedNftEntity, useMintCompressedNftMutation } from '@/graphql/generated';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 import { Button } from '../../ui/button';
 import { FilmPosterTrailerModal } from './FilmPosterTrailerModal';
 import { Modal } from '../../ui/modal';
@@ -100,19 +101,19 @@ export const NFTClaimBarTimeCountDown = ({ expirationDate }: { expirationDate?: 
 
                     <div className="flex space-x-1">
                         <div className="flex-none py-1 leading-5 px-2 text-center text-[12px] text-black font-semibold rounded-md bg-yellow-300">
-                            {remainingTime.remainDays + " D"}
+                            {`${remainingTime.remainDays  } D`}
                         </div>
 
                         <span className='text-white text-[16px] font-bold'>:</span>
 
                         <div className="flex-none py-1 leading-5 px-2 text-center text-[12px] text-black font-semibold rounded-md bg-yellow-300">
-                            {remainingTime.remainHours + " H"}
+                            {`${remainingTime.remainHours  } H`}
                         </div>
 
                         <span className='text-white text-[16px] font-bold'>:</span>
 
                         <div className="flex-none py-1 leading-5 px-2 text-center text-[12px] text-black font-semibold rounded-md bg-yellow-300">
-                            {remainingTime.remainMins + " M"}
+                            {`${remainingTime.remainMins  } M`}
                         </div>
                     </div>
                 </div>
@@ -143,7 +144,7 @@ export const displayGenres = (genres: string[]) => {
 
 export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerVideo, trailerImg, listCnft, refetch, isPrivateAccess }: FilmPosterDetailProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-
+    const router = useRouter();
     const handleToggle = () => {
         setIsModalOpen(!isModalOpen);
     };
@@ -222,7 +223,9 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
     };
 
     const onCloseQrCode = () => {
-        setIsShowQrCode(false)
+        setIsShowQrCode(false);
+        router.refresh();
+
     }
 
     const giftIconUrl = "/assets/icons/gift-icon.svg";
