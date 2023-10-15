@@ -1,21 +1,188 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { FilmEntity } from '@/graphql/generated';
 import { FilmCardInCol } from '@/src/components/Film/FilmCol';
-import { NFTs } from '@/src/types/types';
+import { NFT, Collection } from '@/src/types/types';
 import { NFTsDisplay } from '../NFTsDisplay';
+
+const listOfcollections: Collection[] = [
+  {
+    name: "NGUOI MAT TROI",
+    nfts: [
+      {
+          name: "NFT 1",
+          description: "This is NFT 1",
+          imageUrl: "/assets/NFTs/nguoi-mat-troi/nguoi-mat-troi-nft-1.png",
+          collectionName: "Collection 1",
+          filmName: "Wednesday",
+          attributes: ["Attribute 1", "Attribute 2"],
+      },
+      {
+          name: "NFT 2",
+          description: "This is NFT 2",
+          imageUrl: "/assets/NFTs/nguoi-mat-troi/nguoi-mat-troi-nft-2.png",
+          collectionName: "Collection 1",
+          filmName: "Wednesday",
+          attributes: ["Attribute 3", "Attribute 4"],
+      },
+      {
+          name: "NFT 3",
+          description: "This is NFT 3",
+          imageUrl: "/assets/NFTs/nguoi-mat-troi/nguoi-mat-troi-nft-3.png",
+          collectionName: "Collection 2",
+          filmName: "NGƯỜI VỢ CUỐI CÙNG",
+          attributes: ["Attribute 5", "Attribute 6"],
+      },
+    ],
+  },
+
+  {
+    name: "NGUOI VO CUOI CUNG",
+    nfts: [
+      {
+          name: "NFT 1",
+          description: "This is NFT 1",
+          imageUrl: "/assets/NFTs/nguoi-vo-cuoi-cung/nguoi-vo-cuoi-cung-nft-3.png",
+          collectionName: "Collection 1",
+          filmName: "Wednesday",
+          attributes: ["Attribute 1", "Attribute 2"],
+      },
+      {
+          name: "NFT 2",
+          description: "This is NFT 2",
+          imageUrl: "/assets/NFTs/nguoi-vo-cuoi-cung/nguoi-vo-cuoi-cung-nft-2.png",
+          collectionName: "Collection 1",
+          filmName: "Wednesday",
+          attributes: ["Attribute 3", "Attribute 4"],
+      },
+      {
+          name: "NFT 3",
+          description: "This is NFT 3",
+          imageUrl: "/assets/NFTs/nguoi-vo-cuoi-cung/nguoi-vo-cuoi-cung-nft-1.png",
+          collectionName: "Collection 2",
+          filmName: "NGƯỜI VỢ CUỐI CÙNG",
+          attributes: ["Attribute 5", "Attribute 6"],
+      },
+    ],
+  },
+
+  {
+    name: "CO HAU GAI",
+    nfts: [
+      {
+          name: "NFT 1",
+          description: "This is NFT 1",
+          imageUrl: "/assets/NFTs/co-hau-gai/co-hau-gai-nft-1.png",
+          collectionName: "Collection 1",
+          filmName: "Wednesday",
+          attributes: ["Attribute 1", "Attribute 2"],
+      },
+      {
+          name: "NFT 2",
+          description: "This is NFT 2",
+          imageUrl: "/assets/NFTs/co-hau-gai/co-hau-gai-nft-2.png",
+          collectionName: "Collection 1",
+          filmName: "Wednesday",
+          attributes: ["Attribute 3", "Attribute 4"],
+      },
+      {
+          name: "NFT 3",
+          description: "This is NFT 3",
+          imageUrl: "/assets/NFTs/co-hau-gai/co-hau-gai-nft-3.png",
+          collectionName: "Collection 2",
+          filmName: "NGƯỜI VỢ CUỐI CÙNG",
+          attributes: ["Attribute 5", "Attribute 6"],
+      },
+    ],
+  },
+
+  {
+    name: "CHI CHI EM EM",
+    nfts: [
+      {
+          name: "NFT 1",
+          description: "This is NFT 1",
+          imageUrl: "/assets/NFTs/chi-chi-em-em/chi-chi-em-em-nft-1.png",
+          collectionName: "Collection 1",
+          filmName: "Wednesday",
+          attributes: ["Attribute 1", "Attribute 2"],
+      },
+      {
+          name: "NFT 2",
+          description: "This is NFT 2",
+          imageUrl: "/assets/NFTs/chi-chi-em-em/chi-chi-em-em-nft-2.png",
+          collectionName: "Collection 1",
+          filmName: "Wednesday",
+          attributes: ["Attribute 3", "Attribute 4"],
+      },
+      {
+          name: "NFT 3",
+          description: "This is NFT 3",
+          imageUrl: "/assets/NFTs/chi-chi-em-em/chi-chi-em-em-nft-3.png",
+          collectionName: "Collection 2",
+          filmName: "NGƯỜI VỢ CUỐI CÙNG",
+          attributes: ["Attribute 5", "Attribute 6"],
+      },
+    ],
+  },
+
+  {
+    name: "CO HAU GAI",
+    nfts: [
+      {
+          name: "NFT 1",
+          description: "This is NFT 1",
+          imageUrl: "/assets/NFTs/co-hau-gai/co-hau-gai-nft-1.png",
+          collectionName: "Collection 1",
+          filmName: "Wednesday",
+          attributes: ["Attribute 1", "Attribute 2"],
+      },
+      {
+          name: "NFT 2",
+          description: "This is NFT 2",
+          imageUrl: "/assets/NFTs/co-hau-gai/co-hau-gai-nft-2.png",
+          collectionName: "Collection 1",
+          filmName: "Wednesday",
+          attributes: ["Attribute 3", "Attribute 4"],
+      },
+      {
+          name: "NFT 3",
+          description: "This is NFT 3",
+          imageUrl: "/assets/NFTs/co-hau-gai/co-hau-gai-nft-3.png",
+          collectionName: "Collection 2",
+          filmName: "NGƯỜI VỢ CUỐI CÙNG",
+          attributes: ["Attribute 5", "Attribute 6"],
+      },
+    ],
+  },
+]
+
+
+const getFilmNfts = (filmName: string): NFT[] => {
+  const collection = listOfcollections.find((collection: Collection) => collection.name === filmName);
+  return collection ? collection.nfts : [];
+};
 
 interface LiveFilmSectionProps  {
   films: FilmEntity[];
 }
+
 export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
-  
-    const [selectedFilm, setSelectedFilm] = useState<FilmEntity | null>(films?.[0]);
+    const [selectedFilm, setSelectedFilm] = useState<FilmEntity | null>(null);
     const [previousFilmIndex, setPreviousFilmIndex] = useState<number>(0);
-  
-  
+
+    console.log('selectedFilm', selectedFilm);
+    console.log('films: ', films);
+
+    useEffect(() => {
+      // Kiểm tra xem films có phần tử không và selectedFilm có giá trị không
+      if (films && films.length > 0 && !selectedFilm) {
+        setSelectedFilm(films.slice().reverse()[0]);
+      }
+    }, [films, selectedFilm]);
+
     return (
       <div className="w-full h-full flex flex-row justify-between items-center"
           style={{
@@ -28,10 +195,6 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
               // border: '8px solid black',
               width: '33%', 
               height: '560px',
-        
-            
-         
-  
               overflow: 'hidden',
   
             }}
@@ -64,7 +227,6 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
                
                   }}
                 >
-                  {/* Icon live status */}
                   Most popular collectibles
                 </h3>
               </div>
@@ -72,13 +234,14 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
               {/* list of film cards */}
               <div className="relative flex-end w-full h-640 overflow-y-scroll scrollbar-track-gray-300 overflow-x-hidden">
                 {/* Film Cards Col */}
-                {films?.map((film: FilmEntity, index: number) => (
+                {films?.slice().reverse().map((film: FilmEntity, index: number) => (
                   <div key={index} onClick={() => {}}>
                     <FilmCardInCol 
                       genre={film.genres}
-                      posterSrc={film.avatar} title={film.name} 
+                      posterSrc={film.avatar} 
+                      title={film.name} 
                       duration={film.duration} 
-                      releaseDate={film.releaseDate}
+                      mostClaimRank={index + 1}
                       isSelected={previousFilmIndex === index} 
                       onClick={() => {
                         setPreviousFilmIndex(index);
@@ -94,7 +257,7 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
         </div>
 
         {/* NFT Dissplay section */}
-        <div className=""
+        <div className="px-[12px] pt-[32px]"
             style={{
               height: '560px',
               // width: '1010px',
@@ -111,19 +274,18 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
               
               boxShadow: '0px 4px 50px 0px rgba(106, 45, 206, 0.65), 0px 4px 30px 0px rgba(243, 200, 121, 1)',
             
-              padding: '38px 12px ',  
+              // padding: '38px 12px ',  
 
               marginLeft: '20px',
             }}
           >
             {selectedFilm && (
-             
               <div className='w-full h-full' style={{
                 // border: '1px solid green',
               }}>
                  <NFTsDisplay
-                  NFTs={NFTs}
-                />
+                  NFTs={getFilmNfts(selectedFilm.name)}
+              />
               </div>
             )}
           </div>

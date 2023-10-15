@@ -6,11 +6,17 @@ import React from 'react';
 import {NFT} from '@/src/types/types';
 import './NFTCard.css'
 
-type Props = {
+interface NFTsDisplayProps {
   NFTs: NFT[];
-};
+}
 
-export const NFTsDisplay = (NFTs: Props) => {
+export const NFTsDisplay = (NFTs: NFTsDisplayProps) => {
+    
+    const numberOfNFTs = NFTs.NFTs.length;
+ 
+    // const False = true;
+    
+    
     return (
         <>
             <div className='w-full h-full'
@@ -28,59 +34,67 @@ export const NFTsDisplay = (NFTs: Props) => {
                 }}
               >
                 {/* list of NFT card */}
-                <div className="NFTCard-BG"
-                  style={{
-                    width: '372px',
-                    height: '462px',
-                    zIndex: '3',
-                  }}
-                >
-                  <div className='NFTCard'>
-                    <img src="./assets/NFTs/NFT2.png" alt="NFT1" 
-                    style={{
-                      height: '100%',
-                      width: '100%',
-                      objectFit: 'cover',
-                      borderRadius: '16px',
-                    }}/>
-                  </div>
-                </div>
+                {(numberOfNFTs < 3 || NFTs === null) ? (
+                  
+                  <span className='text-[42px] text-white m-auto '>Coming Soon...</span>
+             
+                ) : (
+                  <>
+                    <div className="NFTCard-BG"
+                      style={{
+                        width: '354px',
+                        height: '494px',
+                        zIndex: '3',
+                      }}
+                    >
+                      <div className='NFTCard'>
+                        <img src={NFTs.NFTs[0].imageUrl} alt="NFT1" 
+                        style={{
+                          height: '100%',
+                          width: '100%',
+                          objectFit: 'cover',
+                          borderRadius: '16px',
+                        }}/>
+                      </div>
+                    </div>
 
-                <div className="NFTCard-BG"
-                  style={{
-                    width: '330px',
-                    height: '410px',
-                    zIndex: '2',
-                  }}
-                >
-                  <div className='NFTCard'>
-                    <img src="./assets/NFTs/NFT2.png" alt="NFT1" 
-                    style={{
-                      height: '100%',
-                      width: '100%',
-                      objectFit: 'cover',
-                      borderRadius: '16px',
-                    }}/>
-                  </div>
-                </div>
+                    <div className="NFTCard-BG"
+                      style={{
+                        width: '318px',
+                        height: '435px',
+                        zIndex: '2',
+                      }}
+                    >
+                      <div className='NFTCard'>
+                        <img src={NFTs.NFTs[1].imageUrl} alt="NFT1" 
+                        style={{
+                          height: '100%',
+                          width: '100%',
+                          objectFit: 'cover',
+                          borderRadius: '16px',
+                        }}/>
+                      </div>
+                    </div>
 
-                <div className="NFTCard-BG"
-                  style={{
-                    width: '272px',
-                    height: '332px',
-                    zIndex: '1',
-                  }}
-                >
-                  <div className='NFTCard'>
-                    <img src="./assets/NFTs/NFT2.png" alt="NFT1" 
-                    style={{
-                      height: '100%',
-                      width: '100%',
-                      objectFit: 'cover',
-                      borderRadius: '16px',
-                    }}/>
-                  </div>
-                </div>
+                    <div className="NFTCard-BG"
+                      style={{
+                        width: '268px',
+                        height: '345px',
+                        zIndex: '1',
+                      }}
+                    >
+                      <div className='NFTCard'>
+                        <img src={NFTs.NFTs[2].imageUrl} alt="NFT1" 
+                        style={{
+                          height: '100%',
+                          width: '100%',
+                          objectFit: 'cover',
+                          borderRadius: '16px',
+                        }}/>
+                      </div>
+                    </div>
+                  </>
+                )}
 
               
               </div>
