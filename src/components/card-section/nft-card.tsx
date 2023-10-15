@@ -4,6 +4,8 @@ import Image from "next/image";
 import authorAvatar from "@/public/assets/images/Avatar-client.png";
 import { CNFT } from "@/src/types/types";
 import { useState } from "react";
+import { useGetFilmByCompressedNftQuery } from "@/graphql/generated";
+import dayjs from "dayjs";
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { QRCode } from "./qr-code";
@@ -14,6 +16,14 @@ export interface INftCardProps {
 
 export const NftCard = ({ cNFT }: INftCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { data } = useGetFilmByCompressedNftQuery({
+      variables: {
+          name: cNFT.name,
+      },
+  });
+
+  const filmDetail = data?.getFilmByCompressedNFT;
 
   const onClose = () => {
     setIsOpen(false);
@@ -32,7 +42,11 @@ export const NftCard = ({ cNFT }: INftCardProps) => {
                 onClose={onClose}
             >
                 <div className="pt-6 flex flex-col justify-center space-x-2 items-center w-full">
-                    <QRCode />
+                    <QRCode
+                        url={`https://filmatron.vercel.app/film/${
+                            filmDetail?.id ?? ""
+                        }`}
+                    />
                     <Button
                         onClick={onClose}
                         className="w-60 mt-8 hover:bg-brand rounded-full transform active:scale-75 transition-transform hover:scale-110 duration-500 ease-out cursor-pointer flex flex-row justify-center items-center bg-brand text-black"
@@ -46,21 +60,21 @@ export const NftCard = ({ cNFT }: INftCardProps) => {
                 <div className="flex flex-row justify-between mb-6">
                     <div className="flex flex-row h-fit space-x-4">
                         <Image
-                            src={cNFT.image}
+                            src={filmDetail?.background ?? cNFT.image}
                             width={64}
                             height={64}
                             alt="icon-copy"
                         />
                         <div className="flex flex-col w-full justify-between">
                             <p className="text-xl text-white font-semibold">
-                                {cNFT.name}
+                                {filmDetail?.name ?? ""}
                             </p>
                             <div className="flex flex-row space-x-4">
-                                <p className="font-light text-yellow-600">
+                                <p className="font-semibold text-yellow-600">
                                     Director:{" "}
                                 </p>
                                 <p className="font-light text-white">
-                                    {cNFT.author || ""}
+                                    {filmDetail?.directors?.[0]}
                                 </p>
                             </div>
                         </div>
@@ -69,12 +83,17 @@ export const NftCard = ({ cNFT }: INftCardProps) => {
                     <div className="text-slate-200 text-base flex justify-between flex-col">
                         <div className="flex flex-row space-x-4">
                             <p className="font-light">Release date:</p>
-                            <p className="font-semibold">Seb 13 2023</p>
+                            <p className="font-semibold">
+                                {dayjs(filmDetail?.releaseDate ?? "").format(
+                                    "MMM DD YYYY"
+                                )}
+                            </p>
                         </div>
-                        <div className="flex flex-row space-x-4">
-                            <p className="font-light text-yellow-600">Star</p>
-                            <p className="font-light">Lewis TanJessica</p>
-                            <p className="font-light">McNameeJosh Lawson</p>
+                        <div className="flex flex-row space-x-3">
+                            <p className="font-semibold text-yellow-600">Star</p>
+                            {filmDetail?.stars?.map(star => (
+                                <p className="font-light">{star}</p>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -84,9 +103,14 @@ export const NftCard = ({ cNFT }: INftCardProps) => {
                 <div className="flex flex-row mt-6">
                     <div className="text-slate-100 text-base w-3/5">
                         <p className="text-2xl mb-2 font-semibold">
-                            {cNFT.name}
+                            {filmDetail?.name ?? cNFT.name}
                         </p>
-                        <p className="text-sm my-2">Minted on Sep 30, 2022</p>
+                        <p className="text-sm my-2">
+                            Minted on{" "}
+                            {dayjs(filmDetail?.endDateSubscriber).format(
+                                "MMM DD YYYY"
+                            ) ?? "Sep 30, 2022"}
+                        </p>
                         <div className="flex flex-row items-center my-2 space-x-2">
                             <div className="w-5 h-5">
                                 <Image
@@ -97,10 +121,31 @@ export const NftCard = ({ cNFT }: INftCardProps) => {
                                     className="rounded-full"
                                 />
                             </div>
-                            <p className="text-base font-light">Animakid</p>
+                            <p className="text-base font-light">
+                                {filmDetail?.directors?.[0]}
+                            </p>
                         </div>
+
+                        <div className="flex flex-row space-x-4">
+                            <p className="font-semibold text-yellow-600">
+                                Genres:{" "}
+                            </p>
+                            <p className="font-light text-white">
+                                {filmDetail?.genres?.join(", ")}
+                            </p>
+                        </div>
+
+                        <div className="flex flex-row mb-1 space-x-4">
+                            <p className="font-semibold text-yellow-600">
+                                Duration:{" "}
+                            </p>
+                            <p className="font-light text-white">
+                                {filmDetail?.duration}
+                            </p>
+                        </div>
+
                         <p className="text-base font-extralight">
-                            {cNFT.description}
+                            {filmDetail?.description ?? ""}
                         </p>
 
                         <Button
