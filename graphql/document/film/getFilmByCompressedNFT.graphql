@@ -1,0 +1,16 @@
+query getFilmByCompressedNFT($name: String!) {
+    getFilmByCompressedNFT(name: $name) {
+        id
+        name
+        description
+        background
+        avatar
+        duration
+        releaseDate
+        genres
+        stars
+        directors
+        status
+        endDateSubscriber
+    }
+}
