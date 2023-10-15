@@ -17,7 +17,7 @@ export const steps: StepType[] = [
                     width={400}
                     height={200}
                 />
-                <p className="text-center mt-4">
+                <p className="text-center text-slate-800 mt-4">
                     <strong>Login</strong> to experience more features from{" "}
                     <strong>Filmatron</strong> !
                 </p>
@@ -36,7 +36,7 @@ export const steps: StepType[] = [
                     width={150}
                     height={150}
                 />
-                <p className="text-center mt-4">
+                <p className="text-center text-slate-800 mt-4">
                     <strong>Choose</strong> your favorite movie 😊
                 </p>
             </div>
@@ -56,7 +56,7 @@ export const steps: StepType[] = [
                         height={200}
                     />
                 </div>
-                <p className="text-center mt-4">
+                <p className="text-center text-slate-800 mt-4">
                     <strong>Claim NFT</strong> and enjoy private access
                     experiences!
                 </p>
