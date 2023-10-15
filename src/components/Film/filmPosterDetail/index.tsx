@@ -500,21 +500,23 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                             <div className="flex col shrink-0">
                                 <div>
                                     <p
-                                        className="font-bold text-16"
+                                        className="font-bold text-16 leading-[2rem]"
                                         style={{
                                             color: "#00FFEE",
-                                            marginBottom: "8px",
+                                            // marginBottom: "8px",
                                         }}
                                     >
                                         NFT Event
                                     </p>
 
-                                    <p
-                                        className="font-bold text-[14px]"
-                                        style={{ color: "#FFFFFF" }}
-                                    >
-                                        {NFTEventName}
-                                    </p>
+                                    <div className='h-[2rem] flex items-center'>
+                                        <p
+                                            className="font-bold text-[12px] max-w-[118px]  align-middle"
+                                            style={{ color: "#FFFFFF"}}
+                                        >
+                                            {NFTEventName}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
 
