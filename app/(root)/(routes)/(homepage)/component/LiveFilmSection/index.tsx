@@ -173,9 +173,6 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
     const [selectedFilm, setSelectedFilm] = useState<FilmEntity | null>(null);
     const [previousFilmIndex, setPreviousFilmIndex] = useState<number>(0);
 
-    console.log('selectedFilm', selectedFilm);
-    console.log('films: ', films);
-
     useEffect(() => {
       // Kiểm tra xem films có phần tử không và selectedFilm có giá trị không
       if (films && films.length > 0 && !selectedFilm) {
