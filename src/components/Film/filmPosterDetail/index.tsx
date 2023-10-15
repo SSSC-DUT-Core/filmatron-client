@@ -232,6 +232,12 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
     const pathname = usePathname();
 
+    const onValidateNFT = () => {
+      if (isPrivateAccess) {
+        toast.error("You already own an NFT of the movie!");
+      }
+    }
+
     return (
         <div className="relative flex items-end mb-6" style={posterStyle}>
             <Modal
@@ -241,7 +247,9 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                 onClose={onCloseQrCode}
             >
                 <div className="pt-6 flex flex-col justify-center space-x-2 items-center w-full">
-                    <QRCode url={`https://filmatron.vercel.app${pathname ?? ''}`} />
+                    <QRCode
+                        url={`https://filmatron.vercel.app${pathname ?? ""}`}
+                    />
                     <Button
                         onClick={onCloseQrCode}
                         className="w-60 mt-8 hover:bg-brand rounded-full transform active:scale-75 transition-transform hover:scale-110 duration-500 ease-out cursor-pointer flex flex-row justify-center items-center bg-brand text-black"
@@ -509,10 +517,10 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                                         NFT Event
                                     </p>
 
-                                    <div className='h-[2rem] flex items-center'>
+                                    <div className="h-[2rem] flex items-center">
                                         <p
                                             className="font-bold text-[12px] max-w-[118px]  align-middle"
-                                            style={{ color: "#FFFFFF"}}
+                                            style={{ color: "#FFFFFF" }}
                                         >
                                             {NFTEventName}
                                         </p>
@@ -527,20 +535,22 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                             </div>
                         </div>
 
-                        {listCnft && (
-                            <Button
-                                className="NFTClaimButton w-[5rem] h-[2.5rem] rounded-[36px] claim-button text-black text-[24px] gap-2"
-                                disabled={loading || isPrivateAccess}
-                                onClick={onClaim}
-                            >
-                                <img
-                                    src={giftIconUrl}
-                                    alt=""
-                                    className="w-7 h-7 NFTClaimButtonIcon" // Adjust the size as needed
-                                />
-                                Claim
-                            </Button>
-                        )}
+                        <div className="cursor-pointer" onClick={onValidateNFT}>
+                            {listCnft && (
+                                <Button
+                                    className="NFTClaimButton w-[5rem] h-[2.5rem] rounded-[36px] claim-button text-black text-[24px] gap-2"
+                                    disabled={loading || isPrivateAccess}
+                                    onClick={onClaim}
+                                >
+                                    <img
+                                        src={giftIconUrl}
+                                        alt=""
+                                        className="w-7 h-7 NFTClaimButtonIcon" // Adjust the size as needed
+                                    />
+                                    Claim
+                                </Button>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

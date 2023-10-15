@@ -9,6 +9,7 @@ import { config } from "@/src/config";
 import GoogleLoginImage from "@/public/assets/auth/login-google.svg";
 import logo from "@/public/assets/logo.svg";
 import { LogoFilm } from "@/public/assets";
+import LogoFull from "../../images/logo-full.png";
 
 const socialLoginOptions = [
     {
@@ -17,7 +18,7 @@ const socialLoginOptions = [
         imageClass: "w-6 mr-2 login-button-images",
         divClass: "col-span-3",
         imageSrc: GoogleLoginImage,
-        imgAltText: "Login",
+        imgAltText: "Continue with Wallet",
         buttonLoginText: true,
         translateLoginText: "dappLogin.continue",
         verifier: "Google",
@@ -57,19 +58,23 @@ const LoginPage = () => {
     }, [authorizationCode]);
 
     return (
-        <div className="bg-background-layout bg-cover bg-right w-screen h-screen py-20 px-32">
-            <div className="bg-background bg-cover bg-center">
-                <div className="h-[80vh] grid grid-cols-6">
-                    <div className="grid grid-cols-12 col-span-3 h-screen md:h-auto">
-                        <div className="col-end-9 col-span-9 bg-transparent h-full w-full">
-                            <div className="flex justify-center bg-[#00000099] flex-col items-center h-full text-white px-10">
+        <div className="bg-background-layout bg-cover bg-right w-screen h-screen py-10 px-32">
+            <div className="h-[88vh] w-full flex flex-row">
+                <div className="h-screen !w-4/12 md:h-auto">
+                    <div className="bg-transparent h-full w-full">
+                        <div className="flex justify-center rounded-l-3xl bg-[#00000099] flex-col items-center h-full text-white px-10">
+                            <div className="flex flex-col justify-center items-center">
                                 <Image
-                                    src={logo}
-                                    width={100}
+                                    src={LogoFull}
+                                    width={300}
                                     height={100}
                                     alt="logo-orus"
                                 />
-                                <p className="my-4 text-lg">Login with</p>
+                                <p className="my-8 text-center text-lg">
+                                    Our platform is trusted by millions &
+                                    features best updated movies all around the
+                                    world.
+                                </p>
                                 <div className="space-y-3 w-full">
                                     {socialLoginOptions.map(
                                         socialLoginOption => {
@@ -78,7 +83,7 @@ const LoginPage = () => {
                                                     key={
                                                         socialLoginOption.loginType
                                                     }
-                                                    className="bg-[#00000099] grayscale hover:grayscale-0 pl-8 cursor-pointer flex-row space-x-3 w-full text-start h-12 flex items-center rounded-2xl group relative overflow-hidden shadow"
+                                                    className="bg-[#4b4a4a99] grayscale hover:grayscale-0 pl-8 cursor-pointer flex-row space-x-3 w-full text-start h-12 flex items-center rounded-2xl group relative overflow-hidden shadow"
                                                     href={
                                                         socialLoginOption.loginUrl
                                                     }
@@ -107,14 +112,8 @@ const LoginPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="h-full flex items-center">
-                        <div className="grid text-white">
-                            <div className="grid">
-                                {/* {loggedIn ? loggedInView : unloggedInView} */}
-                            </div>
-                        </div>
-                    </div>
                 </div>
+                <div className="bg-background rounded-r-3xl !w-8/12 bg-cover bg-center" />
             </div>
         </div>
     );

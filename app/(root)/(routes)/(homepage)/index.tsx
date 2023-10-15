@@ -1,17 +1,19 @@
-import { formatDate, mapFilmNftsFromGraphQLResponse, mapFilmsFromGraphQLResponse } from "@/src/lib/index";
+import { formatDate, getAssetsByOwner, mapFilmNftsFromGraphQLResponse, mapFilmsFromGraphQLResponse } from "@/src/lib/index";
 import { useEffect, useState } from "react";
 import { FilmPosterDetail } from "@/src/components/Film/filmPosterDetail";
 import {
     useGetFilmsQuery,
     FilmEntity,
-    useGetCompressedNfTsOfFilmQuery
+    useGetCompressedNfTsOfFilmQuery,
+    useGetSolanaAddressQuery
 } from "@/graphql/generated/index";
 import { PrizeTicketHomePage } from "@/src/components/PrizeTicketHomePage";
 import { FilmRow } from "@/src/components/Film/FilmRow";
 
+import { useTour } from "@reactour/tour";
+import { CNFT } from "@/src/types/types";
 import { LiveFilmSection } from "./component/LiveFilmSection";
 import { RedBandTrailer } from "../../../../src/components/RedBandTrailer";
-import { useTour } from "@reactour/tour";
 
 
 const filmPosterDetailData = {
@@ -124,6 +126,7 @@ export const HomePage = () => {
         },
     });
 
+     const [listCnft, setListCnft] = useState<CNFT[]>([]);
     const [filmList, setFilmList] = useState<FilmEntity[]>([]);
     const firstFilm = filmList?.[filmList.length - 1];
     const { data: filmsNftsData } = useGetCompressedNfTsOfFilmQuery(
@@ -135,6 +138,38 @@ export const HomePage = () => {
         }
     )
 
+    const fetchAssetsByOwner = (solanaAddress: string) => {
+        getAssetsByOwner(solanaAddress).then(data => {
+            setListCnft(
+                data?.items.map((item: any) => ({
+                    id: item.id,
+                    name: item.content.metadata.name,
+                    description: item.content.metadata.description,
+                    symbol: item.content.metadata.symbol,
+                    image: item.content.json_uri,
+                }))
+            );
+        });
+    };
+    const accessToken = typeof window !== 'undefined' ? localStorage.getItem("access_token") : "";
+    const { data: getSolanaAddress } =
+        useGetSolanaAddressQuery({
+            context: {
+                headers: {
+                    Authorization: accessToken,
+                },
+            },
+            onCompleted: data => {
+                fetchAssetsByOwner(data.getSolanaAddress.address);
+            },
+        });
+
+    const refetchAssetsByOwner = () => {
+        if (getSolanaAddress?.getSolanaAddress) {
+            fetchAssetsByOwner(getSolanaAddress.getSolanaAddress.address);
+        }
+    };
+
     const { setIsOpen } = useTour();
     useEffect(() => {
         const guildTourStatus = sessionStorage.getItem("guild_tour_status");
@@ -142,6 +177,10 @@ export const HomePage = () => {
         if (guildTourStatus !== "done") setIsOpen(true);
     });
 
+     const filmNfts = mapFilmNftsFromGraphQLResponse(filmsNftsData);
+     const isPrivateAccess = filmNfts?.some(
+         item => listCnft?.some(ownedNft => ownedNft.name === item.name)
+     );
 
     return (
         <div
@@ -155,23 +194,22 @@ export const HomePage = () => {
                 <FilmPosterDetail
                     posterSrc={firstFilm.background}
                     title={firstFilm?.name}
-                    // logoSrc={firstFilm.name ?? "vc"}
                     refetch={() => refetch}
                     duration={firstFilm.duration}
                     releaseDate={formatDate(firstFilm.releaseDate)}
                     genres={firstFilm.genres}
                     stars={firstFilm.stars}
                     director={firstFilm.directors}
-
                     NFTClaimImg={filmPosterDetailData.NFTClaimImg}
                     NFTEventName={firstFilm?.name}
-
                     expirationDate={firstFilm.endDateSubscriber}
                     trailerVideo={filmPosterDetailData.trailerVideo}
                     trailerImg={firstFilm.avatar}
                     eventImg={filmPosterDetailData.eventImg}
                     filmId={firstFilm.id}
                     listCnft={mapFilmNftsFromGraphQLResponse(filmsNftsData)}
+                    isPrivateAccess={isPrivateAccess}
+                    refetchGetCompressNFT={refetchAssetsByOwner}
                 />
             )}
             {/* Popular film */}
@@ -242,15 +280,20 @@ export const HomePage = () => {
                     <PrizeTicketHomePage key={index} {...prize} />
                 ))} */}
 
-                        {redBandTrailersFetching.slice(0, 2)?.map((trailer, index) => (
-                            <RedBandTrailer
-                                key={index}
-                                data={trailer}
-                                onClick={(id: string) => {
-                                    console.log("RedBandTrailer: clicked: ", id);
-                                }}
-                            />
-                        ))}
+                        {redBandTrailersFetching
+                            .slice(0, 2)
+                            ?.map((trailer, index) => (
+                                <RedBandTrailer
+                                    key={index}
+                                    data={trailer}
+                                    onClick={(id: string) => {
+                                        console.log(
+                                            "RedBandTrailer: clicked: ",
+                                            id
+                                        );
+                                    }}
+                                />
+                            ))}
                     </div>
                 </div>
             </div>
