@@ -7,9 +7,15 @@ import { FilmEntity } from '@/graphql/generated';
 import { formatDateToMMMDD } from '@/src/lib';
 import { FilmCardInColProps, sectionFilmCol } from '../../../types/types';
 
-export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSelected, onClick, releaseDate }: FilmCardInColProps) => {
+
+export const FilmCardInCol = ({ posterSrc, title, genre, mostClaimRank, duration,isSelected, onClick, releaseDate }: FilmCardInColProps) => {
+  let mostClaimIconUrl = "";
+  if(mostClaimRank === 1)  mostClaimIconUrl = "/assets/icons/most-claim-gold-icon.svg";
+  else if(mostClaimRank === 2)  mostClaimIconUrl = "/assets/icons/most-claim-silver-icon.svg";
+  else mostClaimIconUrl = "/assets/icons/most-claim-bronze-icon.svg";
+
   const imageCardStyle = {
-    // border: '10px solid red',
+    // border: '1px solid red',
     backgroundImage: `url(${posterSrc})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -40,7 +46,7 @@ export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSele
 
           display: 'flex',
 
-          justifyContent: 'flex-start',
+          justifyContent: 'space-between',
           alignItems: 'center',
           gap: '16px',
           marginBottom: '16px',
@@ -58,8 +64,9 @@ export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSele
             height: '80px',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'flex-start',
+            justifyContent: 'space-between',
             gap: '12px',
+            // border: '1px solid red',
           }}>
 
             {/* film title, rating and duration */}
@@ -74,7 +81,7 @@ export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSele
             
             >
               {/* film title */}
-              <h4 className='text-white font-thin text-16'
+              <h4 className='text-white font-normal text-16'
                 style={{
                   lineHeight: '24px',
 
@@ -89,11 +96,12 @@ export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSele
                 justifyContent: 'flex-start',
               }}>
       
-                <div style={{
+                <div className='' style={{
                   display: 'flex',
-                  marginRight: '16px',
+                  marginRight: '12px',
                   alignItems: 'center',
                   flexDirection: 'row',
+                  
                   gap: '8px',
                 }}>
                     <p
@@ -104,16 +112,21 @@ export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSele
                     >
                         {genre[0] +  " • Movie "}
                       </p>
+
+                      <span className='text-white font-normal text-16'>|</span>
                 </div>
+
+                
               
                 {/* duration */}
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
+                  flexShrink: '0',
                 }}>           
 
-                  <p className='text-white font-thin text-16'>
-                      {"| " + duration + " mins"}
+                  <p className='text-white font-normal text-16'>
+                      {duration + " mins"}
                   </p>
                 </div>
               </div>
@@ -129,18 +142,24 @@ export const FilmCardInCol = ({ posterSrc, title, genre, rating, duration,isSele
               <div
                 className="text-white font-bold text-16 opacity-80"
                 style={{
-                  width: 'fit-content', // Sử dụng 'fit-content' thay vì 'Hug (55px)'
-                  height: 'fit-content', // Sử dụng 'fit-content' thay vì 'Hug (22px)'
-                  padding: '1px 8px', // Đặt padding là '1px 8px'
+                  width: 'fit-content', 
+                  height: 'fit-content',
+                  padding: '1px 8px',
                   borderRadius: '8px',
                   gap: '10px',
-                  backgroundColor: 'rgba(228, 234, 249, 1)',
-                  color: 'rgba(30, 30, 30, 1)',
+                  // backgroundColor: 'rgba(228, 234, 249, 1)',
+                  // color: 'rgba(30, 30, 30, 1)',
                   // fontWeight: 'bold',
             
                 }}
               >
-                {formatDateToMMMDD(releaseDate)}
+                 <img
+                    src={mostClaimIconUrl}
+                    alt=""
+                    className="w-7 h-7" 
+                  />
+                {/* {formatDateToMMMDD(releaseDate)} */}
+
               </div>
             </div>
           </div>

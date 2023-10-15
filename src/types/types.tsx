@@ -45,9 +45,10 @@ export type FilmCardInColProps = {
     posterSrc: string;
     genre: string[];
     title: string;
+    mostClaimRank?: number;
     rating?: number;
     duration: number;
-    releaseDate: string;
+    releaseDate?: string;
     isSelected: boolean;
 
     onClick: () => void;
@@ -80,35 +81,6 @@ export type CollectionsOfFilm = {
     filmName: string;
     collections: Collection[];
 };
-
-
-
-export const NFTs: NFT[] = [
-    {
-        name: "NFT 1",
-        description: "This is NFT 1",
-        imageUrl: "/assets/images/nft1.png",
-        collectionName: "Collection 1",
-        filmName: "Wednesday",
-        attributes: ["Attribute 1", "Attribute 2"],
-    },
-    {
-        name: "NFT 2",
-        description: "This is NFT 2",
-        imageUrl: "/assets/images/nft2.png",
-        collectionName: "Collection 1",
-        filmName: "Wednesday",
-        attributes: ["Attribute 3", "Attribute 4"],
-    },
-    {
-        name: "NFT 3",
-        description: "This is NFT 3",
-        imageUrl: "/assets/images/nft3.png",
-        collectionName: "Collection 2",
-        filmName: "NGƯỜI VỢ CUỐI CÙNG",
-        attributes: ["Attribute 5", "Attribute 6"],
-    },
-];
 
 
 export interface CNFT {
