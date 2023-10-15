@@ -125,12 +125,12 @@ export enum FilmStatus {
 
 export type FilmTopCast = {
   __typename?: 'FilmTopCast';
-  avatar: Scalars['String']['output'];
+  avatar?: Maybe<Scalars['String']['output']>;
   name: Scalars['String']['output'];
 };
 
 export type FilmTopCastInput = {
-  avatar: Scalars['String']['input'];
+  avatar?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
 };
 
@@ -277,6 +277,7 @@ export type Query = {
   __typename?: 'Query';
   getCompressedNFT: FilmCompressedNftEntity;
   getCompressedNFTsOfFilm: PaginatedCompressedNft;
+  getFilmByCompressedNFT: FilmEntity;
   getFilmById: FilmEntity;
   getFilmCollectionNFTById: PublicInformationFilmCollectionNft;
   getFilmMakerById: PersonEntity;
@@ -302,6 +303,11 @@ export type QueryGetCompressedNfTsOfFilmArgs = {
   filmId: Scalars['ID']['input'];
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryGetFilmByCompressedNftArgs = {
+  name: Scalars['String']['input'];
 };
 
 
@@ -457,12 +463,19 @@ export type CreateFilmMutationVariables = Exact<{
 
 export type CreateFilmMutation = { __typename?: 'Mutation', createFilm: { __typename?: 'ReturnMessageBase', success: boolean, message: string } };
 
+export type GetFilmByCompressedNftQueryVariables = Exact<{
+  name: Scalars['String']['input'];
+}>;
+
+
+export type GetFilmByCompressedNftQuery = { __typename?: 'Query', getFilmByCompressedNFT: { __typename?: 'FilmEntity', id: string, name: string, description: string, background: string, avatar: string, duration: number, releaseDate: any, genres: Array<string>, stars: Array<string>, directors: Array<string>, status: FilmStatus, endDateSubscriber: any } };
+
 export type GetFilmByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
-export type GetFilmByIdQuery = { __typename?: 'Query', getFilmById: { __typename?: 'FilmEntity', id: string, name: string, description: string, background: string, avatar: string, duration: number, releaseDate: any, genres: Array<string>, stars: Array<string>, directors: Array<string>, adminProcess: AdminProcessStatus, status: FilmStatus, endDateSubscriber: any, topCasts?: Array<{ __typename?: 'FilmTopCast', name: string, avatar: string }> | null } };
+export type GetFilmByIdQuery = { __typename?: 'Query', getFilmById: { __typename?: 'FilmEntity', id: string, name: string, description: string, background: string, avatar: string, duration: number, releaseDate: any, genres: Array<string>, stars: Array<string>, directors: Array<string>, adminProcess: AdminProcessStatus, status: FilmStatus, endDateSubscriber: any, topCasts?: Array<{ __typename?: 'FilmTopCast', name: string, avatar?: string | null }> | null } };
 
 export type GetFilmsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']['input']>;
@@ -472,7 +485,7 @@ export type GetFilmsQueryVariables = Exact<{
 }>;
 
 
-export type GetFilmsQuery = { __typename?: 'Query', getFilms: { __typename?: 'PaginatedFilm', edges?: Array<{ __typename?: 'FilmEntityEdge', cursor: string, node: { __typename?: 'FilmEntity', id: string, name: string, description: string, duration: number, releaseDate: any, genres: Array<string>, stars: Array<string>, directors: Array<string>, adminProcess: AdminProcessStatus, status: FilmStatus, endDateSubscriber: any, avatar: string, background: string, topCasts?: Array<{ __typename?: 'FilmTopCast', name: string, avatar: string }> | null } }> | null, pageInfo?: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } | null } };
+export type GetFilmsQuery = { __typename?: 'Query', getFilms: { __typename?: 'PaginatedFilm', edges?: Array<{ __typename?: 'FilmEntityEdge', cursor: string, node: { __typename?: 'FilmEntity', id: string, name: string, description: string, duration: number, releaseDate: any, genres: Array<string>, stars: Array<string>, directors: Array<string>, adminProcess: AdminProcessStatus, status: FilmStatus, endDateSubscriber: any, avatar: string, background: string, topCasts?: Array<{ __typename?: 'FilmTopCast', name: string, avatar?: string | null }> | null } }> | null, pageInfo?: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } | null } };
 
 export type GetCompressedNfTsOfFilmQueryVariables = Exact<{
   filmId: Scalars['ID']['input'];
@@ -662,6 +675,52 @@ export function useCreateFilmMutation(baseOptions?: ApolloReactHooks.MutationHoo
 export type CreateFilmMutationHookResult = ReturnType<typeof useCreateFilmMutation>;
 export type CreateFilmMutationResult = Apollo.MutationResult<CreateFilmMutation>;
 export type CreateFilmMutationOptions = Apollo.BaseMutationOptions<CreateFilmMutation, CreateFilmMutationVariables>;
+export const GetFilmByCompressedNftDocument = gql`
+    query getFilmByCompressedNFT($name: String!) {
+  getFilmByCompressedNFT(name: $name) {
+    id
+    name
+    description
+    background
+    avatar
+    duration
+    releaseDate
+    genres
+    stars
+    directors
+    status
+    endDateSubscriber
+  }
+}
+    `;
+
+/**
+ * __useGetFilmByCompressedNftQuery__
+ *
+ * To run a query within a React component, call `useGetFilmByCompressedNftQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetFilmByCompressedNftQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetFilmByCompressedNftQuery({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useGetFilmByCompressedNftQuery(baseOptions: ApolloReactHooks.QueryHookOptions<GetFilmByCompressedNftQuery, GetFilmByCompressedNftQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetFilmByCompressedNftQuery, GetFilmByCompressedNftQueryVariables>(GetFilmByCompressedNftDocument, options);
+      }
+export function useGetFilmByCompressedNftLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetFilmByCompressedNftQuery, GetFilmByCompressedNftQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetFilmByCompressedNftQuery, GetFilmByCompressedNftQueryVariables>(GetFilmByCompressedNftDocument, options);
+        }
+export type GetFilmByCompressedNftQueryHookResult = ReturnType<typeof useGetFilmByCompressedNftQuery>;
+export type GetFilmByCompressedNftLazyQueryHookResult = ReturnType<typeof useGetFilmByCompressedNftLazyQuery>;
+export type GetFilmByCompressedNftQueryResult = Apollo.QueryResult<GetFilmByCompressedNftQuery, GetFilmByCompressedNftQueryVariables>;
 export const GetFilmByIdDocument = gql`
     query getFilmById($id: ID!) {
   getFilmById(id: $id) {
