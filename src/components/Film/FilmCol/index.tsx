@@ -46,7 +46,7 @@ export const FilmCardInCol = ({ posterSrc, title, genre, mostClaimRank, duration
 
           display: 'flex',
 
-          justifyContent: 'flex-start',
+          justifyContent: 'space-between',
           alignItems: 'center',
           gap: '16px',
           marginBottom: '16px',
@@ -64,8 +64,9 @@ export const FilmCardInCol = ({ posterSrc, title, genre, mostClaimRank, duration
             height: '80px',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'flex-start',
+            justifyContent: 'space-between',
             gap: '12px',
+            // border: '1px solid red',
           }}>
 
             {/* film title, rating and duration */}
@@ -95,11 +96,12 @@ export const FilmCardInCol = ({ posterSrc, title, genre, mostClaimRank, duration
                 justifyContent: 'flex-start',
               }}>
       
-                <div style={{
+                <div className='' style={{
                   display: 'flex',
                   marginRight: '12px',
                   alignItems: 'center',
                   flexDirection: 'row',
+                  
                   gap: '8px',
                 }}>
                     <p
@@ -120,6 +122,7 @@ export const FilmCardInCol = ({ posterSrc, title, genre, mostClaimRank, duration
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
+                  flexShrink: '0',
                 }}>           
 
                   <p className='text-white font-normal text-16'>
