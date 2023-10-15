@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './filmPosterDetail.css'
 import { FilmCompressedNftEntity, useMintCompressedNftMutation } from '@/graphql/generated';
 import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Button } from '../../ui/button';
 import { FilmPosterTrailerModal } from './FilmPosterTrailerModal';
 import { Modal } from '../../ui/modal';
@@ -229,7 +229,9 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
     }
 
     const giftIconUrl = "/assets/icons/gift-icon.svg";
-  
+
+    const pathname = usePathname();
+
     return (
         <div className="relative flex items-end mb-6" style={posterStyle}>
             <Modal
@@ -239,7 +241,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                 onClose={onCloseQrCode}
             >
                 <div className="pt-6 flex flex-col justify-center space-x-2 items-center w-full">
-                    <QRCode url="https://filmatron.vercel.app/" />
+                    <QRCode url={`https://filmatron.vercel.app${pathname ?? ''}`} />
                     <Button
                         onClick={onCloseQrCode}
                         className="w-60 mt-8 hover:bg-brand rounded-full transform active:scale-75 transition-transform hover:scale-110 duration-500 ease-out cursor-pointer flex flex-row justify-center items-center bg-brand text-black"
