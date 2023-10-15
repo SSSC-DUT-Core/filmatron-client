@@ -39,7 +39,19 @@ const HomepageDetail = ({
         setFilmList(mapFilmsFromGraphQLResponse(data));
     },
 });
-
+const fetchAssetsByOwner = (solanaAddress: string) => {
+    getAssetsByOwner(solanaAddress).then((data) => {
+        setListCnft(
+            data?.items.map((item: any) => ({
+                id: item.id,
+                name: item.content.metadata.name,
+                description: item.content.metadata.description,
+                symbol: item.content.metadata.symbol,
+                image: item.content.json_uri,
+            }))
+        );
+    });
+};
    const accessToken = localStorage.getItem("access_token") ?? "";
    const { data: getSolanaAddress, refetch: refetchGetAddress } = useGetSolanaAddressQuery({
        context: {
@@ -48,17 +60,7 @@ const HomepageDetail = ({
            },
        },
        onCompleted: data => {
-           getAssetsByOwner(data.getSolanaAddress.address).then(data => {
-               setListCnft(
-                   data?.items.map((item: any) => ({
-                       id: item.id,
-                       name: item.content.metadata.name,
-                       description: item.content.metadata.description,
-                       symbol: item.content.metadata.symbol,
-                       image: item.content.json_uri,
-                   }))
-               );
-           });
+        fetchAssetsByOwner(data.getSolanaAddress.address);
        },
    });
 
@@ -70,10 +72,14 @@ const HomepageDetail = ({
       fetchPolicy: 'network-only', 
     }
    )
-
+   const refetchAssetsByOwner = () => {
+    if (getSolanaAddress?.getSolanaAddress) {
+        fetchAssetsByOwner(getSolanaAddress.getSolanaAddress.address);
+    }
+};
    const refetchGetCompressNFT = () => {
-    refetchCompressedNfTsOfFilmQuery();
-    refetchGetAddress();
+  
+    refetchAssetsByOwner();
    }
 
   const [filmList, setFilmList] = useState<FilmEntity[]>([]);

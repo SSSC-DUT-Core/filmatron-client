@@ -142,7 +142,7 @@ export const displayGenres = (genres: string[]) => {
 
 
 
-export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerVideo, trailerImg, listCnft, refetch, isPrivateAccess }: FilmPosterDetailProps) => {
+export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseDate, genres, stars, director, NFTClaimImg, NFTEventName, expirationDate, trailerVideo, trailerImg, listCnft, refetch, isPrivateAccess, refetchGetCompressNFT }: FilmPosterDetailProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const router = useRouter();
     const handleToggle = () => {
@@ -224,7 +224,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
     const onCloseQrCode = () => {
         setIsShowQrCode(false);
-        router.refresh();
+        refetchGetCompressNFT?.();
 
     }
 
