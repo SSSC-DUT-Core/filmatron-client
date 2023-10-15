@@ -254,30 +254,23 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
         </div>
 
         {/* NFT Dissplay section */}
-        <div className="px-[12px] pt-[32px]"
+        <div className="px-[12px] pt-[20px]"
             style={{
               height: '560px',
-              // width: '1010px',
               width: '70%',
               backgroundColor: '#131020', 
-
-  
-              // border: '8px solid blue',
               borderRadius: '32px',
-  
               // border: "1px solid red",
-  
-              overflow: 'hidden',
-              
-              boxShadow: '0px 4px 50px 0px rgba(106, 45, 206, 0.65), 0px 4px 30px 0px rgba(243, 200, 121, 1)',
-            
-              // padding: '38px 12px ',  
-
+              // overflow: 'hidden',
+              boxShadow: '0px 4px 50px 0px rgba(106, 45, 206, 0.65), 0px 4px 30px 0px rgba(243, 200, 121, 1)', 
               marginLeft: '20px',
             }}
           >
+            <div className='px-[12px] leading-6 mb-[20px] text-[24px] text-white font-semibold'>
+              Exclusive Collectibles
+            </div>
             {selectedFilm && (
-              <div className='w-full h-full' style={{
+              <div className='w-full h-full pl-[8px]' style={{
                 // border: '1px solid green',
               }}>
                  <NFTsDisplay
@@ -289,10 +282,6 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
         
   
         {/* NFT display BG */}
-    
-  
-         
-  
       </div>
     );
 };

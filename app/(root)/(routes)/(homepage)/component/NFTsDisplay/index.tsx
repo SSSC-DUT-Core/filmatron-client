@@ -17,7 +17,6 @@ export const NFTsDisplay = ({ NFTs }: NFTsDisplayProps) => {
         <div
           className=""
           style={{
-            paddingLeft: '8px',
             display: 'flex',
             alignItems: 'center',
             // position: 'absolute',
@@ -31,8 +30,8 @@ export const NFTsDisplay = ({ NFTs }: NFTsDisplayProps) => {
               <div
                 className="NFTCard-BG"
                 style={{
-                  width: '354px',
-                  height: '494px',
+                  width: '342px',
+                  height: '475px',
                   zIndex: '3',
                 }}
               >
@@ -75,8 +74,8 @@ export const NFTsDisplay = ({ NFTs }: NFTsDisplayProps) => {
               <div
                 className="NFTCard-BG"
                 style={{
-                  width: '268px',
-                  height: '345px',
+                  width: '278px',
+                  height: '386px',
                   zIndex: '1',
                 }}
               >
