@@ -22,7 +22,7 @@ const listOfcollections: Collection[] = [
       {
           name: "NFT 2",
           description: "This is NFT 2",
-          imageUrl: "/assets/NFTs/nguoi-mat-troi/nguoi-mat-troi-nft-1.png",
+          imageUrl: "/assets/NFTs/nguoi-mat-troi/nguoi-mat-troi-nft-2.png",
           collectionName: "Collection 1",
           filmName: "Wednesday",
           attributes: ["Attribute 3", "Attribute 4"],
@@ -30,7 +30,7 @@ const listOfcollections: Collection[] = [
       {
           name: "NFT 3",
           description: "This is NFT 3",
-          imageUrl: "/assets/NFTs/nguoi-mat-troi/nguoi-mat-troi-nft-1.png",
+          imageUrl: "/assets/NFTs/nguoi-mat-troi/nguoi-mat-troi-nft-3.png",
           collectionName: "Collection 2",
           filmName: "NGƯỜI VỢ CUỐI CÙNG",
           attributes: ["Attribute 5", "Attribute 6"],
