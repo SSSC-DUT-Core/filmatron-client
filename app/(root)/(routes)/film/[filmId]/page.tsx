@@ -10,10 +10,9 @@ import {FilmPosterDetail} from '@/src/components/Film/filmPosterDetail/index';
 import {FilmRow } from '@/src/components/Film/FilmRow/index';
 import Image from 'next/image';
 import { LockIcon } from '@/public/assets';
-import { CNFT } from '@/src/types/types';
+import { CNFT, filmTrailer, listTrailerVideoFetching } from '@/src/types/types';
 import PrivateAccessImage from "../../../../../images/private-access.png";
 import { getAssetsByOwner, mapFilmNftsFromGraphQLResponse } from '../../../../../src/lib/utils';
-
 
 interface HomepageDetailProps {
   params: { filmId: string }
@@ -73,13 +72,12 @@ const fetchAssetsByOwner = (solanaAddress: string) => {
     }
    )
    const refetchAssetsByOwner = () => {
-    if (getSolanaAddress?.getSolanaAddress) {
-        fetchAssetsByOwner(getSolanaAddress.getSolanaAddress.address);
-    }
-};
+        if (getSolanaAddress?.getSolanaAddress) {
+            fetchAssetsByOwner(getSolanaAddress.getSolanaAddress.address);
+        }
+    };
    const refetchGetCompressNFT = () => {
-  
-    refetchAssetsByOwner();
+        refetchAssetsByOwner();
    }
 
   const [filmList, setFilmList] = useState<FilmEntity[]>([]);
@@ -102,19 +100,23 @@ const fetchAssetsByOwner = (solanaAddress: string) => {
 
     expirationDate: '2023-10-18',
 
-    trailerVideo: 'link vid from youtube',
     trailerImg: '/assets/images/film1.png',
 
     eventImg: './assets/filmDetail/gallery/galleryImg1.png',
   }
 
-
-
  const [listCnft, setListCnft] = useState<CNFT[]>([]);
 
  const filmNfts = mapFilmNftsFromGraphQLResponse(filmsNftsData)
+
  const isPrivateAccess = 
  filmNfts?.some(item => listCnft?.some(ownedNft => ownedNft.name === item.name));
+
+ const getTrailerVideo = (id: string, trailers: filmTrailer[]) => {
+    const trailer = trailers.find(trailer => trailer.id === id);
+    return trailer ? trailer.trailerVideo : undefined;
+};
+
 
   return (
       <div className="flex-col">
@@ -137,7 +139,7 @@ const fetchAssetsByOwner = (solanaAddress: string) => {
                       NFTClaimImg={filmPosterDetail.NFTClaimImg}
                       NFTEventName={film?.name}
                       expirationDate={film.endDateSubscriber}
-                      trailerVideo={filmPosterDetail.trailerVideo}
+                      trailerVideo={getTrailerVideo(film.id, listTrailerVideoFetching)}
                       trailerImg={film.avatar}
                       eventImg={filmPosterDetail.eventImg}
                       filmId={filmId}

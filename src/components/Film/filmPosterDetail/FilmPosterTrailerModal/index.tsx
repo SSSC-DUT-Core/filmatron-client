@@ -17,11 +17,10 @@ export const FilmPosterTrailerModal: FC<FilmPosterTrailerModalProps> = ({ isOpen
 
   const contentRef = useRef<HTMLDivElement>(null);
 
-    const closeModal = () => {
-        (contentRef.current?.parentNode as HTMLElement)?.classList.remove('active');
-        onClose();
-    };
-  
+  const closeModal = () => {
+      (contentRef.current?.parentNode as HTMLElement)?.classList.remove('active');
+      onClose();
+  };
 
   return (
     <div  className={`modal ${active ? 'active' : ''}`}  onClick={closeModal}>

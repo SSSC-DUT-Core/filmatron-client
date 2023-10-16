@@ -11,7 +11,7 @@ import { PrizeTicketHomePage } from "@/src/components/PrizeTicketHomePage";
 import { FilmRow } from "@/src/components/Film/FilmRow";
 
 import { useTour } from "@reactour/tour";
-import { CNFT } from "@/src/types/types";
+import { CNFT, filmTrailer, listTrailerVideoFetching } from '@/src/types/types';
 import { LiveFilmSection } from "./component/LiveFilmSection";
 import { RedBandTrailer } from "../../../../src/components/RedBandTrailer";
 
@@ -35,8 +35,9 @@ const filmPosterDetailData = {
 
     expirationDate: "2023-10-18T12:30:00",
 
-    trailerVideo: "https://www.youtube.com/watch?v=qdURq3NXQ0U",
     trailerImg: "/assets/images/film1.png",
+
+    trailerVideo: "https://www.youtube.com/watch?v=FV3bqvOHRQo", 
 
     eventImg: "./assets/filmDetail/gallery/galleryImg1.png",
 };
@@ -182,12 +183,16 @@ export const HomePage = () => {
          item => listCnft?.some(ownedNft => ownedNft.name === item.name)
      );
 
+    const getTrailerVideo = (id: string, trailers: filmTrailer[]) => {
+        const trailer = trailers.find(trailer => trailer.id === id);
+        return trailer ? trailer.trailerVideo : undefined;
+    };
+    
     return (
         <div
-            className=""
+            className="px-[80px] pt-0 pb-[24px]"
             style={{
-                padding: "0px 80px",
-                marginBottom: "24px",
+                // border: '8px solid red',
             }}
         >
             {firstFilm && (
@@ -203,7 +208,8 @@ export const HomePage = () => {
                     NFTClaimImg={filmPosterDetailData.NFTClaimImg}
                     NFTEventName={firstFilm?.name}
                     expirationDate={firstFilm.endDateSubscriber}
-                    trailerVideo={filmPosterDetailData.trailerVideo}
+                    trailerVideo={getTrailerVideo(firstFilm.id, listTrailerVideoFetching)}
+
                     trailerImg={firstFilm.avatar}
                     eventImg={filmPosterDetailData.eventImg}
                     filmId={firstFilm.id}

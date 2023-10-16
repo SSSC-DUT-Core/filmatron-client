@@ -1,5 +1,6 @@
 import { FilmEntity } from "@/graphql/generated";
 
+
 export type FilmData = {
     id: string;
     posterSrc: string;
@@ -91,3 +92,27 @@ export interface CNFT {
     image: string;
     author?: string;
 }
+
+export type filmTrailer = {
+    id: string;
+    trailerVideo: string;
+};
+
+export const listTrailerVideoFetching = [
+    {
+        id: "1",
+        trailerVideo: "https://www.youtube.com/watch?v=qdURq3NXQ0U", 
+    },
+    {
+        id: "10",
+        trailerVideo: "https://www.youtube.com/watch?v=ygvNCEbMusE", 
+    },
+    {
+        id: "12",
+        trailerVideo: "https://www.youtube.com/watch?v=g4Hbz2jLxvQ", 
+    },
+    {
+        id: "20",
+        trailerVideo: "https://www.youtube.com/watch?v=FV3bqvOHRQo", 
+    },
+];

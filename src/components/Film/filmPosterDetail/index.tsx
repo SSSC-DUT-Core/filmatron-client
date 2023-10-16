@@ -160,8 +160,8 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
     const getYouTubeVideoId = (url: string | undefined): string | undefined => {
         const match = url?.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-        return match?.[1];
-    }
+        return match?.[1] || undefined;
+    }    
 
     // create embed url from youtube video id and add autoplay 
     const embedUrl = `https://www.youtube.com/embed/${getYouTubeVideoId(trailerVideo)}?autoplay=1`;
