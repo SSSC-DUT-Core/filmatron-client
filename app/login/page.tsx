@@ -58,11 +58,11 @@ const LoginPage = () => {
     }, [authorizationCode]);
 
     return (
-        <div className="bg-background-layout bg-cover bg-right w-screen h-screen py-10 px-32">
+        <div className="bg-background-layout bg-cover bg-right w-screen h-screen py-10 sm:px-32 px-8">
             <div className="h-[88vh] w-full flex flex-row">
-                <div className="h-screen !w-4/12 md:h-auto">
+                <div className="sm:!w-4/12 w-full h-auto">
                     <div className="bg-transparent h-full w-full">
-                        <div className="flex justify-center rounded-l-3xl bg-[#00000099] flex-col items-center h-full text-white px-10">
+                        <div className="flex justify-center sm:rounded-l-3xl rounded-3xl bg-[#00000099] flex-col items-center h-full text-white px-10">
                             <div className="flex flex-col justify-center items-center">
                                 <Image
                                     src={LogoFull}
@@ -70,7 +70,7 @@ const LoginPage = () => {
                                     height={100}
                                     alt="logo-orus"
                                 />
-                                <p className="my-8 text-center text-lg">
+                                <p className="my-8 text-center sm:text-lg text-base">
                                     Our platform is trusted by millions &
                                     features best updated movies all around the
                                     world.
@@ -99,7 +99,7 @@ const LoginPage = () => {
                                                         }
                                                         className="z-10"
                                                     />
-                                                    <p className="m-0 z-10 font-semibold text-base">
+                                                    <p className="m-0 z-10 font-semibold sm:text-base text-sm">
                                                         {
                                                             socialLoginOption.imgAltText
                                                         }
@@ -113,7 +113,7 @@ const LoginPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="bg-background rounded-r-3xl !w-8/12 bg-cover bg-center" />
+                <div className="bg-background sm:block hidden rounded-r-3xl !w-8/12 bg-cover bg-center" />
             </div>
         </div>
     );

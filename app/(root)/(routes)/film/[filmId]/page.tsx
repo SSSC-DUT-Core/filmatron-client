@@ -119,12 +119,9 @@ const fetchAssetsByOwner = (solanaAddress: string) => {
 
 
   return (
-      <div className="flex-col">
+      <div className="flex-col sm:px-20 px-4 py-4">
           <div
               className="flex-1 space-y-4 "
-              style={{
-                  padding: "0px 80px",
-              }}
           >
               {film ? (
                   <FilmPosterDetail
@@ -150,10 +147,12 @@ const fetchAssetsByOwner = (solanaAddress: string) => {
               ) : // Render a fallback component or message when film is undefined
               null}
 
+              <div className='w-full sm:h-0 h-20' />
+
               <div className="relative">
                   {!isPrivateAccess ? (
                       <>
-                          <div className="absolute top-0 z-40 left-0 w-full h-full backdrop-blur-md rounded-3xl bg-white/10" />
+                          <div className="absolute sm:mt-0 mt-10 top-0 z-40 left-0 w-full h-full backdrop-blur-md rounded-3xl bg-white/10" />
                           <div className="w-full h-full flex justify-center items-center">
                               <div className="flex absolute z-50 top-[20%] flex-col space-y-6 justify-center items-center">
                                   <Image

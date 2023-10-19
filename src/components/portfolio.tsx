@@ -31,11 +31,11 @@ const socialList = [
 export const Portfolio = ({ name, description, image }: IPortfolioProps) => {
 
     return (
-        <div className="w-full bg-black bg-opacity-30 p-6 rounded-t-3xl flex flex-row">
-            <div className="w-1/4 flex justify-center items-center">
+        <div className="w-full bg-black bg-opacity-30 sm:p-6 p-2 rounded-t-3xl flex sm:flex-row flex-col sm:items-start items-center">
+            <div className="sm:w-1/4 w-full flex justify-center items-center">
                 <Image src={image} alt={name} width={250} height={250} />
             </div>
-            <div className="w-2/4 text-white">
+            <div className="sm:w-2/4 sm:mt-0 mt-4 flex flex-col items-center sm:items-start w-full text-white">
                 <p className="text-xl font-normal mb-2">User profile</p>
                 <p className="text-4xl font-semibold mb-3">{name}</p>
                 <p className="text-sm font-normal mb-4">{description}</p>
@@ -45,7 +45,7 @@ export const Portfolio = ({ name, description, image }: IPortfolioProps) => {
                 </div>
             </div>
 
-            <div className="w-1/4 flex flex-row  space-x-2 items-start justify-center">
+            <div className="sm:w-1/4 w-full sm:mt-0 mt-4 flex flex-row  space-x-2 items-start justify-center">
                 {socialList.map(({ image, name }) => (
                     <div className="bg-slate-50 w-10 h-10 flex justify-center rounded-xl items-center">
                         <Image src={image} alt={name} width={20} height={20} />

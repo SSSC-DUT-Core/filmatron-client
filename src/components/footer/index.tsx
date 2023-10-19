@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
+import { Button } from "../ui/button";
 
 import SelectLang from './selectLang/index'
 
@@ -20,18 +21,16 @@ const Footer = () => {
 
     return (
         <footer
-            className="text-white p-8"
+            className="text-white"
             style={{
                 backgroundColor: "rgb(19,16,32)",
-                padding: "80px",
             }}
         >
-            <div className="mx-auto flex flex-col md:flex-row justify-between">
+            <div className="mx-auto sm:p-20 p-10 flex flex-col md:flex-row justify-between">
                 <div className="mb-4 md:mb-0 col">
                     <div
                         className="flex items-center "
                         style={{
-                            width: "450px",
                             flexDirection: "row",
                         }}
                     >
@@ -52,7 +51,7 @@ const Footer = () => {
                         <span
                             className=""
                             style={{
-                                fontSize: '20px',
+                                fontSize: "20px",
                             }}
                         >
                             Our platform is trusted by millions & features
@@ -61,18 +60,19 @@ const Footer = () => {
                         </span>
                     </div>
 
-                    <div>
-                        <span className="text-thin"
+                    <div className="">
+                        <span
+                            className="text-thin"
                             style={{
-                                fontSize: '14px',
-                                marginBottom: '24px',
-                                color: '#8A8F98',
+                                fontSize: "14px",
+                                marginBottom: "24px",
+                                color: "#8A8F98",
                             }}
                         >
                             Subscribe to our newsletter
                         </span>
 
-                        <div className="relative">
+                        <div className="relative mt-2">
                             <div
                                 className="absolute  left-5 transform -translate-y-1/2 w-6 h-6"
                                 style={{
@@ -97,30 +97,35 @@ const Footer = () => {
                                 </svg>
                             </div>
 
-                            <input
-                                type="email"
-                                placeholder="your email"
-                                className="bg-white p-4 pl-12 focus:outline-none w-[444px] h-[80px]"
-                                style={{
-                                    color: "black",
-                                    borderRadius: "16px",
-                                    fontSize: "16px",
-                                }}
-                            />
+                            <div className="flex justify-between items-center">
+                                <input
+                                    type="email"
+                                    placeholder="your email"
+                                    className="bg-white p-4 pl-12 rounded-xl sm:rounded-l-xl focus:outline-none sm:w-[444px] w-full h-14"
+                                    style={{
+                                        color: "black",
+                                        fontSize: "16px",
+                                    }}
+                                />
 
-                            <button
-                                className="absolute text-white p-4 rounded-r-md hover:bg-blue-600 focus:outline-none w-[40px] h-[30px]"
-                                style={{
-                                    top: '8px',
-                                    right: '24px',
-                                    backgroundColor: '#f3c678',
-                                    borderRadius: '16px',
-                                }}
-                            >
-                                <svg style={{ color: 'black' }} width="36" height="36" viewBox="0 0 15 15" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" /></svg>
-                                {/* Subscribe */}
-                            </button>
-
+                                <Button className="bg-brand cursor-pointer hover:bg-brand absolute sm:right-2 right-0">
+                                    <svg
+                                        style={{ color: "black" }}
+                                        width="36"
+                                        height="36"
+                                        viewBox="0 0 15 15"
+                                        fill="black"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                                            fill="currentColor"
+                                            fillRule="evenodd"
+                                            clipRule="evenodd"
+                                        />
+                                    </svg>
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -147,15 +152,8 @@ const Footer = () => {
                     </div>
 
                     <div className="flex items-center mr-8 flex-end">
-
-                        <SelectLang
-                            options={Lang}
-                        />
-
+                        <SelectLang options={Lang} />
                     </div>
-
-                  
-
                 </div>
             </div>
         </footer>

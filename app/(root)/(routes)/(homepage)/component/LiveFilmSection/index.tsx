@@ -181,16 +181,14 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
     }, [films, selectedFilm]);
 
     return (
-      <div className="w-full h-full flex flex-row justify-between items-center"
+      <div className="w-full h-full flex sm:space-y-0 space-y-6 sm:flex-row flex-col justify-between items-center"
           style={{
             // border: '8px solid green',
           }}
         >
         {/* list of film cards */}
-        <div className="relative"
+        <div className="relative sm:w-1/3 w-full"
              style={{
-              // border: '8px solid black',
-              width: '33%', 
               height: '560px',
               overflow: 'hidden',
   
@@ -254,16 +252,14 @@ export const LiveFilmSection = ({ films }: LiveFilmSectionProps) => {
         </div>
 
         {/* NFT Dissplay section */}
-        <div className="px-[12px] pt-[20px]"
+        <div className="px-[12px] sm:ml-6 ml-0 sm:w-2/3 w-full pt-[20px]"
             style={{
               height: '560px',
-              width: '70%',
               backgroundColor: '#131020', 
               borderRadius: '32px',
               // border: "1px solid red",
               // overflow: 'hidden',
               boxShadow: '0px 4px 50px 0px rgba(106, 45, 206, 0.65), 0px 4px 30px 0px rgba(243, 200, 121, 1)', 
-              marginLeft: '20px',
             }}
           >
             <div className='px-[12px] leading-6 mb-[20px] text-[24px] text-white font-semibold'>

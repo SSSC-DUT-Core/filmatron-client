@@ -13,15 +13,15 @@ export interface ILuckyDrawProps {
 
 export const LuckyDraw = ({ luckyNumber, address }: ILuckyDrawProps) => {
     return (
-        <div className="w-full bg-black border-primary-background border-[1px] border-brand bg-opacity-30 p-6 rounded-3xl flex flex-row">
-            <div className="w-1/3 flex justify-center flex-col space-y-8 items-center">
+        <div className="w-full bg-black border-primary-background border-[1px] border-brand bg-opacity-30 p-6 rounded-3xl flex sm:flex-row flex-col-reverse">
+            <div className="sm:w-1/3 mt-5 sm:mt-0 w-full flex justify-center flex-col space-y-8 items-center">
                 <Image
                     src={LuckyDrawImage}
                     alt="lucky-draw"
                     width={300}
                     height={600}
                 />
-                <Button className="w-2/5 hover:bg-brand transform active:scale-75 transition-transform hover:scale-110 duration-500 ease-out cursor-pointer flex flex-row justify-center items-center bg-brand text-black">
+                <Button className="sm:w-2/5 w-4/5 hover:bg-brand transform active:scale-75 transition-transform hover:scale-110 space-x-2 duration-500 ease-out cursor-pointer flex flex-row justify-center items-center bg-brand text-black">
                     <Image
                         src={GiftBox}
                         alt="gift-box"
@@ -32,9 +32,9 @@ export const LuckyDraw = ({ luckyNumber, address }: ILuckyDrawProps) => {
                 </Button>
             </div>
 
-            <div className="w-3/5 text-white flex flex-col items-center justify-between">
+            <div className="sm:w-3/5 w-full text-white flex flex-col items-center justify-between">
                 <div className="h-full flex flex-col items-center">
-                    <p className="text-start animate-pulse font-semibold text-6xl drop-shadow-primary text-slate-200 mb-6">
+                    <p className="text-start animate-pulse font-semibold sm:text-6xl text-3xl drop-shadow-primary text-slate-200 mb-6">
                         Lucky number
                     </p>
 
@@ -49,7 +49,7 @@ export const LuckyDraw = ({ luckyNumber, address }: ILuckyDrawProps) => {
                     <div className="flex flex-col justify-center items-center mb-5 relative">
                         <div className="flex absolute flex-row w-full justify-center items-center">
                             {luckyNumber.map(number => (
-                                <p className="text-7xl animate-pulse m-0 drop-shadow-blue text-center w-1/4 font-semibold mb-2">
+                                <p className="sm:text-7xl text-5xl animate-pulse m-0 drop-shadow-blue text-center w-1/4 font-semibold sm:mb-2 mb-0">
                                     {number}
                                 </p>
                             ))}

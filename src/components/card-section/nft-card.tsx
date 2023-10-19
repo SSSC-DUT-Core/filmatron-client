@@ -80,7 +80,7 @@ export const NftCard = ({ cNFT }: INftCardProps) => {
                         </div>
                     </div>
 
-                    <div className="text-slate-200 text-base flex justify-between flex-col">
+                    <div className="text-slate-200  text-base sm:flex hidden justify-between flex-col">
                         <div className="flex flex-row space-x-4">
                             <p className="font-light">Release date:</p>
                             <p className="font-semibold">
@@ -90,7 +90,9 @@ export const NftCard = ({ cNFT }: INftCardProps) => {
                             </p>
                         </div>
                         <div className="flex flex-row space-x-3">
-                            <p className="font-semibold text-yellow-600">Star</p>
+                            <p className="font-semibold text-yellow-600">
+                                Star
+                            </p>
                             {filmDetail?.stars?.map(star => (
                                 <p className="font-light">{star}</p>
                             ))}
@@ -100,8 +102,8 @@ export const NftCard = ({ cNFT }: INftCardProps) => {
 
                 <div className="bg-slate-300 w-full h-[1px]" />
 
-                <div className="flex flex-row mt-6">
-                    <div className="text-slate-100 text-base w-3/5">
+                <div className="flex sm:flex-row flex-col-reverse mt-6">
+                    <div className="text-slate-100 mt-5 sm:mt-0 text-base sm:w-3/5 w-full">
                         <p className="text-2xl mb-2 font-semibold">
                             {filmDetail?.name ?? cNFT.name}
                         </p>
@@ -150,7 +152,7 @@ export const NftCard = ({ cNFT }: INftCardProps) => {
 
                         <Button
                             onClick={onOpen}
-                            className="w-60 mt-8 hover:bg-brand rounded-full transform active:scale-75 transition-transform hover:scale-110 duration-500 ease-out cursor-pointer flex flex-row justify-center items-center bg-brand text-black"
+                            className="sm:w-60 w-11/12 mt-8 hover:bg-brand rounded-full transform active:scale-75 transition-transform hover:scale-110 duration-500 ease-out cursor-pointer flex flex-row justify-center items-center bg-brand text-black"
                         >
                             <p className="text-lg font-semibold">
                                 Share the movie
@@ -158,15 +160,22 @@ export const NftCard = ({ cNFT }: INftCardProps) => {
                         </Button>
                     </div>
 
-                    <div className="w-1/5" />
+                    <div className="sm:w-1/5 w-full sm:block hidden" />
 
-                    <div className="w-1/5">
+                    <div className="sm:w-1/5 w-full">
                         <Image
                             src={cNFT.image}
-                            width={220}
+                            width={330}
                             height={250}
                             alt="icon-copy"
-                            className="rounded-xl"
+                            className="block sm:hidden rounded-xl"
+                        />
+                        <Image
+                            src={cNFT.image}
+                            width={200}
+                            height={250}
+                            alt="icon-copy"
+                            className="sm:block hidden rounded-xl"
                         />
                     </div>
                 </div>

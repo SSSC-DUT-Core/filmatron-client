@@ -11,7 +11,7 @@ const Profile = () => {
         <div>
             <Image src={banner} width={2000} alt="banner" />
 
-            <div className="w-full h-full px-12 py-6">
+            <div className="w-full h-full sm:px-12 px-2 py-6">
                 <div className="rounded-3xl">
                     <Portfolio
                         name="Mr. Anh Tran"

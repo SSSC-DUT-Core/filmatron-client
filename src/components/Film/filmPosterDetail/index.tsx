@@ -168,16 +168,10 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
     const [isShowQrCode, setIsShowQrCode] = useState<boolean>(false);
     const posterStyle = {
-        // border: '1px solid red',
         backgroundImage: `url(${posterSrc})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        height: "648px",
-        width: "100%",
-        padding: "0rem 2rem  2.5rem 2rem",
-
-        borderRadius: "32px",
     };
 
     const trailerImgStyle = {
@@ -239,7 +233,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
     }
 
     return (
-        <div className="relative flex items-end mb-6" style={posterStyle}>
+        <div className="relative rounded-xl w-full sm:h-[80vh] h-[24vh] flex items-end mb-6" style={posterStyle}>
             <Modal
                 title="Your QR code:"
                 description="Share the movie with everyone."
@@ -273,18 +267,20 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                 }}
             >
                 {/* logo or tile of film */}
-                <div className="flex items-center text-center w-1/3" style={{}}>
+                <div
+                    className="sm:flex hidden items-center text-center w-1/3"
+                >
                     {logoSrc ? (
                         <img className="" src={logoSrc} alt="" />
                     ) : (
-                        <h1 className="text-white font-bold font-inter text-4xl font-extrabold leading-8 tracking-tight text-center">
+                        <h1 className="text-white font-inter text-4xl font-extrabold leading-8 tracking-tight text-center">
                             {title}
                         </h1>
                     )}
                 </div>
 
                 {/* img trailer + poster info wrapper */}
-                <div className="flex items-start justify-start flex-row gap-4">
+                <div className="sm:flex hidden items-start justify-start flex-row gap-4">
                     {/* img trailer */}
                     <div
                         className="w-[12.5rem] h-[19rem]"
@@ -460,7 +456,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                     }}
                 >
                     {/* NFT image */}
-                    <div>
+                    <div className='sm:block hidden'>
                         <img
                             className="NFTImage w-[14.5rem] h-[20rem]"
                             width=""
@@ -480,38 +476,25 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
                     {/* NFT claim bar */}
                     <div
-                        className="flex row justify-between items-center py-[16px] px-[12px]"
+                        className="flex row sm:absolute relative justify-between items-center sm:top-[16%] top-0 sm:right-[8%] right-5 py-[16px] px-[12px]"
                         style={{
-                            // width: "27rem",
                             gap: "46px",
-                            height: "5rem",
                             borderRadius: "16px",
                             border: "1px solid rgb(255, 255, 255)",
                             backgroundColor: "rgba(30, 30, 30, 0.12)",
-                            position: "absolute",
-                            top: "16%",
-                            right: "8%",
                             backdropFilter: "blur(30px)",
                         }}
                     >
-                        {/* NFT claim bar infor */}
                         <div
-                            className="flex row justify-between 
-                             items-center gap-[16px]"
-                            style={{
-                                // border: '1px solid orange',
-                                width: "256px",
-                                height: "54px",
-                            }}
+                            className="flex row sm:justify-between justify-center 
+                             items-center sm:gap-[16px] gap-2 sm:w-64 w-40 h-14"
                         >
-                            {/* NFT event */}
-                            <div className="flex col shrink-0">
+                            <div className="sm:flex hidden col shrink-0">
                                 <div>
                                     <p
                                         className="font-bold text-16 leading-[2rem]"
                                         style={{
                                             color: "#00FFEE",
-                                            // marginBottom: "8px",
                                         }}
                                     >
                                         NFT Event
@@ -538,14 +521,14 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                         <div className="cursor-pointer" onClick={onValidateNFT}>
                             {listCnft && (
                                 <Button
-                                    className="NFTClaimButton w-[5rem] h-[2.5rem] rounded-[36px] claim-button text-black text-[24px] gap-2"
+                                    className="NFTClaimButton sm:w-[5rem] w-24 h-7 sm:h-[2.5rem] rounded-[36px] claim-button text-black sm:text-[24px] text-sm gap-2"
                                     disabled={loading || isPrivateAccess}
                                     onClick={onClaim}
                                 >
                                     <img
                                         src={giftIconUrl}
                                         alt=""
-                                        className="w-7 h-7 NFTClaimButtonIcon" // Adjust the size as needed
+                                        className="sm:w-7 sm:h-7 w-5 h-5 NFTClaimButtonIcon" // Adjust the size as needed
                                     />
                                     Claim
                                 </Button>
