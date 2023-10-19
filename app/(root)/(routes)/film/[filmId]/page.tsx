@@ -152,7 +152,7 @@ const fetchAssetsByOwner = (solanaAddress: string) => {
               <div className="relative">
                   {!isPrivateAccess ? (
                       <>
-                          <div className="absolute sm:mt-0 mt-10 top-0 z-40 left-0 w-full h-full backdrop-blur-md rounded-3xl bg-white/10" />
+                          <div className="absolute sm:mt-0 mt-9 top-0 z-40 left-0 w-full h-full backdrop-blur-md rounded-3xl bg-white/10" />
                           <div className="w-full h-full flex justify-center items-center">
                               <div className="flex absolute z-50 top-[20%] flex-col space-y-6 justify-center items-center">
                                   <Image
