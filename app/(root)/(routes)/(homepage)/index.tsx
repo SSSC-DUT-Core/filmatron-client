@@ -190,7 +190,7 @@ export const HomePage = () => {
     
     return (
         <div
-            className="px-[80px] pt-0 pb-[24px]"
+            className="sm:px-[80px] px-4 pb-[24px]"
             style={{
                 // border: '8px solid red',
             }}
@@ -225,15 +225,13 @@ export const HomePage = () => {
                 filmRow={filmList}
             />
             {/* prizeticket and redBandTrailer */}
-            <div className="flex justify-between w-full pb-16">
-                {/* prizeticketHomePage */}
+            <div className="flex sm:flex-row flex-col justify-between w-full pb-16">
                 <div className="lg:w-1/2 sm:w-full">
-                    {/* FilmRow header title */}
-                    <div className="w-full flex-start flex items-center gap-4 items-center pb-6">
+                    <div className="w-full flex-start flex gap-4 items-center pb-6">
                         <img
                             src={ticketIconUrl}
                             alt="Prize Ticket"
-                            className="w-10 h-10" // Adjust the size as needed
+                            className="w-10 h-10"
                         />
 
                         <h3
@@ -243,7 +241,6 @@ export const HomePage = () => {
                                 fontSize: "30px",
                                 lineHeight: "36px",
                                 flex: "start",
-                                // marginBottom: '8px',
                             }}
                         >
                             Win free prizes
@@ -257,14 +254,12 @@ export const HomePage = () => {
                     </div>
                 </div>
 
-                {/* redbandTrailerHomePage */}
                 <div className="lg:w-1/2 sm:w-full">
-                    {/* FilmRow header title */}
-                    <div className="w-full flex-start flex items-center gap-4 items-center pb-6">
+                    <div className="w-full flex-start flex gap-4 items-center pb-6">
                         <img
                             src={cinemaIconUrl}
                             alt="Prize Ticket"
-                            className="w-10 h-10" // Adjust the size as needed
+                            className="w-10 h-10"
                         />
 
                         <h3
@@ -274,7 +269,6 @@ export const HomePage = () => {
                                 fontSize: "30px",
                                 lineHeight: "36px",
                                 flex: "start",
-                                // marginBottom: '8px',
                             }}
                         >
                             Red band trailer
@@ -282,10 +276,6 @@ export const HomePage = () => {
                     </div>
 
                     <div className="flex flex-row flex-wrap justify-around">
-                        {/* {prizeList.slice(0, 2).map((prize, index) => (
-                    <PrizeTicketHomePage key={index} {...prize} />
-                ))} */}
-
                         {redBandTrailersFetching
                             .slice(0, 2)
                             ?.map((trailer, index) => (

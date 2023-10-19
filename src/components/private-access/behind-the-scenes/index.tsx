@@ -47,14 +47,14 @@ export const CustomSlider = () => {
 
     return (
         <div className="w-full">
-            <Slider {...settings} className="flex">
+            <Slider {...settings} className="flex sm:w[450px] h-[240px]">
                 {slides.map((source) => {
                     return (
-                        <div className="w-[450px] mx-2 h-[450px]">
+                        <div className="w-[450px] mx-2 sm:w[450px] h-[240px]">
                             <Image
                                 src={source}
                                 alt="secret-image"
-                                className="rounded-xl cursor-pointer w-[450px] h-[450px]"
+                                className="rounded-xl cursor-pointer w-[450px] sm:w[450px] h-[240px]"
                                 style={{
                                     objectFit: "cover",
                                 }}

@@ -25,7 +25,7 @@ export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
         <>
             <div
             className={cn(
-                "hidden sm:flex w-full relative items-center justify-between px-24",
+                "flex w-full relative items-center justify-between sm:px-24 px-1",
                 className
             )}
             style={{
@@ -36,7 +36,7 @@ export function MainNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
         >
             {/* Logo */}
             <Link href="/">
-            <div className="mr-5">
+            <div className="mx-5">
                 <Image
                     src="/assets/images/logo-header.png"
                     width={144}

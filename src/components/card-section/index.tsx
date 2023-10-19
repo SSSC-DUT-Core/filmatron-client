@@ -46,7 +46,7 @@ export const CardSection = (props: ICardSectionProps) => {
        });
    }, []);
     return (
-        <div className="w-full bg-slate-500 bg-opacity-20 p-6 rounded-b-3xl flex flex-col justify-center items-center space-y-8">
+        <div className="w-full bg-slate-500 bg-opacity-20 sm:p-6 p-0 rounded-b-3xl flex flex-col justify-center items-center space-y-8">
             <div className="flex flex-row relative">
                 <Input
                     className="rounded-full pr-32 pl-4 text-white"

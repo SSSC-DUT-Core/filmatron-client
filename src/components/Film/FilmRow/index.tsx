@@ -152,15 +152,12 @@ export const FilmRow = ({ filmRowTitle, filmRow }: sectionFilmRow) => {
     return (
         <div className="mb-[24px]">
             <div
-                className="w-full h-full flex flex-col justify-between items-center"
+                className="w-full sm:mt-16 mt-36 h-full flex flex-col justify-between items-center"
                 style={{
-                    // border: '1px solid pink',
-                    marginTop: "48px",
                     overflow: "hidden",
                     padding: "0 4px",
                 }}
             >
-                {/* FilmRow header title */}
                 <div className="w-full flex-start">
                     <h3
                         className="text-white"
@@ -176,22 +173,13 @@ export const FilmRow = ({ filmRowTitle, filmRow }: sectionFilmRow) => {
                     </h3>
                 </div>
 
-                {/* list of film cards */}
                 <div
-                    className="relative flex flex-row justify-start items-center"
+                    className="relative overflow-x-scroll flex flex-row justify-start items-center"
                     style={{
                         width: "100%",
                         gap: "16px",
-                        // border: "1px solid yellow",
-                        // overflow: 'hidden',
-                    }}
-                    onClick={() => {
-                        console.log("filmRow.tsx: clicked: ", filmRow);
-                        console.log("filmtitle  : clicked: ", filmRow);
                     }}
                 >
-                    {/* test filmRow */}
-                    {/* Film Cards */}
                     {filmRow?.map((film: FilmEntity, index: number) => (
                         <div
                             key={index}

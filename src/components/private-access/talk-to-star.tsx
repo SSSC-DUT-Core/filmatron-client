@@ -8,8 +8,8 @@ import { Button } from "../ui/button";
 
 export const TalkToStar = () => {
     return (
-        <div className="w-full bg-black border-primary-background border-[1px] border-brand bg-opacity-30 p-3 py-5 rounded-3xl flex justify-between flex-row">
-            <div className="w-5/12 flex justify-center items-center">
+        <div className="w-full bg-black border-primary-background border-[1px] border-brand bg-opacity-30 sm:flex-row flex-col p-3 py-5 rounded-3xl flex justify-between">
+            <div className="sm:w-5/12 w-full flex justify-center items-center">
                 <Image
                     src={TalkToStarImg}
                     alt="lucky-draw"
@@ -18,15 +18,15 @@ export const TalkToStar = () => {
                 />
             </div>
 
-            <div className="w-6/12 flex flex-col justify-center items-start">
+            <div className="sm:w-6/12 w-full flex flex-col justify-center sm:items-start items-center">
                 <div className="w-full flex items-center">
                     <BsClock />
-                    <p className="text-start font-serif text-md text-white ml-1">
+                    <p className="text-start mt-2 text-md font-semibold text-white ml-1">
                         Nov 1st, chat with director
                     </p>
                 </div>
 
-                <div className="mt-3 flex justify-between w-4/5">
+                <div className="mt-3 flex mr-8 sm:mr-0 justify-between w-4/5">
                     <div>
                         <DirectorComponent />
                     </div>
@@ -65,7 +65,7 @@ export const DirectorComponent = () => {
                     />
                 </div>
             </div>
-            <div className="ml-5 mt-8">
+            <div className="ml-5 mt-8 sm:block hidden">
                 <p className="font-semibold text-3xl">First name</p>
                 <p className="pt-3 text-slate-500">Last name</p>
             </div>

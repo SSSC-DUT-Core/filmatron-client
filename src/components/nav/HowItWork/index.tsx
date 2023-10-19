@@ -5,7 +5,7 @@ const sealQuestionIconUrl = "/assets/icons/seal-question-icon.svg";
 export const HowItWork = () => {
   return (
     
-    <div className="w-full border-gradient py-[1px]">
+    <div className="w-full border-gradient sm:block hidden py-[1px]">
         <div className='w-full h-full  py-[16px] flex flex-wrap justify-start items-center gap-[12px] px-[92px] bg-[rgb(6,9,30)]'>
           <div className='flex gap-2 items-center'>
             <img
