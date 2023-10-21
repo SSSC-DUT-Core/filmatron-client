@@ -144,6 +144,7 @@ export type Mutation = {
   createCollection: ReturnMessageBase;
   createCompressedNFTMetadata: ReturnMessageBase;
   createFilm: ReturnMessageBase;
+  getMe: PersonEntity;
   mintCompressedNFT: ReturnMessageBase;
   signIn: ReturnAccountDto;
   signInWithSocial: ReturnAccountDto;
@@ -430,6 +431,11 @@ export type WhitelistEntity = {
   personId: Scalars['Float']['output'];
 };
 
+export type GetMeMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetMeMutation = { __typename?: 'Mutation', getMe: { __typename?: 'PersonEntity', id: string, publicKey?: string | null, email?: string | null, avatar?: string | null, background?: string | null, name: string, bio?: string | null, discord?: string | null, youtube?: string | null, twitter?: string | null, instagram?: string | null, role: Role } };
+
 export type GetSolanaAddressQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -506,6 +512,49 @@ export type MintCompressedNftMutationVariables = Exact<{
 export type MintCompressedNftMutation = { __typename?: 'Mutation', mintCompressedNFT: { __typename?: 'ReturnMessageBase', success: boolean, message: string } };
 
 
+export const GetMeDocument = gql`
+    mutation getMe {
+  getMe {
+    id
+    publicKey
+    email
+    avatar
+    background
+    name
+    bio
+    discord
+    youtube
+    twitter
+    instagram
+    role
+  }
+}
+    `;
+export type GetMeMutationFn = Apollo.MutationFunction<GetMeMutation, GetMeMutationVariables>;
+
+/**
+ * __useGetMeMutation__
+ *
+ * To run a mutation, you first call `useGetMeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useGetMeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [getMeMutation, { data, loading, error }] = useGetMeMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetMeMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<GetMeMutation, GetMeMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<GetMeMutation, GetMeMutationVariables>(GetMeDocument, options);
+      }
+export type GetMeMutationHookResult = ReturnType<typeof useGetMeMutation>;
+export type GetMeMutationResult = Apollo.MutationResult<GetMeMutation>;
+export type GetMeMutationOptions = Apollo.BaseMutationOptions<GetMeMutation, GetMeMutationVariables>;
 export const GetSolanaAddressDocument = gql`
     query getSolanaAddress {
   getSolanaAddress {

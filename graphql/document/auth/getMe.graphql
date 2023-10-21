@@ -1,0 +1,16 @@
+mutation getMe {
+  getMe {
+    id
+    publicKey
+    email
+    avatar
+    background
+    name
+    bio
+    discord
+    youtube
+    twitter
+    instagram
+    role
+  }
+}
