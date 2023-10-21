@@ -7,6 +7,7 @@ import banner from "@/images/banner.png";
 import avatar from "@/images/avatar.png";
 import { useGetMeMutation } from "@/graphql/generated";
 import { useEffect } from "react";
+import { Loading } from "@/src/components/loading";
 
 const Profile = () => {
   const [useGetMe, { data, loading, error }] = useGetMeMutation();
@@ -25,6 +26,8 @@ const Profile = () => {
         });
     }
   }, [])
+
+  if (loading) return <Loading />;
 
     return (
         <div>
