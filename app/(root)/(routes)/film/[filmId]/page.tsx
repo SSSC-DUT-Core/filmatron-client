@@ -11,6 +11,7 @@ import {FilmRow } from '@/src/components/Film/FilmRow/index';
 import Image from 'next/image';
 import { LockIcon } from '@/public/assets';
 import { CNFT, filmTrailer, listTrailerVideoFetching } from '@/src/types/types';
+import { Loading } from '@/src/components/loading';
 import PrivateAccessImage from "../../../../../images/private-access.png";
 import { getAssetsByOwner, mapFilmNftsFromGraphQLResponse } from '../../../../../src/lib/utils';
 
@@ -21,7 +22,7 @@ interface HomepageDetailProps {
 const HomepageDetail = ({
   params: { filmId },
 }: HomepageDetailProps) => {
-  const {data: getFilmById,loading,error} = useGetFilmByIdQuery({
+  const {data: getFilmById,loading: loadingFimlDetail,error} = useGetFilmByIdQuery({
     variables: {
         id: filmId
     },
@@ -30,7 +31,8 @@ const HomepageDetail = ({
 
   const {
     data: films,
-    refetch
+    refetch,
+    loading: loadingFilms,
 } = useGetFilmsQuery({
     variables: {},
     fetchPolicy: "network-only", // Force a network request
@@ -117,6 +119,7 @@ const fetchAssetsByOwner = (solanaAddress: string) => {
     return trailer ? trailer.trailerVideo : undefined;
 };
 
+  if (loadingFilms || loadingFimlDetail) return <Loading />;
 
   return (
       <div className="flex-col sm:px-20 px-4 py-4">

@@ -14,6 +14,7 @@ import { useTour } from "@reactour/tour";
 import { CNFT, filmTrailer, listTrailerVideoFetching } from '@/src/types/types';
 import { LiveFilmSection } from "./component/LiveFilmSection";
 import { RedBandTrailer } from "../../../../src/components/RedBandTrailer";
+import { Loading } from "@/src/components/loading";
 
 
 const filmPosterDetailData = {
@@ -127,7 +128,7 @@ export const HomePage = () => {
         },
     });
 
-     const [listCnft, setListCnft] = useState<CNFT[]>([]);
+    const [listCnft, setListCnft] = useState<CNFT[]>([]);
     const [filmList, setFilmList] = useState<FilmEntity[]>([]);
     const firstFilm = filmList?.[filmList.length - 1];
     const { data: filmsNftsData } = useGetCompressedNfTsOfFilmQuery(
@@ -187,6 +188,8 @@ export const HomePage = () => {
         const trailer = trailers.find(trailer => trailer.id === id);
         return trailer ? trailer.trailerVideo : undefined;
     };
+
+    if (loading) return <Loading />;
     
     return (
         <div
