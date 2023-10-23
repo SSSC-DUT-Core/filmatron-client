@@ -61,7 +61,7 @@ const fetchAssetsByOwner = (solanaAddress: string) => {
            },
        },
        onCompleted: data => {
-        fetchAssetsByOwner(data.getSolanaAddress.address);
+        fetchAssetsByOwner(String(data.getSolanaAddress.address));
        },
    });
 
@@ -75,7 +75,7 @@ const fetchAssetsByOwner = (solanaAddress: string) => {
    )
    const refetchAssetsByOwner = () => {
         if (getSolanaAddress?.getSolanaAddress) {
-            fetchAssetsByOwner(getSolanaAddress.getSolanaAddress.address);
+            fetchAssetsByOwner(String(getSolanaAddress.getSolanaAddress.address));
         }
     };
    const refetchGetCompressNFT = () => {
