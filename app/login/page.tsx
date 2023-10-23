@@ -22,7 +22,7 @@ const socialLoginOptions = [
         buttonLoginText: true,
         translateLoginText: "dappLogin.continue",
         verifier: "Google",
-        loginUrl: `https://filmatron-client-a88cb9.kylan.so/wallet/request?callbackUrl=${config.domain}&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature`,
+        loginUrl: `https://filmatron-client-a88cb9.kylan.so/wallet/request?callbackUrl=${`${config.domain}/login`}&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature`,
     },
 ];
 
