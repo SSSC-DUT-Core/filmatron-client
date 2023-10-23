@@ -145,7 +145,7 @@ export type Mutation = {
   createCompressedNFTMetadata: ReturnMessageBase;
   createFilm: ReturnMessageBase;
   getMe: PersonEntity;
-  mintCompressedNFT: ReturnMessageBase;
+  mintCompressedNFT: FilmCompressedNftEntity;
   signIn: ReturnAccountDto;
   signInWithSocial: ReturnAccountDto;
   signUp: ReturnAccountDto;
@@ -446,7 +446,7 @@ export type SignInWithSocialMutationVariables = Exact<{
 }>;
 
 
-export type SignInWithSocialMutation = { __typename?: 'Mutation', signInWithSocial: { __typename?: 'ReturnAccountDto', accessToken: string } };
+export type SignInWithSocialMutation = { __typename?: 'Mutation', signInWithSocial: { __typename?: 'ReturnAccountDto', accessToken: string, refreshToken: string, person: { __typename?: 'PersonEntity', name: string } } };
 
 export type CreateCollectionMutationVariables = Exact<{
   input: CreateCollectionNftDto;
@@ -509,7 +509,7 @@ export type MintCompressedNftMutationVariables = Exact<{
 }>;
 
 
-export type MintCompressedNftMutation = { __typename?: 'Mutation', mintCompressedNFT: { __typename?: 'ReturnMessageBase', success: boolean, message: string } };
+export type MintCompressedNftMutation = { __typename?: 'Mutation', mintCompressedNFT: { __typename?: 'FilmCompressedNFTEntity', id: string, name: string, symbol: string, uri: string, filmId: number } };
 
 
 export const GetMeDocument = gql`
@@ -593,6 +593,10 @@ export const SignInWithSocialDocument = gql`
     mutation signInWithSocial($input: SignInWithSocialDto!) {
   signInWithSocial(input: $input) {
     accessToken
+    refreshToken
+    person {
+      name
+    }
   }
 }
     `;
@@ -949,8 +953,11 @@ export type GetCompressedNfTsOfFilmQueryResult = Apollo.QueryResult<GetCompresse
 export const MintCompressedNftDocument = gql`
     mutation mintCompressedNFT($cNFTId: ID!) {
   mintCompressedNFT(cNFTId: $cNFTId) {
-    success
-    message
+    id
+    name
+    symbol
+    uri
+    filmId
   }
 }
     `;

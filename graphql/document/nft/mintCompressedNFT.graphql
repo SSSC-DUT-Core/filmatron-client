@@ -1,6 +1,9 @@
 mutation mintCompressedNFT($cNFTId: ID!) {
     mintCompressedNFT(cNFTId: $cNFTId) {
-        success
-        message
+        id
+        name
+        symbol
+        uri
+        filmId
     }
 }
