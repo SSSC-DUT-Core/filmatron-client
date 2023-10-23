@@ -12,9 +12,9 @@ import { FilmRow } from "@/src/components/Film/FilmRow";
 
 import { useTour } from "@reactour/tour";
 import { CNFT, filmTrailer, listTrailerVideoFetching } from '@/src/types/types';
+import { Loading } from "@/src/components/loading";
 import { LiveFilmSection } from "./component/LiveFilmSection";
 import { RedBandTrailer } from "../../../../src/components/RedBandTrailer";
-import { Loading } from "@/src/components/loading";
 
 
 const filmPosterDetailData = {
@@ -162,7 +162,7 @@ export const HomePage = () => {
                 },
             },
             onCompleted: data => {
-                fetchAssetsByOwner(data.getSolanaAddress.address);
+                fetchAssetsByOwner(String(data.getSolanaAddress.address));
             },
         });
 
