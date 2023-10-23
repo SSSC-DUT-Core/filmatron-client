@@ -33,7 +33,8 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (authorizationCode) {
-            const url = "https://filmatron-jwks.kylan.so/api/access-token";
+            const url =
+                "https://filmatron-client-a88cb9.kylan.so/api/access-token";
             const body = JSON.stringify({ code: authorizationCode });
 
             fetch(url, {
