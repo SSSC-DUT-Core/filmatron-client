@@ -168,7 +168,7 @@ export const HomePage = () => {
 
     const refetchAssetsByOwner = () => {
         if (getSolanaAddress?.getSolanaAddress) {
-            fetchAssetsByOwner(getSolanaAddress.getSolanaAddress.address);
+            fetchAssetsByOwner(String(getSolanaAddress.getSolanaAddress.address));
         }
     };
 
