@@ -48,8 +48,23 @@ const LoginPage = () => {
                     return response.json();
                 })
                 .then(data => {
+                    const url = 'https://filmatron-client-a88cb9.kylan.so/api/user'
+                    fetch(url, {
+                      method: 'GET',
+                      headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        Authorization: data
+                      }
+                    })
+                      .then(response => {
+                        if (!response.ok) {
+                          throw new Error('Network response was not ok')
+                        }
+                        console.log(response.json())
+                        return response.json()
+                      })
                     localStorage.setItem("access_token", `Bearer ${data}`);
-                    router.push("/");
+                    // router.push("/");
                 })
                 .catch(error => {
                     console.error("Fetch error:", error);
