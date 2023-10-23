@@ -19,7 +19,7 @@ export const CardSection = (props: ICardSectionProps) => {
 
    const [getSolanaAddress] = useGetSolanaAddressLazyQuery({
        onCompleted: data => {
-           getAssetsByOwner(data.getSolanaAddress.address).then(data => {
+           getAssetsByOwner(data.getSolanaAddress.address ?? '').then(data => {
                setListCnft(
                    data?.items.map((item: any, index: number) => ({
                        id: item.id,
