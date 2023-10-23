@@ -446,7 +446,7 @@ export type SignInWithSocialMutationVariables = Exact<{
 }>;
 
 
-export type SignInWithSocialMutation = { __typename?: 'Mutation', signInWithSocial: { __typename?: 'ReturnAccountDto', accessToken: string, refreshToken: string } };
+export type SignInWithSocialMutation = { __typename?: 'Mutation', signInWithSocial: { __typename?: 'ReturnAccountDto', accessToken: string } };
 
 export type CreateCollectionMutationVariables = Exact<{
   input: CreateCollectionNftDto;
@@ -593,7 +593,6 @@ export const SignInWithSocialDocument = gql`
     mutation signInWithSocial($input: SignInWithSocialDto!) {
   signInWithSocial(input: $input) {
     accessToken
-    refreshToken
   }
 }
     `;
