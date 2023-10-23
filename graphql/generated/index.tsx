@@ -368,7 +368,7 @@ export type ReturnMessageBase = {
 
 export type ReturnSolanaAddressDto = {
   __typename?: 'ReturnSolanaAddressDto';
-  address: Scalars['String']['output'];
+  address?: Maybe<Scalars['String']['output']>;
 };
 
 export type ReturnTokenDto = {
@@ -389,7 +389,7 @@ export type SignInDto = {
 };
 
 export type SignInWithSocialDto = {
-  publicKey: Scalars['String']['input'];
+  publicKey?: InputMaybe<Scalars['String']['input']>;
   role: Role;
 };
 
@@ -439,14 +439,14 @@ export type GetMeMutation = { __typename?: 'Mutation', getMe: { __typename?: 'Pe
 export type GetSolanaAddressQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetSolanaAddressQuery = { __typename?: 'Query', getSolanaAddress: { __typename?: 'ReturnSolanaAddressDto', address: string } };
+export type GetSolanaAddressQuery = { __typename?: 'Query', getSolanaAddress: { __typename?: 'ReturnSolanaAddressDto', address?: string | null } };
 
 export type SignInWithSocialMutationVariables = Exact<{
   input: SignInWithSocialDto;
 }>;
 
 
-export type SignInWithSocialMutation = { __typename?: 'Mutation', signInWithSocial: { __typename?: 'ReturnAccountDto', accessToken: string, refreshToken: string, person: { __typename?: 'PersonEntity', name: string } } };
+export type SignInWithSocialMutation = { __typename?: 'Mutation', signInWithSocial: { __typename?: 'ReturnAccountDto', accessToken: string, refreshToken: string } };
 
 export type CreateCollectionMutationVariables = Exact<{
   input: CreateCollectionNftDto;
@@ -594,9 +594,6 @@ export const SignInWithSocialDocument = gql`
   signInWithSocial(input: $input) {
     accessToken
     refreshToken
-    person {
-      name
-    }
   }
 }
     `;
