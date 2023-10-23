@@ -2,8 +2,5 @@ mutation signInWithSocial($input: SignInWithSocialDto!) {
     signInWithSocial(input: $input) {
         accessToken
         refreshToken
-        person {
-            name
-        }
     }
 }
