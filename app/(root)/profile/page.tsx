@@ -25,6 +25,21 @@ const Profile = () => {
             },
         });
     }
+    const url = 'https://filmatron-client-a88cb9.kylan.so/api/user'
+                    fetch(url, {
+                      method: 'GET',
+                      headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        Authorization: localStorage.getItem("access_token")
+                      }
+                    })
+                      .then(response => {
+                        if (!response.ok) {
+                          throw new Error('Network response was not ok')
+                        }
+                        console.log(response.json())
+                        return response.json()
+                      })
   }, [])
 
   if (loading) return <Loading />;
