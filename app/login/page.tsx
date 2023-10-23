@@ -7,8 +7,9 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { config } from "@/src/config";
 import GoogleLoginImage from "@/public/assets/auth/login-google.svg";
-import logo from "@/public/assets/logo.svg";
 import { LogoFilm } from "@/public/assets";
+import dynamic from "next/dynamic";
+import SolanaLogo from "../../images/solana-logo.png";
 import LogoFull from "../../images/logo-full.png";
 
 const socialLoginOptions = [
@@ -18,13 +19,19 @@ const socialLoginOptions = [
         imageClass: "w-6 mr-2 login-button-images",
         divClass: "col-span-3",
         imageSrc: GoogleLoginImage,
-        imgAltText: "Continue with Wallet",
+        imgAltText: "With KyLan Wallet",
         buttonLoginText: true,
         translateLoginText: "dappLogin.continue",
         verifier: "Google",
         loginUrl: `https://filmatron-client-a88cb9.kylan.so/wallet/request?callbackUrl=${`${config.domain}/login`}&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature`,
     },
 ];
+
+const WalletMultiButtonDynamic = dynamic(
+    async () =>
+        (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
+    { ssr: false }
+) as any;
 
 const LoginPage = () => {
     const router = useRouter();
@@ -75,39 +82,54 @@ const LoginPage = () => {
                                     features best updated movies all around the
                                     world.
                                 </p>
-                                <div className="space-y-3 w-full">
-                                    {socialLoginOptions.map(
-                                        socialLoginOption => {
-                                            return (
-                                                <Link
-                                                    key={
-                                                        socialLoginOption.loginType
-                                                    }
-                                                    className="bg-[#4b4a4a99] grayscale hover:grayscale-0 pl-8 cursor-pointer flex-row space-x-3 w-full text-start h-12 flex items-center rounded-2xl group relative overflow-hidden shadow"
-                                                    href={
-                                                        socialLoginOption.loginUrl
-                                                    }
-                                                    target="_blank"
-                                                >
-                                                    <div className="absolute z-0 inset-0 w-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-70 transition-all duration-500 ease-out group-hover:w-full" />
-                                                    <Image
-                                                        src={LogoFilm}
-                                                        width={20}
-                                                        height={20}
-                                                        alt={
-                                                            socialLoginOption.imgAltText
+                                <div className="flex flex-col justify-center w-full items-center space-y-6">
+                                    <div className="space-y-3 w-full">
+                                        {socialLoginOptions.map(
+                                            socialLoginOption => {
+                                                return (
+                                                    <Link
+                                                        key={
+                                                            socialLoginOption.loginType
                                                         }
-                                                        className="z-10"
-                                                    />
-                                                    <p className="m-0 z-10 font-semibold sm:text-base text-sm">
-                                                        {
-                                                            socialLoginOption.imgAltText
+                                                        className="bg-[#4b4a4a99] grayscale hover:grayscale-0 pl-8 cursor-pointer flex-row space-x-3 w-full text-start h-[3.2rem] flex items-center rounded-2xl group relative overflow-hidden shadow"
+                                                        href={
+                                                            socialLoginOption.loginUrl
                                                         }
-                                                    </p>
-                                                </Link>
-                                            );
-                                        }
-                                    )}
+                                                        target="_blank"
+                                                    >
+                                                        <div className="absolute z-0 inset-0 w-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-70 transition-all duration-500 ease-out group-hover:w-full" />
+                                                        <Image
+                                                            src={LogoFilm}
+                                                            width={20}
+                                                            height={20}
+                                                            alt={
+                                                                socialLoginOption.imgAltText
+                                                            }
+                                                            className="z-10"
+                                                        />
+                                                        <p className="m-0 z-10 font-semibold sm:text-base text-sm">
+                                                            {
+                                                                socialLoginOption.imgAltText
+                                                            }
+                                                        </p>
+                                                    </Link>
+                                                );
+                                            }
+                                        )}
+                                    </div>
+                                    <div className="bg-[#4b4a4a99] grayscale hover:grayscale-0 pl-8 cursor-pointer flex-row space-x-3 w-full text-start h-12 flex items-center rounded-2xl group relative overflow-hidden shadow">
+                                        <div className="absolute z-0 inset-0 w-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-70 transition-all duration-500 ease-out group-hover:w-full" />
+                                        <div className="bg-transparent space-x-3 flex flex-row justify-center items-center">
+                                            <Image
+                                                src={SolanaLogo}
+                                                width={25}
+                                                height={25}
+                                                alt="SolanaLogo"
+                                                className="z-10"
+                                            />
+                                            <WalletMultiButtonDynamic />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

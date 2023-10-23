@@ -126,3 +126,10 @@ body,
 .reactour__popover div {
  --reactour-accent: #FDD949 !important;
 }
+
+.wallet-adapter-button:not([disabled]):hover {
+    background-color: transparent;
+}
+.wallet-adapter-button {
+  padding: 0;
+}
