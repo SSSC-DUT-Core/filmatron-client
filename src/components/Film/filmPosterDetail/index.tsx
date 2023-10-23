@@ -6,11 +6,12 @@ import './filmPosterDetail.css'
 import { FilmCompressedNftEntity, useMintCompressedNftMutation } from '@/graphql/generated';
 import toast from 'react-hot-toast';
 import { usePathname, useRouter } from 'next/navigation';
+import {useToggle} from 'usehooks-ts'
+import Link from 'next/link';
 import { Button } from '../../ui/button';
 import { FilmPosterTrailerModal } from './FilmPosterTrailerModal';
 import { Modal } from '../../ui/modal';
 import { QRCode } from '../../card-section/qr-code';
-
 
 export type FilmPosterDetailProps = {
     refetch?: () => void;
@@ -148,7 +149,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
     const handleToggle = () => {
         setIsModalOpen(!isModalOpen);
     };
-
+    const [isConfirmLoginModal, toggleConfirmLoginModal] = useToggle();
     const iframeRef = useRef<HTMLIFrameElement>(null);
 
     const onClose = () => {
@@ -197,6 +198,9 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
         );
 
     const onClaim = async () => {
+        if (!localStorage.getItem("access_token")) {
+            toggleConfirmLoginModal()
+        }
         mintCompressedNftMutation({
             variables: {
                 cNFTId: listCnft?.[0]?.id,
@@ -234,6 +238,30 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
 
     return (
         <div className="relative rounded-xl w-full sm:h-[80vh] h-[24vh] flex items-end mb-6" style={posterStyle}>
+              <Modal
+                title="Mint NFT"
+                isOpen={isConfirmLoginModal}
+                onClose={toggleConfirmLoginModal}
+            >
+                <div className="pt-6 flex flex-col justify-center space-x-2 items-center w-full">
+                <p
+                                    className="text-white font-bold text-16"
+                                    style={{
+                                        font: "28px",
+                                        color: "#333"
+                                    }}
+                                >
+                                   You need to be logged in to mint a NFT
+                                    </p>
+                   <Link href="/login">
+                    <Button
+                        className="w-60 mt-8 hover:bg-brand rounded-full transform active:scale-75 transition-transform hover:scale-110 duration-500 ease-out cursor-pointer flex flex-row justify-center items-center bg-brand text-black"
+                    >
+                        <p className="text-lg font-semibold">Go to login</p>
+                    </Button>
+                    </Link>
+                </div>
+            </Modal>
             <Modal
                 title="Your QR code:"
                 description="Share the movie with everyone."

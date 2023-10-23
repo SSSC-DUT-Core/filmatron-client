@@ -12,7 +12,7 @@ import { Button } from "@/src/components/ui/button";
 
 interface ModalProps {
     title: string;
-    description: string;
+    description?: string;
     isOpen: boolean;
     onClose: () => void;
     children?: React.ReactNode;
