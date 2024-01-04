@@ -119,7 +119,7 @@ const fetchAssetsByOwner = (solanaAddress: string) => {
     return trailer ? trailer.trailerVideo : undefined;
 };
 
-  if (loadingFilms || loadingFimlDetail) return <Loading />;
+  if (loadingFilms && loadingFimlDetail) return <Loading />;
 
   return (
       <div className="flex-col sm:px-20 px-4 py-4">

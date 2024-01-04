@@ -251,7 +251,7 @@ export const FilmPosterDetail = ({ posterSrc, logoSrc, title, duration, releaseD
                                         color: "#333"
                                     }}
                                 >
-                                   You need to be logged in to mint a NFT
+                                   You need to be logged in to mint a NFT.
                                     </p>
                    <Link href="/login">
                     <Button

@@ -7,6 +7,8 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { config } from "@/src/config";
 import GoogleLoginImage from "@/public/assets/auth/login-google.svg";
+import FacebookLoginImage from "@/public/assets/auth/login-facebook.svg";
+import TwitterLoginImage from "@/public/assets/auth/login-twitter.svg";
 import logo from "@/public/assets/logo.svg";
 import { LogoFilm } from "@/public/assets";
 import LogoFull from "../../images/logo-full.png";
@@ -18,44 +20,71 @@ const socialLoginOptions = [
         imageClass: "w-6 mr-2 login-button-images",
         divClass: "col-span-3",
         imageSrc: GoogleLoginImage,
-        imgAltText: "Continue with Wallet",
+        imgAltText: "Continue with Google",
         buttonLoginText: true,
         translateLoginText: "dappLogin.continue",
         verifier: "Google",
-        loginUrl: `https://filmatron-client-a88cb9.kylan.so/wallet/request?callbackUrl=${`${config.domain}/login`}&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature`,
+        loginUrl: `${config.auth.BASE_URL}/wallet/request?callbackUrl=${`https://filmatron-cnfts-e08bcd.kylan.so/api/auth/callback/github`}&permissions=Permission%3AReadPersionalInfo,Permission%3AReadWalletAddresses,Permission%3ARequestSignature&platform=github`,
     },
+    {
+        loginType: "facebook",
+        imageHeight: "30px",
+        imageClass: "w-6 mr-2 login-button-images",
+        divClass: "col-span-3",
+        imageSrc: FacebookLoginImage,
+        imgAltText: "Continue with Facebook",
+        buttonLoginText: true,
+        translateLoginText: "dappLogin.continue",
+        verifier: "Facebook",
+        loginUrl: `
+        https://filmatron-cnfts-e08bcd.kylan.so/api/auth/signin/github?`, // Replace with the actual Facebook login URL
+    },
+    {
+        loginType: "twitter",
+        imageHeight: "30px",
+        imageClass: "w-6 mr-2 login-button-images",
+        divClass: "col-span-3",
+        imageSrc: TwitterLoginImage,
+        imgAltText: "Continue with Twitter",
+        buttonLoginText: true,
+        translateLoginText: "dappLogin.continue",
+        verifier: "Twitter",
+        loginUrl: `URL_FOR_TWITTER_LOGIN`, // Replace with the actual Twitter login URL
+      },
+   
 ];
 
 const LoginPage = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
     const authorizationCode = searchParams.get("authorization-code");
-
     useEffect(() => {
-        if (authorizationCode) {
-            const url =
-                "https://filmatron-client-a88cb9.kylan.so/api/access-token";
-            const body = JSON.stringify({ code: authorizationCode });
-
-            fetch(url, {
+        const fetchData = async () => {
+          if (authorizationCode) {
+            try {
+              const url = "https://filmatron-client-a88cb9.kylan.so/api/access-token";
+              const body = JSON.stringify({ code: authorizationCode });
+      
+              const response = await fetch(url, {
                 method: "POST",
                 body,
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    localStorage.setItem("access_token", `Bearer ${data}`);
-                    router.push("/");
-                })
-                .catch(error => {
-                    console.error("Fetch error:", error);
-                });
-        }
-    }, [authorizationCode]);
+              });
+      
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+      
+              const data = await response.json();
+              localStorage.setItem("access_token", `Bearer ${data}`);
+              router.push("/");
+            } catch (error) {
+              console.error("Fetch error:", error);
+            }
+          }
+        };
+      
+        fetchData();
+      }, [authorizationCode]);
 
     return (
         <div className="bg-background-layout bg-cover bg-right w-screen h-screen py-10 sm:px-32 px-8">
@@ -91,7 +120,7 @@ const LoginPage = () => {
                                                 >
                                                     <div className="absolute z-0 inset-0 w-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-70 transition-all duration-500 ease-out group-hover:w-full" />
                                                     <Image
-                                                        src={LogoFilm}
+                                                        src={socialLoginOption.imageSrc}
                                                         width={20}
                                                         height={20}
                                                         alt={

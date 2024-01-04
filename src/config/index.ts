@@ -27,4 +27,8 @@ export const config = {
             process.env.NEXT_PUBLIC_ADMIN_PUBLICK_KEY ??
             "89Fh4QKhCEJ5rC1Bf4utchfmqPNejYTfjoW6VxDL8YqB",
     },
+    auth: {
+        BASE_URL: "https://filmatron-cnfts-e08bcd.kylan.so",
+        API_ACCESS_TOKEN: "api/access-token"
+    }
 };

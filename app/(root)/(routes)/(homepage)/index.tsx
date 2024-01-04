@@ -122,7 +122,6 @@ export const HomePage = () => {
         error,
     } = useGetFilmsQuery({
         variables: {},
-        fetchPolicy: "network-only", // Force a network request
         onCompleted: data => {
             setFilmList(mapFilmsFromGraphQLResponse(data));
         },
@@ -174,7 +173,7 @@ export const HomePage = () => {
 
     const { setIsOpen } = useTour();
     useEffect(() => {
-        const guildTourStatus = sessionStorage.getItem("guild_tour_status");
+        const guildTourStatus = localStorage?.getItem("guild_tour_status");
 
         if (guildTourStatus !== "done") setIsOpen(true);
     });
